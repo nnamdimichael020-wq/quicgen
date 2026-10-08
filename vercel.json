@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/qr-code-generator", "destination": "/qr-code-generator/index.html" },
+    { "source": "/password-generator", "destination": "/password-generator/index.html" },
+    { "source": "/uuid-generator", "destination": "/uuid-generator/index.html" },
+    { "source": "/random-number-generator", "destination": "/random-number-generator/index.html" },
+    { "source": "/random-string-generator", "destination": "/random-string-generator/index.html" },
+    { "source": "/random-color-generator", "destination": "/random-color-generator/index.html" },
+    { "source": "/dice-roller", "destination": "/dice-roller/index.html" },
+    { "source": "/percentage-calculator", "destination": "/percentage-calculator/index.html" },
+    { "source": "/tip-calculator", "destination": "/tip-calculator/index.html" },
+    { "source": "/time-calculator", "destination": "/time-calculator/index.html" },
+    { "source": "/date-calculator", "destination": "/date-calculator/index.html" },
+    { "source": "/word-counter", "destination": "/word-counter/index.html" },
+    { "source": "/case-converter", "destination": "/case-converter/index.html" },
+    { "source": "/lorem-ipsum-generator", "destination": "/lorem-ipsum-generator/index.html" },
+    { "source": "/color-picker", "destination": "/color-picker/index.html" },
+    { "source": "/base64-encoder-decoder", "destination": "/base64-encoder-decoder/index.html" },
+    { "source": "/hash-generator", "destination": "/hash-generator/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/help", "destination": "/help/index.html" }
+  ]
+}
