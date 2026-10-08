@@ -1,0 +1,35 @@
+{
+  "name": "quicgen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fast, private, beautifully simple tools that run in your browser.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -p tsconfig.json && vite build && node scripts/generate-seo.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run typecheck && npm run build && node scripts/smoke-test.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.53.0",
+    "qr-code-styling": "^1.9.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

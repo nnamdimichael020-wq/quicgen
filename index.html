@@ -1,34 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuicGen - Free Online Tools</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      color: #94a3b8;
-    }
-  </style>
-</head>
-<body>
-  <div>
-    <h1>QuicGen</h1>
-    <p>Free Online Tools coming soon...</p>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="QuicGen makes everyday tasks effortless. Generate QR codes, strong passwords, UUIDs, and more with free, private tools that run right in your browser." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="QuicGen" />
+    <meta property="og:title" content="QuicGen — Generate Anything. Instantly." />
+    <meta property="og:description" content="Beautifully simple, lightning-fast tools. Free to use, private by design." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="QuicGen — Generate Anything. Instantly." />
+    <meta name="twitter:description" content="Beautifully simple, lightning-fast tools. Free to use, private by design." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>QuicGen — Generate Anything. Instantly.</title>
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('quicgen-theme');
+          const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          const theme = saved || (prefersLight ? 'light' : 'dark');
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0f172a' : '#f8fafc');
+        } catch { document.documentElement.dataset.theme = 'dark'; }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><div class="boot-screen" aria-label="Loading QuicGen"><span class="boot-mark">q</span></div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
