@@ -77,7 +77,12 @@ writeFileSync(join(out, '404.html'), notFound);
 const urls = pages.map((page) => `  <url><loc>${escapeHtml(`${siteUrl}${page.path}`)}</loc><changefreq>${page.path === '/' ? 'weekly' : 'monthly'}</changefreq><priority>${page.path === '/' ? '1.0' : page.type === 'WebApplication' ? '0.8' : '0.5'}</priority></url>`).join('\n');
 writeFileSync(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
-const routeRedirects = pages.filter((page) => page.path !== '/').map((page) => `${page.path} ${page.path}/index.html 200!`);
-routeRedirects.push('/* /404.html 404');
+// Cloudflare Workers static assets parses this file during `wrangler deploy`
+// and only accepts the status codes 200 (proxy/rewrite), 301, 302 (default),
+// 303, 307 or 308. The Netlify-only `!` force flag and non-redirect codes such
+// as 404 are rejected by the Cloudflare API at deploy time. Unknown routes are
+// handled by the SPA fallback configured for the Workers deployment, which
+// serves the app shell so React Router renders the custom not-found page.
+const routeRedirects = pages.filter((page) => page.path !== '/').map((page) => `${page.path} ${page.path}/index.html 200`);
 writeFileSync(join(out, '_redirects'), `${routeRedirects.join('\n')}\n`);
 console.log(`Generated SEO metadata and sitemap for ${pages.length} routes at ${siteUrl}`);
