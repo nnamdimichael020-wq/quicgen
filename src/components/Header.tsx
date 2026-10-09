@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, Moon, ShieldCheck, Sun, X } from 'lucide-react';
 import { categories, tools } from '../data/tools';
@@ -11,6 +11,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const location = useLocation();
+  const headerRef = useRef<HTMLElement>(null);
   const closeMenu = () => setMobileOpen(false);
 
   useEffect(() => {
@@ -35,6 +36,23 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  // Close the dropdown panel when clicking outside the header, so desktop and mobile
+  // both get a natural dismiss without leaving an empty-looking overlay.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (target && headerRef.current?.contains(target)) return;
+      setMobileOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('touchstart', onDown, { passive: true } as AddEventListenerOptions);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('touchstart', onDown);
+    };
+  }, [mobileOpen]);
+
   const toggleLabel = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
   const themeButton = (compact = false) => <button
     type="button"
@@ -48,7 +66,7 @@ export default function Header() {
   </button>;
 
   return <>
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <div className="header-inner page-wrap">
         <Link to="/" className="brand" aria-label="QuicGen home" onClick={closeMenu}>
           <span className="brand-mark" aria-hidden="true"><span>q</span><i/></span><span className="brand-name">Quic<span>Gen</span></span>
@@ -68,10 +86,10 @@ export default function Header() {
           </button>
         </div>
       </div>
-      <div id="mobile-site-menu" className={`mobile-menu-panel ${mobileOpen ? 'mobile-menu-panel-open' : ''}`} aria-hidden={!mobileOpen}>
+      <div id="mobile-site-menu" className={`mobile-menu-panel ${mobileOpen ? 'mobile-menu-panel-open' : ''}`} aria-hidden={!mobileOpen} inert={!mobileOpen ? true : undefined}>
         <div className="mobile-menu-content">
           <div className="mobile-menu-utility">
-            <span className="mobile-menu-heading">QUICGEN</span>
+            <span className="mobile-menu-heading">QUICGEN — FULL MENU</span>
             <div className="mobile-menu-utility-actions">
               {themeButton(true)}
               <button type="button" className="mobile-menu-privacy" onClick={() => { setPrivacyOpen(true); closeMenu(); }}><ShieldCheck size={16}/> Privacy settings</button>

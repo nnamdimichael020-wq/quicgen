@@ -11,7 +11,7 @@ interface InstallPromptEvent extends Event {
   userChoice: Promise<InstallChoice>;
 }
 
-function readChoice() {
+function hasChosen() {
   try { return localStorage.getItem(CHOICE_KEY) !== null; }
   catch {
     try { return sessionStorage.getItem(CHOICE_KEY) !== null; }
@@ -38,7 +38,7 @@ export default function PostSuccessPrompt() {
   useEffect(() => {
     const updateDevice = () => setMobile(window.matchMedia('(max-width: 760px)').matches);
     updateDevice();
-    window.addEventListener('resize', updateDevice, { passive: true });
+    window.addEventListener('resize', updateDevice);
 
     const onBeforeInstall = (event: Event) => {
       event.preventDefault();
@@ -46,21 +46,29 @@ export default function PostSuccessPrompt() {
       setInstallAvailable(true);
     };
     const onSuccess = () => {
-      if (readChoice()) return;
+      if (hasChosen()) return;
       try {
         if (sessionStorage.getItem(SESSION_KEY)) return;
         sessionStorage.setItem(SESSION_KEY, 'true');
       } catch { /* The choice still works if storage is disabled. */ }
       setOpen(true);
     };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && open) {
+        saveChoice('dismissed');
+        setOpen(false);
+      }
+    };
     window.addEventListener('beforeinstallprompt', onBeforeInstall);
-    window.addEventListener('quicgen:success', onSuccess);
+    window.addEventListener('quicgen:success', onSuccess as EventListener);
+    window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('resize', updateDevice);
       window.removeEventListener('beforeinstallprompt', onBeforeInstall);
-      window.removeEventListener('quicgen:success', onSuccess);
+      window.removeEventListener('quicgen:success', onSuccess as EventListener);
+      window.removeEventListener('keydown', onKey);
     };
-  }, []);
+  }, [open]);
 
   const choose = (choice: 'accepted' | 'dismissed') => {
     saveChoice(choice);
@@ -81,18 +89,18 @@ export default function PostSuccessPrompt() {
       setInstallAvailable(false);
       choose(result.outcome);
     } catch {
-      setInstalling(false);
-      setInstallAvailable(false);
       deferredPrompt.current = null;
+      setInstallAvailable(false);
+      choose('dismissed');
     }
     setInstalling(false);
   };
 
   if (!open) return null;
-  return <aside className="bookmark-prompt" role="region" aria-labelledby="bookmark-prompt-title" aria-live="polite">
+  return <aside className="bookmark-prompt" role="dialog" aria-modal="false" aria-labelledby="bookmark-prompt-title" aria-live="polite">
     <div className="bookmark-prompt-top"><span className="bookmark-prompt-icon">{mobile ? <Home size={17}/> : <Bookmark size={17}/>}</span><button className="icon-button" type="button" aria-label="Dismiss bookmark reminder" onClick={() => choose('dismissed')}><X size={17}/></button></div>
     <span className="eyebrow">A SMALL, OPTIONAL REMINDER</span>
     <h2 id="bookmark-prompt-title">Enjoying QuicGen?</h2>
-    {mobile ? <><p>Keep the tools close by adding QuicGen to your Home Screen. On iPhone, use Share → Add to Home Screen; on Android, open your browser menu and choose “Install” or “Add to Home screen.”</p><div className="bookmark-prompt-actions"><Button type="button" onClick={addToHomeScreen} disabled={installing}>{installAvailable ? <Home size={14}/> : <Check size={14}/>}{installing ? 'Opening install…' : installAvailable ? 'Add to Home Screen' : 'I’ll add it'}</Button><Button type="button" variant="quiet" onClick={() => choose('dismissed')}>Not now</Button></div></> : <><p>Save this page for next time. Use <kbd>Ctrl</kbd> + <kbd>D</kbd> on Windows or <kbd>⌘</kbd> + <kbd>D</kbd> on Mac to bookmark it.</p><div className="bookmark-prompt-actions"><Button type="button" onClick={() => choose('accepted')}><Check size={14}/>I’ll bookmark it</Button><Button type="button" variant="quiet" onClick={() => choose('dismissed')}>Not now</Button></div></>}
+    {mobile ? <><p>Keep the tools close by adding QuicGen to your Home Screen. On iPhone, use Share → Add to Home Screen; on Android, open your browser menu and choose “Install” or “Add to Home screen.”</p><div className="bookmark-prompt-actions"><Button type="button" onClick={addToHomeScreen} disabled={installing}>{installAvailable ? <Home size={14}/> : <Check size={14}/>}{installing ? 'Opening install…' : installAvailable ? 'Add to Home Screen' : 'Got it — I’ll add it'}</Button><Button type="button" variant="quiet" onClick={() => choose('dismissed')}>Not now</Button></div></> : <><p>Save this page for next time. Use <kbd>Ctrl</kbd> + <kbd>D</kbd> on Windows or <kbd>⌘</kbd> + <kbd>D</kbd> on Mac to bookmark it.</p><div className="bookmark-prompt-actions"><Button type="button" onClick={() => choose('accepted')}><Check size={14}/>I’ll bookmark it</Button><Button type="button" variant="quiet" onClick={() => choose('dismissed')}>Not now</Button></div></>}
   </aside>;
 }

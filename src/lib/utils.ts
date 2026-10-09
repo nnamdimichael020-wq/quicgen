@@ -85,20 +85,29 @@ export function notifySuccess(source = 'tool-action') {
 }
 
 export async function copyText(value: string): Promise<boolean> {
-  let area: HTMLTextAreaElement | undefined;
-  try {
-    if (navigator.clipboard?.writeText && window.isSecureContext) {
+  if (!value) return false;
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    try {
       await navigator.clipboard.writeText(value);
       notifySuccess('copy');
       return true;
+    } catch {
+      // Permission denied or unavailable — fall through to the legacy path below.
     }
+  }
+  let area: HTMLTextAreaElement | undefined;
+  try {
     area = document.createElement('textarea');
     area.value = value;
     area.setAttribute('readonly', '');
     area.style.position = 'fixed';
+    area.style.top = '-9999px';
+    area.style.left = '-9999px';
     area.style.opacity = '0';
     document.body.appendChild(area);
+    area.focus();
     area.select();
+    area.setSelectionRange(0, value.length);
     const copied = document.execCommand('copy');
     if (copied) notifySuccess('copy');
     return copied;
