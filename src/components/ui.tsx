@@ -30,19 +30,22 @@ export function CopyButton({ value, label = 'Copy', className = '' }: { value: s
   const [copied, setCopied] = useState(false);
   const [failed, setFailed] = useState(false);
   const onCopy = async () => {
+    if (!value) return;
     const ok = await copyText(value);
     if (!ok) {
+      setCopied(false);
       setFailed(true);
-      window.setTimeout(() => setFailed(false), 1800);
+      window.setTimeout(() => setFailed(false), 2600);
       return;
     }
     setFailed(false);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
   };
-  return <><Button type="button" variant="secondary" className={`copy-button ${className}`} onClick={onCopy} disabled={!value} aria-label={copied ? 'Copied to clipboard' : failed ? 'Clipboard copy failed' : label} title={failed ? 'Clipboard copy failed. Try again.' : label}>
-    {copied ? <Check size={15} aria-hidden="true"/> : <Copy size={15} aria-hidden="true"/>}<span>{copied ? 'Copied' : failed ? 'Try again' : label}</span>
-  </Button>{(copied || failed) && <LiveRegion>{copied ? 'Copied to clipboard.' : 'Could not copy. Check your browser clipboard permissions.'}</LiveRegion>}</>;
+  const failedTitle = 'Clipboard access was denied. Try selecting the text and pressing Ctrl+C or ⌘+C.';
+  return <><Button type="button" variant="secondary" className={`copy-button ${className}`} onClick={onCopy} disabled={!value} aria-label={copied ? 'Copied to clipboard' : failed ? 'Clipboard copy failed' : label} title={failed ? failedTitle : label}>
+    {copied ? <Check size={15} aria-hidden="true"/> : <Copy size={15} aria-hidden="true"/>}<span>{copied ? 'Copied' : failed ? 'Copy failed' : label}</span>
+  </Button>{(copied || failed) && <LiveRegion>{copied ? 'Copied to clipboard.' : 'Copy didn’t work automatically. Please select the text and copy manually, or check clipboard permissions.'}</LiveRegion>}</>;
 }
 
 export function SectionHeading({ eyebrow, title, children }: { eyebrow?: string; title: string; children?: ReactNode }) {

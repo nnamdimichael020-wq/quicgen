@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState, type ChangeEvent, type FocusEvent, type KeyboardEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent, type FocusEvent, type KeyboardEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Layers, Search, X, type LucideIcon } from 'lucide-react';
 import { searchTools } from '../lib/search';
@@ -42,9 +42,13 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
   const results = useMemo(() => {
+    const trimmed = query.trim();
+    if (!trimmed) return { toolItems: [] as SearchItem[], guideItems: [] as SearchItem[], topicItems: [] as SearchItem[], allItems: [] as SearchItem[] };
     const toolItems: SearchItem[] = searchTools(query, 5).map((tool: ToolInfo) => ({
       id: tool.slug, kind: 'tool', path: `/${tool.slug}`, title: tool.title, description: tool.description,
       category: tool.category === 'Featured' ? 'Popular tool' : tool.category, icon: tool.icon, accent: tool.accent,
@@ -72,6 +76,7 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
     const nextQuery = event.target.value;
     setQuery(nextQuery);
     setActiveIndex(-1);
+    setFocused(true);
     onQueryChange?.(nextQuery);
   };
 
@@ -105,7 +110,8 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
       if (activeItem) {
         event.preventDefault();
         selectItem(activeItem);
-      } else if (results.allItems.length === 1) {
+      } else if (results.allItems.length > 0) {
+        // If user presses Enter without explicit highlight, open the top result.
         event.preventDefault();
         selectItem(results.allItems[0]);
       }
@@ -118,26 +124,63 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
       }
       setActiveIndex(-1);
       setFocused(false);
+      inputRef.current?.blur();
     }
   };
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+    // Close only when focus leaves the whole search container.
+    const next = event.relatedTarget as Node | null;
+    if (next && containerRef.current?.contains(next)) return;
+    // When relatedTarget is null (click on body/slice), defer check to outside-click handler.
+    // But if focus moves to somewhere outside container, close.
+    if (!next) {
+      // Let mousedown outside handler decide; keep open for now if click is inside dropdown scrollbar.
+      // Use timeout to allow mousedown to fire first.
+      window.setTimeout(() => {
+        if (document.activeElement && containerRef.current?.contains(document.activeElement)) return;
+        // If focus is no longer inside, close.
+        if (!containerRef.current?.contains(document.activeElement)) setFocused(false);
+      }, 0);
+      return;
+    }
+    setFocused(false);
   };
 
   const clearSearch = () => {
     setQuery('');
     setActiveIndex(-1);
     onQueryChange?.('');
+    setFocused(true);
     inputRef.current?.focus();
   };
+
+  // Close when clicking outside the search container. Works reliably even when relatedTarget is null
+  // and ensures the dropdown doesn't linger after clicking elsewhere.
+  useEffect(() => {
+    if (!focused) return;
+    const onDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (target && containerRef.current?.contains(target)) return;
+      setFocused(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('touchstart', onDown, { passive: true } as AddEventListenerOptions);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('touchstart', onDown);
+    };
+  }, [focused]);
 
   const renderGroup = (label: string, items: SearchItem[], offset: number) => items.length > 0 && <div role="group" aria-label={label} key={label}>
     <div className="tool-search-results-label">{label}</div>
     {items.map((item, index) => <SearchResult key={`${item.kind}-${item.id}`} item={item} index={offset + index} id={id} active={offset + index === activeIndex} onActivate={() => setActiveIndex(offset + index)} onSelect={clearAfterSelect}/>)}
   </div>;
 
-  return <div className={`tool-search tool-search-${variant}`} onBlur={handleBlur}>
+  const showDropdown = focused;
+  const hasQuery = query.trim().length > 0;
+
+  return <div ref={containerRef} className={`tool-search tool-search-${variant}`} onBlur={handleBlur}>
     <label className="tool-search-field" htmlFor={`${id}-input`}>
       <Search className="tool-search-icon" size={variant === 'hero' ? 19 : 17} aria-hidden="true"/>
       <input
@@ -147,9 +190,9 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
         role="combobox"
         aria-label="Search QuicGen tools, guides and topics"
         aria-autocomplete="list"
-        aria-expanded={focused}
-        aria-controls={focused && results.allItems.length ? `${id}-listbox` : undefined}
-        aria-activedescendant={focused && activeItem ? `${id}-option-${activeItem.kind}-${activeItem.id}` : undefined}
+        aria-expanded={showDropdown ? true : false}
+        aria-controls={showDropdown && results.allItems.length ? `${id}-listbox` : undefined}
+        aria-activedescendant={showDropdown && activeItem ? `${id}-option-${activeItem.kind}-${activeItem.id}` : undefined}
         autoComplete="off"
         spellCheck={false}
         className="tool-search-input"
@@ -159,10 +202,10 @@ export default function ToolSearch({ variant = 'header', placeholder = 'Search t
         onChange={updateQuery}
         onKeyDown={handleKeyDown}
       />
-      {query ? <button type="button" className="tool-search-clear" onClick={clearSearch} aria-label="Clear search"><X size={15}/></button> : variant === 'hero' ? <kbd className="search-shortcut"><span>⌘</span> K</kbd> : null}
+      {query ? <button type="button" className="tool-search-clear" onMouseDown={(e) => e.preventDefault()} onClick={clearSearch} aria-label="Clear search"><X size={15}/></button> : variant === 'hero' ? <kbd className="search-shortcut"><span>⌘</span> K</kbd> : null}
     </label>
-    {focused && <div className="tool-search-dropdown">
-      {!query.trim() ? <div className="tool-search-empty"><span className="tool-search-empty-icon"><Search size={16}/></span><span><strong>Find the right tool or guide</strong><small>Search by name, task, topic or category.</small></span></div> : results.allItems.length ? <div id={`${id}-listbox`} role="listbox" aria-label="Search suggestions">
+    {showDropdown && <div className="tool-search-dropdown" onMouseDown={(e) => e.preventDefault()}>
+      {!hasQuery ? <div className="tool-search-empty"><span className="tool-search-empty-icon"><Search size={16}/></span><span><strong>Find the right tool or guide</strong><small>Search by name, task, topic or category. Try “password”, “QR” or “percentage”.</small></span></div> : results.allItems.length ? <div id={`${id}-listbox`} role="listbox" aria-label="Search suggestions">
         {renderGroup('TOOLS', results.toolItems, 0)}
         {renderGroup('GUIDES', results.guideItems, results.toolItems.length)}
         {renderGroup('TOPICS', results.topicItems, results.toolItems.length + results.guideItems.length)}
@@ -181,6 +224,7 @@ function SearchResult({ item, index, id, active, onActivate, onSelect }: { item:
     aria-selected={active}
     className={`tool-search-result ${active ? 'active' : ''}`}
     onMouseEnter={onActivate}
+    onMouseMove={onActivate}
     onClick={onSelect}
   >
     <span className={`tool-search-result-icon accent-${item.accent}`}><Icon size={17}/></span>

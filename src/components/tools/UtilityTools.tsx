@@ -39,8 +39,21 @@ export function ColorPicker() {
 }
 function ColorValue({ label, value }: { label: string; value: string }) {
   const [copied, setCopied] = useState(false);
-  const copy = async () => { if (!value || !(await copyText(value))) return; setCopied(true); window.setTimeout(() => setCopied(false), 1200); };
-  return <button className="color-value-row" onClick={copy} disabled={!value}><span className="color-value-label">{label}</span><code>{value || '—'}</code><span className="color-value-copy">{copied ? <><Check size={14}/>Copied</> : <><Copy size={14}/>Copy</>}</span></button>;
+  const [failed, setFailed] = useState(false);
+  const copy = async () => {
+    if (!value) return;
+    const ok = await copyText(value);
+    if (!ok) {
+      setCopied(false);
+      setFailed(true);
+      window.setTimeout(() => setFailed(false), 2200);
+      return;
+    }
+    setFailed(false);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1200);
+  };
+  return <><button className="color-value-row" onClick={copy} disabled={!value} aria-label={copied ? 'Copied to clipboard' : failed ? 'Clipboard copy failed' : `Copy ${label} value`} title={failed ? 'Clipboard blocked — select the code and press Ctrl+C' : `Copy ${value}`}><span className="color-value-label">{label}</span><code>{value || '—'}</code><span className="color-value-copy">{copied ? <><Check size={14}/>Copied</> : failed ? <><Copy size={14}/>Try again</> : <><Copy size={14}/>Copy</>}</span></button>{failed && <span className="sr-only" role="status">Copy failed. Please select the text and copy manually.</span>}</>;
 }
 
 function bytesToBase64(bytes: Uint8Array) {
