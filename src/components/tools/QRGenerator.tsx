@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import QRCodeStyling, { type Options as QROptions } from 'qr-code-styling';
 import { Download, ImagePlus, RotateCcw, ShieldCheck, Trash2 } from 'lucide-react';
-import { Button, Field, Hint, TextArea, TextInput } from '../ui';
-import { downloadBlob } from '../../lib/utils';
+import { Button, CopyButton, Field, Hint, TextArea, TextInput } from '../ui';
+import { downloadBlob, notifySuccess, siteUrl } from '../../lib/utils';
 
 type ContentType = 'url' | 'text' | 'wifi' | 'vcard' | 'email' | 'sms' | 'phone';
 type DotStyle = NonNullable<QROptions['dotsOptions']>['type'];
@@ -20,7 +20,8 @@ function makePayload(type: ContentType, values: Record<string, string>) {
   switch (type) {
     case 'url': {
       const value = values.content.trim();
-      return value && !/^[a-z][a-z0-9+.-]*:\/\//i.test(value) ? `https://${value}` : value;
+      if (!value) return '';
+      return /^[a-z][a-z0-9+.-]*:/i.test(value) ? value : `https://${value}`;
     }
     case 'wifi': {
       if (!values.ssid) return '';
@@ -63,7 +64,7 @@ function qrOptions(data: string, form: { foreground: string; background: string;
   const foreground = isHexColor(form.foreground) ? form.foreground : '#172554';
   const background = isHexColor(form.background) ? form.background : '#ffffff';
   return {
-    type: 'svg', shape: 'square', width: size, height: size, margin: Math.max(12, Math.round(size * 0.045)), data: data || 'https://quicgen.com',
+    type: 'svg', shape: 'square', width: size, height: size, margin: Math.max(12, Math.round(size * 0.045)), data: data || `${siteUrl}/`,
     qrOptions: { errorCorrectionLevel: form.correction },
     dotsOptions: form.gradient ? { type: form.dots, gradient: { type: 'linear', rotation: Math.PI / 4, colorStops: [{ offset: 0, color: foreground }, { offset: 1, color: '#8b5cf6' }] } } : { type: form.dots, color: foreground },
     cornersSquareOptions: { type: 'extra-rounded', color: foreground },
@@ -105,7 +106,7 @@ function QRPreview({ data, form, label, frame = 'none', compact = false }: { dat
 export default function QRGenerator() {
   const [mode, setMode] = useState<'single' | 'bulk'>('single');
   const [contentType, setContentType] = useState<ContentType>('url');
-  const [values, setValues] = useState<Record<string, string>>({ content: 'https://quicgen.com', ssid: '', password: '', security: 'WPA', hidden: '', firstName: '', lastName: '', phone: '', email: '', subject: '', body: '' });
+  const [values, setValues] = useState<Record<string, string>>({ content: `${siteUrl}/`, ssid: '', password: '', security: 'WPA', hidden: '', firstName: '', lastName: '', phone: '', email: '', subject: '', body: '' });
   const [foreground, setForeground] = useState('#172554');
   const [background, setBackground] = useState('#ffffff');
   const [dots, setDots] = useState<DotStyle>('rounded');
@@ -116,7 +117,8 @@ export default function QRGenerator() {
   const [logoBacking, setLogoBacking] = useState('white');
   const [frame, setFrame] = useState('none');
   const [frameLabel, setFrameLabel] = useState('SCAN ME');
-  const [bulkText, setBulkText] = useState('https://example.com\nhttps://quicgen.com');
+  const [exportSize, setExportSize] = useState(1200);
+  const [bulkText, setBulkText] = useState(() => `https://example.com\n${siteUrl}/`);
   const [bulkGenerated, setBulkGenerated] = useState<string[]>([]);
   const [downloadState, setDownloadState] = useState('');
 
@@ -141,7 +143,7 @@ export default function QRGenerator() {
     if (!isHexColor(foreground) || !isHexColor(background)) { setDownloadState('Enter valid 6-digit HEX colors before downloading.'); return; }
     setDownloadState(`Preparing ${extension.toUpperCase()}…`);
     try {
-      const exportCode = new QRCodeStyling(qrOptions(data, form, 1200));
+      const exportCode = new QRCodeStyling(qrOptions(data, form, exportSize));
       let blob = await exportCode.getRawData(extension === 'pdf' ? 'png' : extension);
       if (!blob) throw new Error('Your file could not be prepared.');
       const label = frame === 'scan' ? 'SCAN ME' : frame === 'open' ? 'OPEN HERE' : frameLabel;
@@ -158,6 +160,7 @@ export default function QRGenerator() {
           document.setTextColor(foreground); document.setFontSize(12); document.text(label, 105, 205, { align: 'center' });
         }
         document.save(`${name}.pdf`);
+        notifySuccess('download');
       } else {
         downloadBlob(blob as Blob, `${name}.${extension}`);
       }
@@ -185,7 +188,7 @@ export default function QRGenerator() {
       const zip = new JSZip();
       for (let index = 0; index < bulkGenerated.length; index += 1) {
         if (exceedsQrCapacity(bulkGenerated[index], correction)) throw new Error(`QR code ${index + 1} is too long for the selected correction level.`);
-        const code = new QRCodeStyling(qrOptions(bulkGenerated[index], form, 1200));
+        const code = new QRCodeStyling(qrOptions(bulkGenerated[index], form, exportSize));
         let image = await code.getRawData('png');
         if (!image) throw new Error(`Could not prepare QR code ${index + 1}.`);
         if (frame !== 'none') {
@@ -231,7 +234,7 @@ export default function QRGenerator() {
           {frame === 'custom' && <Field label="Your frame label"><TextInput value={frameLabel} onChange={(event) => setFrameLabel(event.target.value)} maxLength={32} placeholder="SCAN ME"/></Field>}
         </> : <div className="bulk-panel"><span className="bulk-panel-icon"><RotateCcw size={18}/></span><h3>Create a batch of QR codes</h3><p>One item per line. We’ll make up to 30 custom QR codes using your current design settings.</p><Field label="Content (one per line)" hint="Paste URLs, messages, or any text. Each non-empty line becomes its own QR code."><TextArea value={bulkText} onChange={(event) => setBulkText(event.target.value)} rows={7} placeholder={'https://example.com\nYour next link'}/></Field><div className="bulk-actions"><span>{bulkText.split(/\r?\n/).filter((line) => line.trim()).length} entries</span><Button onClick={generateBulk}>Create QR codes</Button></div>{downloadState && <p className="inline-status" role="status">{downloadState}</p>}{bulkGenerated.length > 0 && <div className="bulk-results"><div className="bulk-results-header"><strong>{bulkGenerated.length} QR codes ready</strong><Button variant="secondary" onClick={downloadBulk}><Download size={14}/>Download ZIP</Button></div><div className="bulk-grid">{bulkGenerated.map((item, index) => <div className="bulk-item" key={`${index}-${item}`}><QRPreview data={item} form={form} compact/><span className="bulk-item-text" title={item}>{item}</span><Button variant="quiet" onClick={() => exportQr(item, 'png', `quicgen-qr-${index + 1}`)}><Download size={14}/> PNG</Button></div>)}</div></div>}</div>}
       </div>
-      {mode === 'single' && <aside className="qr-preview-panel"><div className="preview-panel-head"><div><span className="eyebrow">YOUR DESIGN</span><h3>Live preview</h3></div><span className="preview-status"><i/> Updating</span></div><div className="qr-stage"><QRPreview data={payload} form={form} frame={frame} label={frameLabel}/></div><div className="preview-payload"><span>QR CONTENT</span><p title={payload}>{payload || 'Add content to see your code'}</p></div><div className="download-actions"><Button onClick={() => exportQr(payload, 'png')}><Download size={16}/>Download PNG</Button><div className="download-secondary"><Button variant="secondary" onClick={() => exportQr(payload, 'svg')}>SVG</Button><Button variant="secondary" onClick={() => exportQr(payload, 'pdf')}>PDF</Button></div></div><span className="download-note">High-resolution export · 1200 × 1200 px <Hint text="PNG is ideal for sharing. SVG stays crisp at any size. PDF is ready to print."/></span><p className="qr-scan-tip"><ShieldCheck size={14}/> Always test-scan your finished code before printing.</p>{downloadState && <p className="inline-status" role="status">{downloadState}</p>}</aside>}
+      {mode === 'single' && <aside className="qr-preview-panel"><div className="preview-panel-head"><div><span className="eyebrow">YOUR DESIGN</span><h3>Live preview</h3></div><span className="preview-status"><i/> Updating</span></div><div className="qr-stage"><QRPreview data={payload} form={form} frame={frame} label={frameLabel}/></div><div className="preview-payload"><div className="preview-payload-head"><span>QR CONTENT</span><CopyButton value={payload} label="Copy payload"/></div><p title={payload}>{payload || 'Add content to see your code'}</p></div><Field label="Export resolution" hint="Choose the pixel dimensions for PNG and PDF exports. SVG stays vector-sharp at any display size."><select className="input qr-export-size-select" value={exportSize} onChange={(event) => setExportSize(Number(event.target.value))} aria-label="Export resolution"><option value={512}>512 × 512 px · web</option><option value={1200}>1200 × 1200 px · standard</option><option value={2400}>2400 × 2400 px · print</option></select></Field><div className="download-actions"><Button onClick={() => exportQr(payload, 'png')}><Download size={16}/>Download PNG</Button><div className="download-secondary"><Button variant="secondary" onClick={() => exportQr(payload, 'svg')}>SVG</Button><Button variant="secondary" onClick={() => exportQr(payload, 'pdf')}>PDF</Button></div></div><span className="download-note">PNG / PDF export · {exportSize} × {exportSize} px <Hint text="PNG is ideal for sharing. SVG stays crisp at any size. PDF is ready to print."/></span><p className="qr-scan-tip"><ShieldCheck size={14}/> Always test-scan your finished code before printing.</p>{downloadState && <p className="inline-status" role="status">{downloadState}</p>}</aside>}
     </div>
   </div>;
 }

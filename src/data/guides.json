@@ -1,0 +1,648 @@
+[
+  {
+    "slug": "how-to-create-a-custom-qr-code", "toolSlug": "qr-code-generator", "title": "How to Create a Custom QR Code That Scans Reliably", "description": "A practical guide to planning, styling, testing and downloading a custom QR code for links, Wi-Fi, contact details and campaigns.", "excerpt": "Build a QR code that looks on-brand and still scans quickly. Learn which content type to choose, how to use colors and logos safely, and how to test print-ready exports.", "family": "qr", "topics": ["qr-codes", "privacy-first-tools"],
+    "opening": ["A QR code is a small bridge between a printed surface and a digital action. The best codes make that next step obvious: a menu opens, a guest joins Wi-Fi, or a visitor reaches the right page without typing a long address. Creating one is easy; creating one that remains readable at real-world sizes takes a little planning.", "This guide walks through the decisions that matter before you download. You will choose a useful payload, keep the visual design within scannable limits, test the finished image on real devices, and leave room for the code to age gracefully if a link changes."],
+    "purpose": "Start by deciding what the person scanning should be able to do. A QR code stores a payload, not a promise: it cannot make a slow website fast, correct a typo in a URL, or explain why a camera should open it. A short call to action beside the code supplies that missing context. Keep the destination specific, mobile-friendly and worth the scan.",
+    "steps": [
+      {"title": "Choose the right payload", "body": "Open the QR Code Generator and select URL, text, Wi-Fi, contact, email, SMS or phone. For a website, paste the final landing-page address rather than a generic home page. For Wi-Fi, enter the network name and security type exactly as configured; a single character mismatch can make the join fail. Keep payloads concise because shorter data generally produces a simpler, easier-to-scan symbol."},
+      {"title": "Style for contrast, not decoration alone", "body": "Choose a dark foreground against a light background, then check the live contrast message. Rounded dots, a subtle gradient and a centered logo can make a code feel branded, but every extra visual change uses some of the scanner’s tolerance. When adding a logo, keep it modest, select strong error correction and avoid placing important marks over the three large corner finders."},
+      {"title": "Export and test the exact artifact", "body": "Download PNG for everyday use, SVG when a designer needs to resize without softness, or PDF for a convenient print sheet. Scan the downloaded file rather than only the preview. Test at the smallest planned size, under ordinary indoor lighting, with more than one phone. Confirm that the destination opens correctly and that the call to action next to the code accurately describes it."}
+    ],
+    "examples": [
+      {"title": "A café table card", "scenario": "A café wants guests to open its current menu from a small tabletop card.", "input": "A short HTTPS menu URL, dark navy dots, white background and a compact logo.", "outcome": "A high-contrast code exported as SVG for the designer and PNG for a quick proof.", "lesson": "Test the code at the card’s actual print size. If the menu URL is long because of tracking parameters, use a concise, owned redirect that the café can update later. The redirect should remain available for the life of the printed cards."},
+      {"title": "Guest Wi-Fi", "scenario": "A host wants visitors to join a home network without reading a password aloud.", "input": "The exact SSID, matching WPA security, and the current network password.", "outcome": "A Wi-Fi payload that prompts a compatible phone to join the selected network.", "lesson": "Treat the printed code as a credential: anyone who can scan it can read or use the network access it encodes. Place it only where guests are intended to connect, and regenerate the code if the password changes."}
+    ],
+    "choices": [
+      {"title": "Color and contrast", "body": "The foreground should be noticeably darker than the background. Avoid pale dots on a dark field, busy patterns behind the code, low-opacity marks and color combinations that look similar in grayscale. The preview’s contrast ratio is a useful warning, not a certification: a real scan test is still necessary."},
+      {"title": "Logo size and correction", "body": "Error correction adds redundant data so part of a code can be damaged and still recovered. It does not make every oversized logo safe. Start with a small logo, preserve clear space around it and scan the exported result. If scanning slows or fails, reduce the logo or return to a simpler style."},
+      {"title": "Frames, labels and format", "body": "A frame can give people a clear action, such as “Scan for menu,” but it is not a substitute for nearby instructions when the use is unfamiliar. Choose a vector SVG for layout work, a PNG for a fixed-size image, and a PDF when a simple print-ready page is more convenient. For PNG and PDF, select 512 pixels for a compact digital use, 1,200 pixels as a general-purpose export or 2,400 pixels when you need more detail for print. A larger file does not remove the need to test at the final physical size."}
+    ],
+    "tips": [
+      {"title": "Use a destination you control", "body": "For printed campaigns, a stable redirect on a domain you own can let you change the destination without replacing every copy of the code."},
+      {"title": "Leave a quiet zone", "body": "Keep a clean margin around the symbol. Borders, nearby text and page trims should not crowd the code’s outer modules."},
+      {"title": "Design for the smallest print", "body": "A code that scans on a desktop preview may be too dense on a small label. Test it at the real physical dimensions before ordering a large run."},
+      {"title": "Keep the action visible", "body": "Add a short, honest call to action beside the QR code so people know what will happen when they scan it."}
+    ],
+    "troubleshooting": [
+      {"problem": "The preview is blank or the code will not download.", "solution": "Check that the selected content field is not empty, both HEX colors are valid and the payload is within the selected correction level’s supported capacity. Shorten unnecessary tracking text or lower the correction level if no logo is used."},
+      {"problem": "Some phones take a long time to recognize the code.", "solution": "Increase foreground/background contrast, reduce the logo, remove the gradient or select a simpler dot style. Then re-export and test the actual file with a second device."},
+      {"problem": "The code scans but opens the wrong page.", "solution": "Inspect the exact URL embedded in the preview and scan the downloaded export. Check redirects, query parameters and whether the landing page works on a phone without requiring an unexpected sign-in."}
+    ],
+    "privacyNote": "QR content is encoded in the image generated in your browser; it is not uploaded to QuicGen. A downloaded code is intentionally readable by anyone who scans it, so do not encode a private password, personal record or confidential link unless you are comfortable distributing that information.",
+    "faqs": [
+      {"question": "Can I put a logo in the middle of a QR code?", "answer": "Yes, but keep it small, use strong contrast and choose higher error correction. Always scan the exported file at its intended size because a preview cannot guarantee every camera will decode a heavily customized mark."},
+      {"question": "Which download format should I use?", "answer": "PNG works well for common digital and print uses at a fixed resolution. SVG is ideal for layouts that need to scale cleanly. PDF is convenient when you want a simple print-ready page without opening a design application."},
+      {"question": "Does a QR code expire?", "answer": "The image itself does not expire, but its destination can change or disappear. Use an address you control, keep the destination maintained and test old printed codes periodically."},
+      {"question": "Can the generator create Wi-Fi codes?", "answer": "Yes. Select Wi-Fi, enter the network name and password, choose the correct security mode, then scan-test it with a device that is not already connected to the network."}
+    ],
+    "closing": "Before sharing, do one final pass: verify the payload, inspect the contrast, scan the exact exported file and confirm the destination is still useful. Then keep a copy of the source address and the date you published it. That small bit of documentation makes future updates much easier."
+  },
+  {
+    "slug": "how-to-generate-a-strong-password", "toolSlug": "password-generator", "title": "How to Generate a Strong Password You Can Trust", "description": "Learn how password length, uniqueness and randomness work together, then create and store a strong password without exposing it to a server.", "excerpt": "A strong password is long, unique and generated unpredictably. This guide explains what strength estimates can and cannot tell you, how to use a password manager, and how to keep a new credential private.", "family": "password", "topics": ["password-security", "privacy-first-tools"],
+    "opening": ["A good password should be difficult for someone else to guess and easy for you to use safely. Those goals are not best met by inventing a clever phrase and changing one character every few months. Length and uniqueness matter more: a long random credential used for one account is far less exposed to the predictable patterns people tend to create themselves.", "QuicGen’s generator creates passwords locally with the browser’s cryptographic random-number generator. This guide explains the settings, the limits of a visual strength meter, and the practical step that matters most after generation: storing the password in a reputable password manager rather than reusing or memorizing it."],
+    "purpose": "A password protects an account only when it is not already known, reused elsewhere or easy to predict. Attackers commonly test leaked credentials against other services, so one unique password per account limits the damage from a breach. A generator helps remove personal habits, keyboard patterns and familiar substitutions from the process.",
+    "steps": [
+      {"title": "Start with a length that fits the account", "body": "Open the Password Generator and choose a length that meets the site’s requirements. A longer value creates more possible combinations, especially when the selected character pool is broad. The default is a useful starting point; for important accounts, favor a longer generated password over trying to make a short one memorable."},
+      {"title": "Choose characters the service accepts", "body": "Select lowercase, uppercase, numbers and symbols when the site supports them. If a service rejects some symbols, use the largest permitted pool and increase the length to compensate. Excluding look-alike characters can make a credential easier to transcribe, but it slightly narrows the pool; a password manager usually makes that trade-off unnecessary."},
+      {"title": "Generate, copy and store it safely", "body": "Generate a fresh value and copy it directly into the account’s password field. Save it in a trusted password manager before closing the page. Do not send it in email, paste it into a shared document, or leave it visible on a shared screen. Keep optional local history off unless you specifically need it on this device."}
+    ],
+    "examples": [
+      {"title": "A new email account", "scenario": "You are setting up an email account that can reset other accounts, so it deserves extra protection.", "input": "A unique 24-character password using all accepted character groups, generated once.", "outcome": "A random credential saved in a password manager and paired with multi-factor authentication.", "lesson": "Email is often the recovery path for other services. A strong password helps, but multi-factor authentication and current recovery details reduce the risk of a stolen password turning into a wider account takeover."},
+      {"title": "A site with a strict character limit", "scenario": "A legacy service rejects symbols and caps passwords at 16 characters.", "input": "Letters and numbers only, at the maximum permitted length, with a different value from every other account.", "outcome": "A compliant random credential instead of a reused favorite password.", "lesson": "Follow the service’s actual rules rather than repeatedly trying unsupported characters. If a site forces a short maximum, consider contacting its support team and protect the account with its strongest available second factor."}
+    ],
+    "choices": [
+      {"title": "Length", "body": "Length expands the search space and is usually the easiest strength improvement. Use the longest value the service accepts, especially when a password manager can store it for you. There is no magic length that makes reuse safe; uniqueness still matters."},
+      {"title": "Character groups", "body": "More character types increase the generator’s available pool, but the value must fit the target website’s policy. Some older forms silently trim spaces or reject punctuation. If a login fails, check the site’s constraints instead of editing the password into a familiar pattern."},
+      {"title": "Pronounceable mode and local history", "body": "Pronounceable mode trades some randomness for readability and should not be treated as equivalent to a long, fully random password. Local history is optional browser storage; leave it off on shared devices and clear it when it is no longer needed."}
+    ],
+    "tips": [
+      {"title": "Never reuse a generated password", "body": "A unique value per account prevents one compromised service from unlocking another account that shares the same credential."},
+      {"title": "Use a password manager", "body": "A manager can create, store and fill long unique passwords, which removes the need to memorize or write them down."},
+      {"title": "Turn on multi-factor authentication", "body": "A second factor adds a separate check if a password is phished, guessed or exposed in a breach."},
+      {"title": "Treat copying as sensitive", "body": "Avoid shared clipboards, screenshots and untrusted browser extensions; clear any local history you enabled when finished."}
+    ],
+    "troubleshooting": [
+      {"problem": "The generator says to select a character type.", "solution": "Choose at least one character group. If the length is shorter than the number of selected groups, increase the length so the generator can include one character from each group."},
+      {"problem": "The target site rejects the password.", "solution": "Check the site’s documented length and allowed-character rules. Regenerate with a compatible set and a longer length where possible; do not reuse an old password just because it is accepted."},
+      {"problem": "The strength label looks lower after changing settings.", "solution": "The meter is an estimate based on length and the selected character pool, not a breach check or guarantee. Generate a new value after changing settings, and prioritize a long unique credential over the label alone."}
+    ],
+    "privacyNote": "The password is generated on this device with Web Crypto and is never sent to QuicGen. Optional password history is stored only in this browser when you switch it on. For sensitive accounts, leave history disabled, paste directly into a password manager and avoid using a shared device.",
+    "faqs": [
+      {"question": "How long should a strong password be?", "answer": "Use the longest value the account accepts; a password manager makes longer credentials practical. Length is only one factor, so make every password unique and use multi-factor authentication for important accounts."},
+      {"question": "Is the strength meter a guarantee?", "answer": "No. It is a local estimate based on length and character variety. It does not query breach databases, know a service’s defenses or guarantee that an account cannot be phished."},
+      {"question": "Should I use pronounceable mode?", "answer": "It can help when a value must be read aloud, but it uses a more limited pattern than a fully random mix. Prefer a standard generated password stored in a password manager whenever the site permits it."},
+      {"question": "Does QuicGen save my password?", "answer": "No, not by default. Password history is an explicit opt-in feature stored only in local browser storage. You can leave it off or clear it from the password tool or privacy settings."}
+    ],
+    "closing": "The safest routine is straightforward: generate a fresh long value, store it in a trusted manager, turn on a second factor, and never reuse it. A strength score can help explain the settings, but your security ultimately depends on the whole account setup and how carefully you handle the credential."
+  },
+  {
+    "slug": "how-to-generate-uuid-v4-ids", "toolSlug": "uuid-generator", "title": "How to Generate UUID v4 Identifiers for Apps and Data", "description": "A practical guide to UUID v4 format, collision risk, batch generation, validation and using identifiers safely in tests and applications.", "excerpt": "Generate UUID v4 values for records, fixtures and test data, then understand where random identifiers fit—and where a database sequence or a different identifier design is more appropriate.", "family": "identifiers", "topics": ["privacy-first-tools"],
+    "opening": ["A UUID is a 128-bit identifier designed to label an object without relying on a central counter. Version 4 UUIDs are generated from random bits with a few reserved bits that identify the version and variant. They are useful for test fixtures, client-created records, request IDs and local prototypes where a globally coordinated sequence would add unnecessary work.", "A UUID is not a secret token, an authorization mechanism or proof that a record exists. This guide shows how to generate a clean batch, validate the familiar format, handle duplicates defensively and decide whether a UUID is the right identifier for a particular system."],
+    "purpose": "The practical benefit of a UUID is decentralized creation: separate clients can make IDs before they synchronize with a database. This reduces coordination, but does not remove the need for schema constraints or input validation. Use an identifier because your system needs one, not as a replacement for access control or business logic.",
+    "steps": [
+      {"title": "Choose the batch size", "body": "Open the UUID Generator and set the number of identifiers you need. Small batches are convenient for hand-built fixtures; larger batches can be copied as a newline-separated list or downloaded for scripts. The page caps the count to keep the interaction responsive and prevent accidental, unbounded generation."},
+      {"title": "Generate a fresh version 4 set", "body": "Generate a batch and inspect the standard 8-4-4-4-12 hexadecimal grouping. The version nibble is 4 and the variant bits follow the UUID format. QuicGen uses the browser’s cryptographic random source, with a compatible fallback that sets the required version and variant bits."},
+      {"title": "Copy or download with a clear data shape", "body": "Copy one ID when testing a single record, copy all when populating a fixture, or download a text file for a local workflow. Before loading the list, confirm the receiving tool expects one value per line and that your database column can store the canonical 36-character representation."}
+    ],
+    "examples": [
+      {"title": "Seed data for a local test", "scenario": "A developer needs five stable-looking IDs for a UI prototype, not production customer records.", "input": "Generate five UUID v4 values and copy the newline-separated batch into a local fixture.", "outcome": "The prototype can render several records without depending on a live database sequence.", "lesson": "For repeatable automated tests, commit fixed fixture IDs rather than generating a new set on every test run. Random IDs are excellent for creating examples quickly; determinism is better when a test must compare exact snapshots."},
+      {"title": "Client-created draft", "scenario": "A browser needs to identify a draft before the user submits it to a server.", "input": "Create a UUID in the client, then validate and enforce uniqueness when the server accepts the record.", "outcome": "The interface can refer to the draft locally while the network request is pending.", "lesson": "A client-generated ID is untrusted input at the server boundary. Treat it as data, apply normal authorization checks and keep database uniqueness constraints in place."}
+    ],
+    "choices": [
+      {"title": "UUID versus a sequential ID", "body": "UUIDs are useful when IDs may be created in several places or exposed outside a database. Sequential IDs are smaller and can be efficient for a single database, but they can reveal ordering or approximate record counts. Choose based on system needs, not fashion."},
+      {"title": "UUID versus a secret token", "body": "UUID v4 values have randomness, but they should not automatically become credentials. Authentication tokens need a documented threat model, expiration, revocation and handling rules. A record identifier should never grant access merely because it is hard to guess."},
+      {"title": "Text format and storage", "body": "Canonical UUID text uses lowercase or uppercase hexadecimal and hyphens in fixed positions. Many databases have a native UUID type that stores the value efficiently; otherwise use a validated 36-character text field and normalize case consistently."}
+    ],
+    "tips": [
+      {"title": "Enforce uniqueness where it matters", "body": "A database unique constraint is the final authority. Even an extremely unlikely collision should be handled as a normal constraint failure."},
+      {"title": "Validate at the boundary", "body": "Check that incoming values are correctly formatted before using them in database queries or APIs."},
+      {"title": "Keep secrets separate", "body": "Do not use an ID as a password, API key or permission grant unless the system explicitly designed it as a credential."},
+      {"title": "Prefer stable test fixtures", "body": "Use fixed IDs in committed tests so failures are repeatable and easier to diagnose."}
+    ],
+    "troubleshooting": [
+      {"problem": "An application rejects the generated ID.", "solution": "Check whether it expects UUID v4, another UUID version, uppercase text, no hyphens, or a native binary value. Convert only the representation; do not invent missing bits or remove validation."},
+      {"problem": "A large import reports a duplicate.", "solution": "Keep a uniqueness constraint, log the conflicting record safely and generate a replacement if the workflow allows it. Do not silently overwrite an existing row."},
+      {"problem": "A UUID appears in a public URL.", "solution": "Assume identifiers can be shared and copied. Add authorization checks to every record lookup so knowing an ID alone never reveals private data."}
+    ],
+    "privacyNote": "UUIDs are generated locally in the browser and are not uploaded. UUIDs are identifiers, not necessarily confidential values: once you place an ID in a URL, log, repository or issue, other people may see it. Do not paste personal production data into public code or test fixtures.",
+    "faqs": [
+      {"question": "Can UUID v4 values collide?", "answer": "A collision is extraordinarily unlikely for ordinary workloads, but not mathematically impossible. Enforce uniqueness in the system that stores the values and decide how to handle a conflict."},
+      {"question": "Is a UUID a secure password or access token?", "answer": "Not by default. UUIDs identify objects; they do not define expiration, revocation, access scope or authorization. Use a purpose-built credential design for secrets."},
+      {"question": "Why is the UUID 36 characters long?", "answer": "The canonical text form has 32 hexadecimal digits plus four hyphens, displayed in 8-4-4-4-12 groups. The version and variant bits are part of the standardized format."},
+      {"question": "Can I generate UUIDs offline?", "answer": "Yes, in a modern browser with Web Crypto available. QuicGen generates the values in the current page and offers copy or download without a server request."}
+    ],
+    "closing": "Use generated UUIDs where decentralized creation is valuable, but keep data integrity and authorization in the application that consumes them. A short review of format, database type and trust boundary prevents most integration surprises."
+  },
+  {
+    "slug": "how-to-pick-random-numbers", "toolSlug": "random-number-generator", "title": "How to Pick Random Numbers Fairly", "description": "Learn how to set inclusive number ranges, draw unique results, avoid common sampling mistakes and use browser-generated randomness appropriately.", "excerpt": "Pick numbers for classroom activities, games, sampling and test data. This guide explains inclusive ranges, no-repeat draws, limits and why high-stakes decisions need a transparent process.", "family": "random", "topics": ["privacy-first-tools"],
+    "opening": ["A random number is useful only when the range and rules match the question. Is the minimum included? Can a value appear more than once? How many selections are needed? Answering those questions first prevents a familiar source of confusion: a technically random draw that does not match the intended experiment.", "QuicGen’s random number tool uses cryptographic randomness in the browser and supports inclusive whole-number ranges, multiple results and a no-repeat option. This guide shows how to configure a draw, interpret the output and recognize when an informal web tool is not an appropriate choice for an official or audited selection."],
+    "purpose": "For everyday tasks, randomness can help reduce human bias: choose a classroom volunteer, create sample values or decide among equally acceptable options. It cannot make an unfair process fair if the eligible list is incomplete, the rules change after a draw or participants cannot verify how the draw was conducted.",
+    "steps": [
+      {"title": "Define the range before drawing", "body": "Enter the smallest and largest allowed whole numbers. Both endpoints are included, so a range from 1 to 10 can produce either 1 or 10. Use negative values when the task calls for them and check that the maximum is not below the minimum."},
+      {"title": "Choose quantity and repeat behavior", "body": "Set how many values you want. Turn on Unique results for a draw without replacement; the tool checks that the range contains enough distinct values. Leave it off when repeated values are valid, such as independent rolls or sample measurements."},
+      {"title": "Generate, inspect and preserve context", "body": "Generate the set, then copy individual values or the complete result. If another person needs to understand the outcome, record the range, quantity, repeat rule and time of the draw beside it. For official lotteries or research, use the organization’s audited method instead of a casual browser page."}
+    ],
+    "examples": [
+      {"title": "Choose a classroom helper", "scenario": "A teacher has 28 numbered student cards and wants to choose three students without repeats.", "input": "Minimum 1, maximum 28, quantity 3, Unique results enabled.", "outcome": "Three different numbers that can be mapped to the numbered cards.", "lesson": "The tool selects numbers, not names. Shuffle or assign the numbered list fairly before drawing, explain the method and avoid changing the roster after seeing the output."},
+      {"title": "Create a small sample", "scenario": "A developer needs six sample order numbers from a test range that allows repeats.", "input": "Minimum 1000, maximum 9999, quantity 6, repeats allowed.", "outcome": "Six independently sampled values, with a duplicate possible by design.", "lesson": "If the application requires unique identifiers, use a uniqueness constraint or a dedicated ID strategy instead of assuming random samples cannot repeat."}
+    ],
+    "choices": [
+      {"title": "With replacement or without", "body": "A repeat-allowed draw is like sampling with replacement: each pick can be any value, including one selected before. A unique draw is without replacement: each picked value is removed from the remaining pool. Pick based on the experiment, not which output looks more convenient."},
+      {"title": "Range size", "body": "Very large safe whole-number ranges are supported. For a unique draw, the requested quantity must not exceed the count of available values. If the tool reports too few choices, widen the range or lower the number of results."},
+      {"title": "What 'fair' means", "body": "A fair draw requires every eligible value to have the intended chance. The generator’s sampling method avoids simple modulo bias, but fairness also depends on a correct range, complete participants and consistent rules."}
+    ],
+    "tips": [
+      {"title": "Write the rules down first", "body": "State the range, number of picks and whether repeats are allowed before generating a result."},
+      {"title": "Do not redraw because you dislike an outcome", "body": "If a draw is meant to be random, keep the first valid result unless a documented error occurred."},
+      {"title": "Use the right tool for stakes", "body": "A public contest or regulated lottery may require witnesses, logs, audited software and formal rules."},
+      {"title": "Keep sample data recognizable", "body": "Label synthetic values clearly so they are not mistaken for real account, invoice or identity numbers."}
+    ],
+    "troubleshooting": [
+      {"problem": "The unique draw cannot create as many values as requested.", "solution": "The range contains fewer distinct integers than the requested quantity. Expand the inclusive range or reduce quantity, then generate again."},
+      {"problem": "A result seems outside the requested range.", "solution": "Remember both endpoints are included. For a 1-to-10 range, every result from 1 through 10 is valid; check the input fields if the desired maximum should be excluded."},
+      {"problem": "Two values repeat unexpectedly.", "solution": "Confirm Unique results is enabled. Repeats are normal when drawing with replacement and can be valuable for independent trials."}
+    ],
+    "privacyNote": "The draw is calculated in the browser using Web Crypto; the selected range and results are not sent to QuicGen. For a contest or research study, local processing does not replace documentation, oversight or an auditable source of randomness.",
+    "faqs": [
+      {"question": "Are the minimum and maximum included?", "answer": "Yes. The generator treats both endpoints as possible results. Enter 1 and 10 to select from the ten integers 1 through 10."},
+      {"question": "How do I prevent duplicate values?", "answer": "Enable Unique results before generating. The tool verifies the selected range can supply the requested number of distinct values."},
+      {"question": "Is this suitable for a lottery?", "answer": "It is suitable for casual decisions, but an official or regulated draw may require independent witnesses, published rules, an audit trail and certified software. Follow the organizer’s requirements."},
+      {"question": "Can a random result be reproduced later?", "answer": "The tool does not provide a seed-based replay. If a result must be reproducible, document the process and use a research or test framework designed for seeded randomness."}
+    ],
+    "closing": "A careful draw begins with clear rules and ends with a result recorded in context. If the decision has real consequences, make the process transparent to the people affected and use a method whose safeguards match those stakes."
+  },
+  {
+    "slug": "how-to-create-random-strings", "toolSlug": "random-string-generator", "title": "How to Create Random Strings for Test Data", "description": "Build random strings with a deliberate length and alphabet, understand what they are good for, and avoid using ordinary generated strings as credentials.", "excerpt": "Choose a character set and output length for labels, fixture values and development data. Learn how custom alphabets work and when a string is not a safe substitute for a password or token.", "family": "random", "topics": ["privacy-first-tools"],
+    "opening": ["Random strings are handy when a project needs values that look different without carrying real user data. They can fill a prototype, label test objects, exercise validation logic or make a temporary sample. The important design choice is not simply “make it random”; it is choosing the right length, alphabet and purpose before generating.", "QuicGen lets you select lowercase letters, uppercase letters, digits and symbols, or enter a custom character set. Each output is created locally with cryptographic randomness. This guide explains the controls and shows how to keep synthetic values distinct from production credentials and real personal information."],
+    "purpose": "A generated string can be useful as placeholder content, but it does not automatically satisfy a system’s format or security requirements. An email field needs an email-shaped value; an API secret needs a defined token lifecycle; a username may have a strict length and allowed-character rule. Match the string to the validator you need to exercise.",
+    "steps": [
+      {"title": "Set length and quantity", "body": "Choose a length that resembles the data your application expects and the number of examples needed. The generator supports several output values in one pass. Avoid requesting huge batches when a smaller sample is enough; shorter batches are easier to inspect, copy and remove from a fixture later."},
+      {"title": "Pick an alphabet", "body": "Select the character groups your target field permits. A custom character string replaces the checkboxes and is useful for testing restricted alphabets, such as digits only or a set that excludes ambiguous symbols. If the output must match a pattern, use a format-aware fixture generator rather than hoping an arbitrary string happens to pass."},
+      {"title": "Generate and label the output", "body": "Create a batch, review its values and copy the required rows. Put synthetic values in a clearly named fixture or test namespace. Do not mix them with production customer records, and do not assume a random string is unique unless the receiving system checks for duplicates."}
+    ],
+    "examples": [
+      {"title": "A safe UI placeholder", "scenario": "A designer needs six different-looking tags to check how a list wraps on narrow screens.", "input": "Length 10, lowercase and numbers, quantity 6.", "outcome": "A small local set of plausible tags that can be pasted into mock data.", "lesson": "For visual tests, predictable fixed fixtures are often better after the first draft. Save a small, non-sensitive sample in the test environment so a layout screenshot does not change on every run."},
+      {"title": "Testing a restricted identifier field", "scenario": "A form accepts only uppercase letters and digits, with a maximum of 12 characters.", "input": "Custom alphabet A–Z and 0–9, length 12, a few outputs.", "outcome": "Values that exercise the field without including punctuation it should reject.", "lesson": "Test both valid and invalid inputs. The random generator creates valid-looking strings, but a good validation suite also checks empty input, over-length values and disallowed characters."}
+    ],
+    "choices": [
+      {"title": "Length and alphabet size", "body": "Longer strings and larger alphabets create more possible values. For test data, choose enough variety to exercise the interface. For secrets, use a dedicated password or token design with requirements for entropy, rotation, scope and storage."},
+      {"title": "Custom characters", "body": "The custom set replaces the preset groups. Review it carefully: repeated characters change their selection weight, and an empty or whitespace-only set falls back to the selected groups. Use a clearly curated alphabet when exact output rules matter."},
+      {"title": "Uniqueness", "body": "A set of random strings can contain duplicates, especially when the alphabet and length are small. If uniqueness matters, check it after generation or use a system that guarantees uniqueness and handles collisions."}
+    ],
+    "tips": [
+      {"title": "Keep synthetic data synthetic", "body": "Do not put real names, emails or account data into sample strings that may be committed or shared."},
+      {"title": "Exercise boundaries too", "body": "Generate examples for minimum and maximum lengths, then test invalid values separately."},
+      {"title": "Use stable fixtures for automation", "body": "Once a test case is useful, make its data deterministic so the test remains easy to reproduce."},
+      {"title": "Do not reuse as a password", "body": "Use the dedicated password generator for a login credential and store it in a password manager."}
+    ],
+    "troubleshooting": [
+      {"problem": "The output does not include one character from each selected group.", "solution": "The random-string tool samples from the combined alphabet; it does not guarantee each group appears in every string. If a policy requires at least one of each class, use the password generator or validate and regenerate according to that policy."},
+      {"problem": "Custom characters appear to be ignored.", "solution": "When a non-empty custom set is present, it replaces the checkboxes. Clear the custom field to return to the preset character groups."},
+      {"problem": "A duplicate appears in the batch.", "solution": "Duplicates are possible by chance. Increase length or add alphabet characters, or deduplicate after generation when the downstream task requires unique values."}
+    ],
+    "privacyNote": "Strings are created in this browser and are not sent to QuicGen. Synthetic text is not automatically safe to publish if you later combine it with real data. Avoid storing generated secrets in source code, screenshots or shared test fixtures.",
+    "faqs": [
+      {"question": "Are generated strings guaranteed to be unique?", "answer": "No. Random values can collide. Increase the output space and enforce uniqueness in the application or fixture pipeline if duplicates are not allowed."},
+      {"question": "Does a custom alphabet replace the checkboxes?", "answer": "Yes. A non-empty custom character set is used instead of the selected preset groups. Clear it to use the checkboxes again."},
+      {"question": "Can I use the random-string tool for passwords?", "answer": "Use the password generator instead. It includes a password-focused workflow and strength estimate; you should still use a unique value per account and store it in a password manager."},
+      {"question": "Why do I see characters from only one selected group?", "answer": "This generator samples from the combined alphabet and does not promise one character from every group in each string. Choose a password-specific tool when composition rules are required."}
+    ],
+    "closing": "Treat generated strings as building blocks, not a complete data policy. Select the alphabet to fit the field, preserve the exact fixture you need for repeatable tests, and keep credentials and personal information out of public sample data."
+  },
+  {
+    "slug": "how-to-build-a-color-palette", "toolSlug": "random-color-generator", "title": "How to Build a Useful Random Color Palette", "description": "Explore random HEX, RGB and HSL colors, copy values for design work and evaluate contrast before using a generated palette in a real interface.", "excerpt": "Use random color generation for inspiration, then curate the results with contrast, hierarchy and accessibility in mind. Learn how to move values into a design system without treating chance as design judgment.", "family": "color", "topics": ["privacy-first-tools"],
+    "opening": ["A random palette can be a good way to get unstuck. It offers combinations you might not have chosen deliberately and gives a designer a starting point for exploration. It is not a finished visual system: colors still need roles, contrast, context and careful testing against the text and surfaces where people will use them.", "QuicGen creates six browser-generated colors and presents their HEX, RGB or HSL values for quick copying. This guide shows how to use randomness as a prompt, compare useful candidates and turn a promising collection into a consistent palette rather than applying every swatch without review."],
+    "purpose": "Color work is easier when the palette is organized around jobs. A product may need a primary action, a quiet surface, body text, an accent and status colors. Random generation helps suggest candidates, but assigning those roles requires human judgment and accessibility checks.",
+    "steps": [
+      {"title": "Generate a broad set of candidates", "body": "Open the Random Color Generator and request a new palette. Start in HEX for a compact value that is easy to paste into CSS or most design tools. If a color is close but not right, use it as a seed for a separate color tool or refine it in your preferred design application."},
+      {"title": "Choose a value format for your workflow", "body": "HEX is common in web stylesheets, RGB is useful when a tool asks for red, green and blue channels, and HSL makes hue, saturation and lightness easier to reason about. The formats represent the same color in different forms; copying a value does not change the color profile or make it accessible by itself."},
+      {"title": "Assign roles and test combinations", "body": "Pick one or two colors that support the product’s visual hierarchy, then test them with real text, controls and states. Check foreground/background contrast and distinguishable focus or error indicators. Save accepted values as named design tokens instead of scattering anonymous hex strings through a project."}
+    ],
+    "examples": [
+      {"title": "Starting a landing-page accent", "scenario": "A small team needs inspiration for a friendly accent color, but the product already has a neutral base.", "input": "Generate six colors, compare them against the existing surface and copy one promising HEX value.", "outcome": "A candidate accent that can be tested in a button, link and illustration.", "lesson": "A color that looks attractive in a large swatch may be too light for small text or too saturated for a large background. Evaluate it at the size and role where it will appear."},
+      {"title": "Matching a developer handoff", "scenario": "A designer shares a palette with an engineer implementing a component library.", "input": "Copy the selected color in HEX and record a role such as accent-500 beside it.", "outcome": "A named token that can be referenced consistently across components.", "lesson": "Keep the original value and role together. If the palette changes, tokens make global review easier and reduce accidental color drift."}
+    ],
+    "choices": [
+      {"title": "HEX, RGB or HSL", "body": "Use the syntax your destination tool expects. HEX is compact, RGB exposes channel values and HSL supports intuitive adjustment. Avoid manually converting by eye; copy the tool’s exact value and let the destination parser handle it."},
+      {"title": "Palette size", "body": "Six results are enough to explore without creating a wall of options. Generate more only when you have a clear comparison task. Too many swatches can slow decisions rather than improve them."},
+      {"title": "Contrast and semantics", "body": "A generated hue is not a status system. Red, green and amber can carry meaning, but the meaning should also be communicated through text, iconography or patterns so color is never the only signal."}
+    ],
+    "tips": [
+      {"title": "Use color tokens", "body": "Name a value by its role, such as surface, accent or warning, so it can be reviewed and changed consistently."},
+      {"title": "Check text contrast", "body": "Test the actual font size and weight on the actual background instead of judging a full-size swatch."},
+      {"title": "Test in context", "body": "View colors alongside product photography, system controls and dark or light surfaces."},
+      {"title": "Keep a restrained palette", "body": "A small, intentional set often creates a clearer hierarchy than using every generated color."}
+    ],
+    "troubleshooting": [
+      {"problem": "The color value will not paste into a field.", "solution": "Check whether the destination expects HEX with a leading #, RGB channels without the rgb() wrapper, or HSL syntax. Choose the matching format and copy the value again."},
+      {"problem": "Text is hard to read on the chosen swatch.", "solution": "Choose a darker or lighter pairing and measure contrast with an accessibility checker. Do not rely on hue difference alone; text needs sufficient luminance contrast."},
+      {"problem": "A copied swatch looks slightly different in another app.", "solution": "Color profiles, display calibration and transparency can affect appearance. Confirm the destination’s color mode and avoid comparing screens with different color-management settings."}
+    ],
+    "privacyNote": "The palette is generated in the browser and no design file or color value is uploaded. QuicGen’s random palette is a source of candidates, not a stored project. Copy values only into workspaces where you intend to keep them.",
+    "faqs": [
+      {"question": "Which format should I copy for CSS?", "answer": "HEX is commonly used in CSS, though modern CSS also supports RGB and HSL syntax. Use the exact form supported by your codebase and keep it in a named design token."},
+      {"question": "Are random colors automatically accessible?", "answer": "No. Accessibility depends on the contrast between foreground and background, text size, and whether information is conveyed by color alone. Test every real combination."},
+      {"question": "Can I use a generated color commercially?", "answer": "A color value is not a finished design asset. You can use values in your work, but check any separate brand, licensing or trademark requirements that apply to your project."},
+      {"question": "What is the difference between HEX, RGB and HSL?", "answer": "They are different notations for describing color. HEX is a compact hexadecimal representation, RGB describes red/green/blue channels, and HSL describes hue/saturation/lightness."}
+    ],
+    "closing": "Use random colors to widen the search space, then make deliberate choices. A small set of named, tested tokens will serve a design better than a collection of attractive swatches with no assigned role."
+  },
+  {
+    "slug": "how-to-roll-dice-online", "toolSlug": "dice-roller", "title": "How to Roll Dice Online for Games and Decisions", "description": "Use an online dice roller for tabletop play, probability demonstrations and casual decisions, with clear expectations about dice types and randomness.", "excerpt": "Roll virtual d4, d6, d8, d10, d12 and d20 dice, see each result and total, and understand what the roll can and cannot prove for a game or decision.", "family": "random", "topics": ["privacy-first-tools"],
+    "opening": ["A virtual die is useful when physical dice are not nearby, when a player is joining remotely or when a quick demonstration needs a visible result. The basic action is simple, but a satisfying roll depends on choosing the correct die, reading each value and applying the game’s rules consistently.", "QuicGen’s dice roller supports groups of common tabletop dice and uses secure browser randomness to produce each result. This guide explains how to set a roll, calculate totals, understand notation and decide when a casual digital roll is not an appropriate substitute for a game’s official procedure."],
+    "purpose": "A random roll answers a narrow question: which face was selected from a defined set? The roller does not know whether a character has advantage, whether modifiers apply or whether a rule calls for a reroll. State those rules before rolling so the result is not interpreted differently after it appears.",
+    "steps": [
+      {"title": "Select the number of dice", "body": "Choose how many dice to roll, from one up to the tool’s limit. A group roll displays each die separately, which makes it easier to apply per-die effects, count successes or explain a result to other players."},
+      {"title": "Choose the die size", "body": "Select the number of sides: d4, d6, d8, d10, d12 or d20. The label describes the possible faces. Make sure it matches the rule or game table; a d20 roll is not interchangeable with a d100 roll unless the game specifies how to combine dice."},
+      {"title": "Roll once and apply the rule", "body": "Press the roll button and read every face plus the total. Apply modifiers, advantage, critical rules or success thresholds exactly as the game defines them. If the result needs to be shared, describe the dice and rule alongside the number rather than reporting only a total."}
+    ],
+    "examples": [
+      {"title": "A quick d20 check", "scenario": "A group needs one d20 result during a remote tabletop session.", "input": "One 20-sided die, rolled once, with the character’s modifier recorded separately.", "outcome": "A face from 1 through 20, followed by the agreed modifier calculation.", "lesson": "Keep the raw face visible before adding bonuses. This lets everyone verify the rule and makes it easier to correct a mistaken modifier without rerolling."},
+      {"title": "Damage with multiple dice", "scenario": "A rule calls for three six-sided dice and asks for the sum.", "input": "Three d6 dice, one roll, total all three visible values.", "outcome": "Three individual faces and a combined total for the damage step.", "lesson": "Some rules ask for the highest die, successes or rerolls rather than a simple sum. Record the individual faces so the output can support the correct interpretation."}
+    ],
+    "choices": [
+      {"title": "Dice count and side count", "body": "Set the die count and the side count independently. “3d6” means three six-sided dice, not one eighteen-sided die; the total distribution differs even when the maximum is similar."},
+      {"title": "Total versus individual faces", "body": "The sum is convenient for arithmetic. Individual faces matter for mechanics that count successes, compare each result or allow a single die to be rerolled."},
+      {"title": "Casual versus formal rolls", "body": "An in-browser roll is convenient for friendly play and demonstrations. A competition, assessment or regulated decision may require an agreed tool, visible process, shared record or physical dice."}
+    ],
+    "tips": [
+      {"title": "Agree on the rule first", "body": "Define the number of dice, modifiers and reroll policy before the result is visible."},
+      {"title": "Share the raw faces", "body": "Individual dice make a roll easier to audit than a total by itself."},
+      {"title": "Use a shared screen when trust matters", "body": "For group play, make the roll visible to participants and record important outcomes in the session notes."},
+      {"title": "Keep probability in perspective", "body": "A random outcome can be surprising without being incorrect; one roll does not demonstrate bias."}
+    ],
+    "troubleshooting": [
+      {"problem": "The total does not match the faces.", "solution": "Add the visible values again and check whether the game applies a modifier, reroll or cap. The tool’s total is the raw sum of the displayed dice."},
+      {"problem": "A needed die type is not listed.", "solution": "Check whether the rule can be represented by the available dice or use the game’s designated method. Do not silently substitute a different die with a different probability distribution."},
+      {"problem": "Players disagree about whether to reroll.", "solution": "Pause and consult the agreed game rule before rolling again. Re-rolling because a result is unwelcome changes the process and can undermine confidence."}
+    ],
+    "privacyNote": "Dice rolls happen in your browser and are not sent to QuicGen. A local roll is not a shared public audit record, so use the group’s agreed procedure whenever players need to witness or preserve an important outcome.",
+    "faqs": [
+      {"question": "Are online dice rolls random?", "answer": "The tool uses the browser’s cryptographic random-number generator to select faces. That is appropriate for casual play, but it does not make the page an audited competition system."},
+      {"question": "Does the total include game modifiers?", "answer": "No. The displayed total is the sum of the dice. Apply bonuses, penalties and game-specific rules separately."},
+      {"question": "Can I roll more than one die?", "answer": "Yes. Choose the number of dice and their side count; the tool shows individual faces and the total."},
+      {"question": "Can I use this for an official contest?", "answer": "Only if the contest rules permit it and the required oversight is in place. Formal contests may need a documented, independently auditable process."}
+    ],
+    "closing": "A useful roll is one everyone understands. Confirm the die and rule, keep the raw faces visible, and apply modifiers consistently. For consequential outcomes, follow the procedure agreed by the group rather than relying on an informal roll after a dispute begins."
+  },
+  {
+    "slug": "how-to-calculate-percentages", "toolSlug": "percentage-calculator", "title": "How to Calculate Percentages, Change and Discounts", "description": "Work through percentage-of, what-percent and percentage-change questions with clear formulas, signed examples and checks for common mistakes.", "excerpt": "Choose the right percentage question, enter the values in the correct order and interpret the result. Practical examples cover discounts, comparisons, growth and negative changes.", "family": "calculator", "topics": ["calculators", "privacy-first-tools"],
+    "opening": ["Percentage questions are easy to mix up because several different calculations use the same word. “What is 20% of 150?” asks for a part of a number. “30 is what percent of 150?” compares a part with a whole. “How much did a value change?” compares an ending value with a starting point. Naming the question first is half the work.", "QuicGen’s Percentage Calculator keeps these common cases separate and updates the result as you type. This guide shows the formulas, explains which value belongs in each field and walks through examples that reveal why the denominator matters."],
+    "purpose": "Percent means “per hundred,” but percentage change is relative to a starting value, not simply the difference between two numbers. A discount, a tax rate and growth from last month may use the same percent symbol while answering different questions. Choose the calculation by describing the relationship in plain language before entering any values.",
+    "steps": [
+      {"title": "Find a percentage of a number", "body": "Choose Find a percentage, enter the rate and the base number. The formula is (percentage ÷ 100) × number. For example, 15% of 80 is 0.15 × 80, or 12. This is useful for discounts, tax estimates and proportional quantities."},
+      {"title": "Find what percent one number is of another", "body": "Choose What percent, enter the part and the whole. The formula is (part ÷ whole) × 100. If 30 items out of 120 are complete, 30 ÷ 120 × 100 = 25%. The whole must not be zero because division by zero has no defined result."},
+      {"title": "Calculate percentage change", "body": "Choose Percentage change, then enter the starting and ending values. The formula is ((ending − starting) ÷ |starting|) × 100. A positive answer indicates an increase and a negative answer indicates a decrease. Keep the order clear: reversing the values changes the meaning."}
+    ],
+    "examples": [
+      {"title": "A discount at checkout", "scenario": "A jacket costs $80 and has a 15% discount before tax.", "input": "Find a percentage: 15% of 80.", "outcome": "The discount amount is $12; subtract it from the original price to get $68 before tax.", "lesson": "The calculator finds the discount amount, not automatically the final bill. Apply tax and shipping in the order required by the retailer or local rules."},
+      {"title": "Comparing a target with a result", "scenario": "A team completes 42 tasks from a planned total of 60.", "input": "What percent: part 42, whole 60.", "outcome": "70% of the planned tasks are complete.", "lesson": "Changing the whole changes the interpretation. If the team compares 42 completed tasks with a different target, enter that target as the whole and name it in the report."}
+    ],
+    "choices": [
+      {"title": "Part and whole", "body": "The part is the amount being compared; the whole is the reference total. A frequent mistake is reversing these fields, which can produce a mathematically valid but irrelevant percentage."},
+      {"title": "Starting and ending value", "body": "Percentage change uses the starting value as its reference. The calculator uses the absolute starting magnitude in the denominator so a transition from a negative value can still be described as a relative increase or decrease; state the convention when reporting unusual data."},
+      {"title": "Rounding", "body": "The result is displayed to a practical number of decimal places. Keep unrounded source values for downstream calculations and round only when presenting a final figure, following the rules of your domain."}
+    ],
+    "tips": [
+      {"title": "Write the question in words", "body": "Translate the task into “part of whole,” “part compared with whole,” or “change from start to end” before choosing a mode."},
+      {"title": "Check units", "body": "Do not compare dollars with items or mix percentages with percentage points without explaining the difference."},
+      {"title": "Keep the original values", "body": "A rounded percentage may not reproduce the exact count or amount that created it."},
+      {"title": "Label the reference", "body": "When sharing a result, say what the denominator represents and what period or population it covers."}
+    ],
+    "troubleshooting": [
+      {"problem": "The result is much larger than expected.", "solution": "Check whether the part and whole fields are reversed and confirm the whole is the intended reference. A value greater than 100% can be valid when the part exceeds the whole."},
+      {"problem": "The calculator shows a dash.", "solution": "Percentage-of requires valid numbers; the comparison and change modes also need a non-zero whole or starting value. Enter a valid reference value and try again."},
+      {"problem": "A percentage increase does not reverse the decrease.", "solution": "Percentage change is relative to the starting value. A 50% drop and a 50% rise do not return to the same amount because the second calculation starts from a smaller base."}
+    ],
+    "privacyNote": "Percentage calculations run in your browser and the entered numbers are not sent to QuicGen. The tool is an arithmetic aid, not financial, tax or statistical advice; verify consequential figures against the rules and source data relevant to your situation.",
+    "faqs": [
+      {"question": "How do I find 20% of a number?", "answer": "Multiply the number by 0.20, or use Find a percentage and enter 20 plus the base value. For example, 20% of 150 is 30."},
+      {"question": "How do I calculate percentage change?", "answer": "Subtract the starting value from the ending value, divide by the starting magnitude and multiply by 100. The sign tells you whether the value increased or decreased."},
+      {"question": "Can a percentage be more than 100%?", "answer": "Yes. A part can be larger than its reference whole, and a value can more than double relative to its start. Explain the comparison so the number is not misleading."},
+      {"question": "What is the difference between percent and percentage points?", "answer": "Percent describes a relative amount; percentage points describe the arithmetic difference between two percentage rates. Moving from 10% to 15% is a five-point increase, or a 50% relative increase."}
+    ],
+    "closing": "Before using a percentage in a decision, verify the mode, units, base value and rounding. A number can be exactly calculated and still answer the wrong question if its denominator or comparison period is unclear."
+  },
+  {
+    "slug": "how-to-split-a-bill-and-calculate-a-tip", "toolSlug": "tip-calculator", "title": "How to Calculate a Tip and Split a Bill Fairly", "description": "Calculate a tip, final total and per-person share, with examples for different currencies, tip rates and group sizes.", "excerpt": "Set the bill amount, choose a tip percentage and split the total. Learn whether to tip before or after tax, how to handle uneven shares and what rounding means in practice.", "family": "calculator", "topics": ["calculators", "privacy-first-tools"],
+    "opening": ["Splitting a restaurant bill should be about enjoying the meal, not doing mental arithmetic at the table. A reliable calculation needs three inputs: the bill amount, the tip rate and how many people are sharing. The way you define the bill—before or after tax, including or excluding shared extras—should match the group’s agreement and local custom.", "QuicGen’s Tip Calculator shows the tip, total and amount per person as you adjust the controls. This guide explains the arithmetic, gives practical examples and covers the small decisions that make a split feel clear and fair."],
+    "purpose": "A calculator can divide a total evenly, but it cannot decide what the group considers fair. One person may have ordered a meal much more expensive than another; someone may not drink alcohol; taxes and service charges may already be included. Agree on the basis first, then use the numbers to make the agreement transparent.",
+    "steps": [
+      {"title": "Enter the bill amount", "body": "Type the amount the group plans to use as its starting bill. Choose the currency shown on the receipt so the result is formatted clearly. If the receipt already includes a service charge or gratuity, avoid adding another tip unless that is what the group intends."},
+      {"title": "Choose the tip rate", "body": "Use a preset percentage or move the slider to a different rate. The tip amount equals bill × rate ÷ 100. For a $56.40 bill and an 18% tip, the tip is $10.152 before currency rounding; the displayed amount is rounded for everyday payment."},
+      {"title": "Set the number of people", "body": "Adjust the people count to include everyone sharing the selected total. The tool divides bill plus tip evenly. Review the per-person amount with the group, especially when some people joined later, paid separately or ordered significantly different items."}
+    ],
+    "examples": [
+      {"title": "Four friends sharing evenly", "scenario": "A group has a $96 bill before tip and agrees on 20% for four people.", "input": "Bill $96, tip 20%, four people.", "outcome": "A $19.20 tip and $115.20 total, or $28.80 per person.", "lesson": "Confirm that the $96 amount is the agreed base. If tax or a service charge is on the receipt, decide whether to tip on the pre-tax amount or another agreed total."},
+      {"title": "One person pays the full bill", "scenario": "A host wants to know the total to put on a card after a 18% tip on $56.40.", "input": "Bill $56.40, tip 18%, one person.", "outcome": "A tip of about $10.15 and a total of about $66.55.", "lesson": "Payment terminals may round the tip or total differently by a cent. Check the final amount displayed by the payment system before confirming the charge."}
+    ],
+    "choices": [
+      {"title": "Tip before or after tax", "body": "Local customs differ on whether the tip is calculated on the pre-tax subtotal or the taxed amount. Use the basis the group expects and keep it consistent; the calculator does not infer tax from a receipt."},
+      {"title": "Even or itemized split", "body": "The tool divides evenly. For an itemized split, collect each person’s subtotal and tax allocation separately, then use a calculator designed for that task or agree on a fair approximation."},
+      {"title": "Currency and rounding", "body": "Select the currency before reading amounts. Display rounding is useful for payment but can create a one-cent difference when every share is rounded independently. The payer can settle the remainder transparently."}
+    ],
+    "tips": [
+      {"title": "Agree before entering numbers", "body": "Decide who is included, which receipt lines count and whether a service charge is already present."},
+      {"title": "Use the receipt as the source", "body": "Enter the actual bill rather than a remembered estimate, especially when splitting a group payment."},
+      {"title": "Explain uneven shares", "body": "If the group chooses an itemized split, show the basis so no one is surprised by the final amount."},
+      {"title": "Check the payment screen", "body": "Review the final charge and tip prompt before approving to avoid adding gratuity twice."}
+    ],
+    "troubleshooting": [
+      {"problem": "The per-person values do not add to the total exactly.", "solution": "Currency rounding can leave a one-cent remainder. Allocate that cent openly or have the payer cover it; do not change the tip percentage to hide a rounding difference."},
+      {"problem": "The total seems to include a tip twice.", "solution": "Check the receipt for an included gratuity or service charge and confirm the terminal is not adding another tip on top of the calculator’s total."},
+      {"problem": "The selected currency shows a different symbol than expected.", "solution": "The tool uses your browser’s locale for currency formatting. Verify the three-letter currency code in the selector and check the numeric amount, not only the symbol."}
+    ],
+    "privacyNote": "The bill and tip calculation stay in this browser. QuicGen does not receive your receipt or payment details. Never enter card numbers or account credentials in a calculator; use only the bill amount needed for the arithmetic.",
+    "faqs": [
+      {"question": "Should I calculate a tip before tax?", "answer": "Customs and expectations vary by location. Use the basis specified by the group or local practice, and avoid tipping again when a gratuity is already included unless intended."},
+      {"question": "Does the calculator split items individually?", "answer": "No. It divides the bill plus tip evenly. For itemized shares, first determine each person’s subtotal and appropriate tax, then agree how to allocate the tip."},
+      {"question": "Why can there be a one-cent difference?", "answer": "A total may not divide evenly into cents. Rounding each share individually can leave a small remainder that the payer or group should allocate transparently."},
+      {"question": "Can I change the currency?", "answer": "Yes. Choose one of the available currency codes and the result is formatted accordingly. This is a display and arithmetic tool, not an exchange-rate converter."}
+    ],
+    "closing": "A good split is clear about its assumptions. Enter the correct bill, agree on the rate and people count, check included charges, and confirm the payment terminal’s final amount before anyone taps to pay."
+  },
+  {
+    "slug": "how-to-add-and-subtract-time", "toolSlug": "time-calculator", "title": "How to Add and Subtract Hours and Minutes", "description": "Calculate time across midnight, choose a 12- or 24-hour clock and avoid common mistakes with durations, shifts and schedules.", "excerpt": "Add or subtract a duration from a start time, even when the result crosses midnight. Learn how to interpret the day offset and separate clock time from elapsed hours.", "family": "calculator", "topics": ["calculators", "privacy-first-tools"],
+    "opening": ["Time arithmetic is awkward because clocks wrap at midnight while durations keep accumulating. Adding three hours to 22:30 produces 01:30 on the following day; subtracting 90 minutes from 00:15 lands on the previous day. A calculator should show both the clock result and the day change so the output cannot be mistaken for the same calendar date.", "QuicGen’s Time Calculator accepts a start time and a duration in hours and minutes, supports addition and subtraction, and displays the result in a 12- or 24-hour format. This guide explains how to enter durations and when clock arithmetic is not enough for scheduling work across time zones or daylight-saving changes."],
+    "purpose": "A clock time and an elapsed duration are related but different. “Two hours later” is a duration; “2:00 PM” is a local clock reading. For ordinary same-day planning, adding minutes works well. For appointments involving time zones, travel or daylight-saving transitions, include the date and zone in the calculation rather than relying on a bare clock value.",
+    "steps": [
+      {"title": "Enter the starting clock time", "body": "Choose a valid time using the time input. The display follows the browser’s locale, but the calculation uses a normalized 24-hour value. If the field is blank or invalid, select a new start time before interpreting the result."},
+      {"title": "Enter the duration", "body": "Set hours and minutes as separate amounts. Minutes can represent more than one hour, so 90 minutes is a valid duration and will be normalized in the result. Choose Add time or Subtract to set the direction of the calculation."},
+      {"title": "Read the result and day offset", "body": "The result shows the new clock time, plus a day count when the duration crosses midnight. Switch between 12- and 24-hour display if that is easier to share. Include the starting date when passing the result to a calendar or shift schedule."}
+    ],
+    "examples": [
+      {"title": "Plan an evening event", "scenario": "A film starts at 22:15 and lasts two hours and 20 minutes.", "input": "Start 22:15, add 2 hours and 20 minutes.", "outcome": "00:35 on the next day.", "lesson": "A result just after midnight belongs to the following calendar date. When booking transport or a room, enter the date as well as the time."},
+      {"title": "Count back from a deadline", "scenario": "A delivery is due at 09:00 and preparation takes 90 minutes.", "input": "Start 09:00, subtract 1 hour and 30 minutes.", "outcome": "07:30 on the same day.", "lesson": "The calculator finds a clock point, not the number of staff needed or travel time. Add buffers for setup, hand-off and uncertainty when planning a real operation."}
+    ],
+    "choices": [
+      {"title": "12-hour or 24-hour display", "body": "The underlying result is the same; only the presentation changes. A 24-hour clock avoids AM/PM ambiguity, while a 12-hour clock may match a local schedule. Always include AM or PM when using a 12-hour value."},
+      {"title": "Large minute values", "body": "Minutes are a duration field, not a clock minute. Entering 75 minutes correctly adds one hour and 15 minutes. If a different workflow expects a value from 0 to 59, convert it before copying the result."},
+      {"title": "Crossing midnight", "body": "The day offset describes how many calendar-day boundaries the arithmetic crosses. It does not know holidays, work shifts or location-specific time changes."}
+    ],
+    "tips": [
+      {"title": "Write the date beside the time", "body": "A clock value after midnight can belong to tomorrow or yesterday relative to the starting point."},
+      {"title": "Use 24-hour time for handoffs", "body": "It reduces ambiguity when schedules move between teams or systems."},
+      {"title": "Keep elapsed time separate", "body": "A shift duration, a clock time and a timezone offset are different facts."},
+      {"title": "Add operational buffers", "body": "A mathematical result is exact only for the entered duration; real-world delays need separate planning."}
+    ],
+    "troubleshooting": [
+      {"problem": "The result seems one day off.", "solution": "Check whether the duration crossed midnight and read the day-offset note. Also verify whether the schedule uses a 12-hour AM/PM value or a 24-hour value."},
+      {"problem": "A date changes during a daylight-saving transition.", "solution": "This tool performs arithmetic on a clock and duration, not a named timezone calendar. Use a date-aware scheduling system with the correct timezone for events near clock changes."},
+      {"problem": "The duration is more than 24 hours.", "solution": "The tool can calculate large durations and reports the number of days crossed. For payroll or legal records, verify the total hours and local rules in the authoritative system."}
+    ],
+    "privacyNote": "Times are calculated locally and are not sent to QuicGen. A shift or appointment can still reveal personal routines if shared publicly; avoid placing sensitive schedule details in screenshots or shared notes.",
+    "faqs": [
+      {"question": "Can I add minutes greater than 59?", "answer": "Yes. The input represents a duration, so 90 minutes is valid and normalizes to one hour and 30 minutes in the resulting clock time."},
+      {"question": "Why does the result include a day offset?", "answer": "Clock time wraps at midnight. The offset tells you whether the result falls on a later or earlier calendar day than the starting point."},
+      {"question": "Does it account for daylight-saving time?", "answer": "No. It calculates clock arithmetic without a date or timezone database. For schedules across daylight-saving changes, use a date- and timezone-aware calendar."},
+      {"question": "Can it calculate a work shift?", "answer": "It can add or subtract a duration from a start time. Breaks, overtime policy, time zones and payroll rounding must be handled separately."}
+    ],
+    "closing": "When you share a time calculation, include the date, time zone and AM/PM context where needed. A correct clock value without those details can still lead someone to the wrong place at the wrong time."
+  },
+  {
+    "slug": "how-to-calculate-date-differences", "toolSlug": "date-calculator", "title": "How to Calculate Days Between Dates and Age", "description": "Calculate calendar-day differences, add or subtract days and find an age with clear expectations about inclusive counting and leap dates.", "excerpt": "Choose a date calculation, understand whether the start day is counted, and use calendar dates rather than elapsed seconds for reliable everyday planning.", "family": "calculator", "topics": ["calculators", "privacy-first-tools"],
+    "opening": ["Date questions often sound simple until the counting rule is unclear. “How many days until Friday?” may mean the elapsed number of midnights, the number of calendar dates touched or a business-day count. “How old is someone?” needs the current date and a convention for birthdays that fall on a leap day.", "QuicGen’s Date Calculator separates days between, adding or subtracting days, and age. This guide explains the default calendar-day interpretation, shows examples and points out when you need business calendars, time zones or a legal definition rather than a basic date calculation."],
+    "purpose": "A date-only calculation should not depend on the number of hours in a local day. Daylight-saving changes can create 23- or 25-hour days, so measuring a calendar interval by dividing local timestamps by 24 hours can be misleading. The calculator uses UTC calendar dates to avoid that common problem for ordinary date-only questions.",
+    "steps": [
+      {"title": "Choose the date question", "body": "Select Days between to compare two dates, Add / subtract to move a date by a number of days, or Age calculator to compare a birth date with today. The active mode changes the fields so the inputs match the question you are asking."},
+      {"title": "Enter valid calendar dates", "body": "Use the date picker or enter dates in the browser’s date format. Check month, day and year before reading the answer; invalid calendar dates are not silently converted. In the difference mode, reversing the start and end changes the direction but not the absolute number of days shown."},
+      {"title": "Interpret the result convention", "body": "Days between reports the elapsed difference between the two date labels; it does not count both endpoints inclusively. Add / subtract moves by calendar days. Age is shown in years, months and days relative to the current date in the visitor’s locale."}
+    ],
+    "examples": [
+      {"title": "Plan a 30-day follow-up", "scenario": "A project owner wants the calendar date 30 days after a kickoff date.", "input": "Choose Add / subtract, enter the kickoff date and add 30 days.", "outcome": "The date reached after moving forward 30 calendar days.", "lesson": "If the deadline falls on a weekend or holiday, the tool does not move it to a business day. Apply the organization’s working calendar separately."},
+      {"title": "Measure a date interval", "scenario": "A traveler wants to know the number of days from June 1 to June 15.", "input": "Choose Days between, start June 1, end June 15.", "outcome": "14 elapsed calendar days between the date labels.", "lesson": "If a policy counts both the first and last day, that inclusive total would be 15. State the counting convention whenever the result is used in a contract, billing period or compliance deadline."}
+    ],
+    "choices": [
+      {"title": "Elapsed versus inclusive days", "body": "Most date-difference questions use elapsed difference: the same date to itself is zero days. Some rules count both endpoints. Add one only when the governing process explicitly uses inclusive counting."},
+      {"title": "Calendar days versus business days", "body": "This calculator counts every calendar date, including weekends and holidays. Workdays depend on a location, organization and holiday calendar and need a business-day tool."},
+      {"title": "Age and leap-day birthdays", "body": "Age is calculated from calendar components. A person born on February 29 may have a legal birthday convention that differs by jurisdiction; confirm the applicable rule for official records."}
+    ],
+    "tips": [
+      {"title": "Check the year", "body": "A one-year error is easy to miss when the day and month look familiar."},
+      {"title": "State inclusive counting", "body": "Describe whether both endpoint dates count whenever you share an interval."},
+      {"title": "Separate date from timezone", "body": "A date-only deadline is not the same as a timestamp at midnight in a particular location."},
+      {"title": "Verify official deadlines", "body": "Court, tax and contract rules can define special counting methods and holiday adjustments."}
+    ],
+    "troubleshooting": [
+      {"problem": "The answer is one day less than expected.", "solution": "The days-between mode reports elapsed calendar days, not an inclusive count of both dates. If the rule counts both endpoints, apply that convention explicitly and document it."},
+      {"problem": "A date field does not accept the value.", "solution": "Check the month length and leap year. February 29 exists only in leap years; the browser may also display dates in a locale-specific format."},
+      {"problem": "The date is right but the deadline is wrong.", "solution": "Check whether the rule uses business days, a local holiday calendar, a cutoff time or a timezone. This tool counts calendar dates only."}
+    ],
+    "privacyNote": "Date values are processed locally and not sent to QuicGen. Birth dates can be sensitive personal information; do not share a screenshot or copied result with identifying details unless you intend to disclose it.",
+    "faqs": [
+      {"question": "Does days between include both dates?", "answer": "No. It shows elapsed calendar days, so the same start and end date is zero. Some legal or business rules use inclusive counting; apply that rule separately."},
+      {"question": "Does it skip weekends or holidays?", "answer": "No. The date calculator counts calendar days. Use a business-day calendar when weekends, public holidays or local working schedules affect the answer."},
+      {"question": "How is age calculated?", "answer": "The calculator compares the selected date of birth with today and reports completed years plus remaining months and days. Official age conventions for leap-day births can vary."},
+      {"question": "Why use UTC for calendar dates?", "answer": "UTC date arithmetic avoids a local daylight-saving day being treated as 23 or 25 hours. The tool works with calendar-date labels rather than elapsed local timestamps."}
+    ],
+    "closing": "Use the result as a calendar calculation, then check the policy that applies to the real task. Inclusive deadlines, business days and timezone cutoffs are rules layered on top of the raw date difference."
+  },
+  {
+    "slug": "how-to-count-words-and-characters", "toolSlug": "word-counter", "title": "How to Count Words, Characters and Reading Time", "description": "Understand how word, character, sentence and paragraph counts work, and use a live word counter for writing, publishing and form limits.", "excerpt": "Paste or write locally and see live counts for words, characters, sentences, paragraphs and estimated reading time. Learn why different platforms may count text differently.", "family": "text", "topics": ["privacy-first-tools"],
+    "opening": ["A word count is more than a number when a piece of writing must fit an assignment, a product form, a social post or an editorial brief. Character counts can include or exclude spaces, sentence counts depend on punctuation and reading-time estimates rely on an assumed pace. Knowing the counting method helps you decide which value to trust.", "QuicGen’s Word Counter updates as you type and keeps the text in the current browser tab. This guide explains what each statistic means, how to use the results during editing and why counts from two different platforms may not match exactly."],
+    "purpose": "A live counter is most useful as feedback, not as a substitute for reading. It can reveal that a paragraph is too long or a form limit is close, but it cannot judge clarity, tone, accuracy or whether an important idea has been left out. Pair the numbers with a careful edit and the standards of the destination where the text will appear.",
+    "steps": [
+      {"title": "Paste or draft your text", "body": "Enter the text in the editor or paste a draft from another application. The tool analyzes the current content in the page; it does not upload the draft. For sensitive writing, use a device and browser you trust and avoid shared screens."},
+      {"title": "Read the statistic that matches your constraint", "body": "Words are useful for briefs and assignments; characters help with fields that impose a text limit; sentences and paragraphs provide a structural snapshot. Characters without spaces remove whitespace, while total characters include it. Check which definition the receiving platform uses."},
+      {"title": "Edit toward the right target", "body": "Use the reading-time estimate as a rough planning signal, then revise for the audience. The tool estimates about 200 words per minute; actual reading speed depends on subject, formatting, familiarity and accessibility needs. Copy the text only when you are ready to move it elsewhere."}
+    ],
+    "examples": [
+      {"title": "A short product description", "scenario": "A product page allows up to 160 characters for a concise summary.", "input": "Draft the description in the editor and watch the character count, including spaces.", "outcome": "A count that helps keep the copy inside the stated form limit.", "lesson": "Some platforms count Unicode code units or bytes rather than visible characters. If an exact platform limit matters, paste the final text into that platform’s own field and verify its counter."},
+      {"title": "An assignment with a word range", "scenario": "A class assignment asks for about 800 words and several paragraphs.", "input": "Paste the draft, compare its word count with the brief and review paragraph structure.", "outcome": "A quick estimate of whether the draft is near its target length.", "lesson": "A count cannot decide whether the work fulfills the prompt. Use it to plan, then check the rubric, argument, citations and required sections."}
+    ],
+    "choices": [
+      {"title": "Words", "body": "The counter recognizes runs of letters or numbers, including common apostrophes within a word. Hyphenated terms or unusual punctuation may be treated differently by a publisher or word processor, so follow the destination’s own definition when required."},
+      {"title": "Characters", "body": "The tool counts Unicode code points, which is more useful than counting UTF-16 halves for many emoji. A complex emoji made from several code points can still look like one character to a person; exact platform limits may use a different metric."},
+      {"title": "Sentences and paragraphs", "body": "Sentence totals use punctuation as a practical signal and paragraphs are separated by blank lines. Abbreviations, headings and dialogue can make automated punctuation counts differ from a human editor’s judgment."}
+    ],
+    "tips": [
+      {"title": "Check the destination’s limit", "body": "A platform’s own counter is authoritative when it uses a special Unicode or formatting rule."},
+      {"title": "Edit for meaning first", "body": "Cut repetition and sharpen the point instead of adding filler solely to hit a target."},
+      {"title": "Use reading time as an estimate", "body": "Dense technical or unfamiliar content usually takes longer than a simple word-per-minute model predicts."},
+      {"title": "Keep private drafts private", "body": "The text stays on this device, but anyone with access to the tab or clipboard may still see it."}
+    ],
+    "troubleshooting": [
+      {"problem": "The counter differs from a word processor.", "solution": "Different programs may treat hyphens, contractions, numbers, emoji and punctuation differently. Use the tool that defines the official requirement, then compare the text itself rather than assuming one algorithm is universal."},
+      {"problem": "A character limit is still exceeded on another site.", "solution": "The destination may count bytes, code units, line breaks or markup differently. Check its own counter after pasting and leave a small buffer if the limit is strict."},
+      {"problem": "Reading time feels inaccurate.", "solution": "The estimate uses a typical pace and does not account for complexity, skimming, headings or a reader’s preferred speed. Treat it as a planning range rather than a promise."}
+    ],
+    "privacyNote": "Your draft is counted locally in the current page and is not sent to QuicGen. The browser clipboard can hold copied content after you leave the page, so take extra care when editing confidential documents on shared or managed devices.",
+    "faqs": [
+      {"question": "How does the tool count a word?", "answer": "It counts groups of Unicode letters and numbers, allowing common apostrophes inside a word. Other publishers may use different rules for compounds, numbers or punctuation."},
+      {"question": "Why are characters without spaces different?", "answer": "That statistic removes whitespace before counting. It is useful when a brief asks for non-space characters, but many online form limits include spaces and line breaks."},
+      {"question": "Is reading time exact?", "answer": "No. It is an estimate based on about 200 words per minute. Topic difficulty, layout and reader pace can change the actual time substantially."},
+      {"question": "Is my writing uploaded?", "answer": "No. The counter processes the text in your browser tab. QuicGen does not receive or store the draft."}
+    ],
+    "closing": "Numbers can guide an edit, but your reader should guide the writing. Check the required counting rule, use the live totals to manage length and spend the final pass on clarity, accuracy and the experience of reading the piece."
+  },
+  {
+    "slug": "how-to-convert-text-case", "toolSlug": "case-converter", "title": "How to Convert Text to Uppercase, Lowercase and Title Case", "description": "Choose a text-case transformation, preserve the source and review names, acronyms and punctuation before using converted copy.", "excerpt": "Convert text instantly into uppercase, lowercase, title, sentence or alternating case. Learn what each mode changes and when a human review is essential.", "family": "text", "topics": ["privacy-first-tools"],
+    "opening": ["Changing text case is a small task that can interrupt a larger one. A copied heading may arrive in all caps, a data export may use inconsistent casing or a draft may need sentence-style capitalization. A converter handles mechanical changes quickly, but context still matters: names, acronyms, product terms and languages do not always follow a simple capitalization rule.", "QuicGen’s Case Converter keeps the original editable and creates a live transformed result. This guide describes each mode, gives realistic examples and outlines a quick review that catches the cases where an automatic transformation should not be used without checking."],
+    "purpose": "Case conversion changes letter capitalization; it does not proofread, translate, correct spelling or preserve every brand convention. A clean process keeps the source intact, selects the intended transformation and checks the output before replacing the original. That matters most for names and technical text where capitalization can carry meaning.",
+    "steps": [
+      {"title": "Paste the source text", "body": "Type or paste the content into the input editor. Keep a copy of the source when the text is important or difficult to recreate. The converter updates the result as you edit, so you can compare the output with the original before copying."},
+      {"title": "Select the intended case", "body": "Choose uppercase, lowercase, title case, sentence case or alternating case. Title case capitalizes words at word boundaries; sentence case capitalizes the beginning of a sentence. These are practical transformations, not a style guide that knows every proper noun or editorial rule."},
+      {"title": "Review and copy the result", "body": "Inspect names, acronyms, abbreviations, code identifiers and punctuation. Confirm that the output fits the destination’s style, then copy it. If the capitalization is part of source code or a URL path, remember that some systems treat letter case as significant."}
+    ],
+    "examples": [
+      {"title": "Normalize an all-caps heading", "scenario": "A pasted headline is uppercase, but the page uses sentence case.", "input": "Select sentence case and review the result alongside the source.", "outcome": "A readable heading with the initial sentence letter capitalized.", "lesson": "A tool cannot know that a brand name or acronym should remain uppercase. Restore those terms manually after the broad conversion."},
+      {"title": "Prepare a label list", "scenario": "A spreadsheet export has inconsistent casing in common descriptive labels.", "input": "Use title case for ordinary words, then inspect each label for names and abbreviations.", "outcome": "A consistent first pass that still receives a human quality check.", "lesson": "Title-case conventions differ between publications and languages. Follow the destination’s style guide for short function words, hyphenated phrases and proper nouns."}
+    ],
+    "choices": [
+      {"title": "Uppercase and lowercase", "body": "These modes make every letter uppercase or lowercase. They are reliable for broad normalization but can alter acronyms, product names and text whose capitalization carries technical meaning."},
+      {"title": "Title and sentence case", "body": "Title case is useful for headings and labels; sentence case is often appropriate for interface copy and prose. Neither mode knows a publication’s full style rules, so inspect the result before publishing."},
+      {"title": "Alternating case", "body": "Alternating case is mainly playful or decorative. It can reduce readability and accessibility, so avoid it for instructions, critical interface messages or long passages."}
+    ],
+    "tips": [
+      {"title": "Keep the original", "body": "A reversible workflow makes it easier to restore acronyms or proper names after conversion."},
+      {"title": "Check code and identifiers", "body": "Many programming languages and file systems treat case as meaningful."},
+      {"title": "Follow a style guide", "body": "House style may define capitalization for titles, product names and abbreviations."},
+      {"title": "Use decorative case sparingly", "body": "Unusual capitalization can make text harder to scan and read with assistive technology."}
+    ],
+    "troubleshooting": [
+      {"problem": "A brand name was lowercased.", "solution": "Restore the official brand styling after converting, or keep the source unchanged and make a targeted edit instead of converting the whole document."},
+      {"problem": "Title case does not match an editorial style guide.", "solution": "Different style guides capitalize short words and compound terms differently. Treat automatic title case as a first pass and apply the publication’s manual rules."},
+      {"problem": "A URL or code identifier stopped working.", "solution": "Restore the exact original casing. URLs and identifiers can be case-sensitive, so do not run broad case conversion on machine-readable strings without checking their specification."}
+    ],
+    "privacyNote": "Text is transformed in your browser and is not uploaded to QuicGen. The output remains visible in the page until you leave or clear it; use a trusted device and avoid copying confidential text to a shared clipboard.",
+    "faqs": [
+      {"question": "Does title case follow a specific style guide?", "answer": "It applies a general word-boundary capitalization rule. Editorial styles vary, so check short words, hyphenated terms, names and acronyms against the guide you need to follow."},
+      {"question": "Can I undo a conversion?", "answer": "The source input remains editable, so you can change the original and the converted result updates. Keep a separate copy if you need to preserve a previous version."},
+      {"question": "Should I use alternating case in interface text?", "answer": "Usually not for important information. Alternating case is decorative and can slow reading; use it only when the effect is intentional and does not reduce accessibility."},
+      {"question": "Is my text sent to a server?", "answer": "No. Case conversion happens in the current browser tab and the input is not sent to QuicGen."}
+    ],
+    "closing": "Use case conversion to remove repetitive work, then review the human details. Names, language conventions and machine-readable strings deserve a second look before the text replaces its source."
+  },
+  {
+    "slug": "how-to-generate-lorem-ipsum", "toolSlug": "lorem-ipsum-generator", "title": "How to Generate Lorem Ipsum Placeholder Text", "description": "Create placeholder paragraphs, sentences or word counts for prototypes while keeping filler separate from real product copy.", "excerpt": "Generate Lorem Ipsum by paragraphs, sentences or words for layout testing. Learn how much filler to use, where it belongs and why placeholder copy should never ship as finished content.", "family": "text", "topics": ["privacy-first-tools"],
+    "opening": ["Placeholder text can help a team see how a layout behaves before final copy is ready. It provides realistic-looking blocks for spacing, typography and responsive tests without forcing a writer to invent a sentence for every temporary card. The danger is that filler can become invisible: once a mockup looks finished, teams may forget to replace the words before release.", "QuicGen’s Lorem Ipsum Generator creates text by paragraph, sentence or word count and keeps the output editable in the browser. This guide explains how to choose an amount, test realistic content lengths and make placeholder status impossible to miss in a shared prototype."],
+    "purpose": "Lorem Ipsum is useful for visual structure, not for validating meaning. It does not reveal whether a button label is clear, a translation fits, a heading wraps well or an empty state guides a person. Use filler only when content itself is not part of the test, then replace it before testing comprehension or publishing a page.",
+    "steps": [
+      {"title": "Choose the unit that matches the mockup", "body": "Select paragraphs for article-like body copy, sentences for a card or teaser, and words when a design needs a specific rough text length. The quantity field changes its limit to match the chosen unit, helping keep an accidental generation from becoming unwieldy."},
+      {"title": "Generate enough to test the layout", "body": "Pick an amount close to the content volume expected in the final product. A single short paragraph will not expose how a long article scrolls; dozens of paragraphs may waste time when only a card height matters. Use the smallest sample that answers the design question."},
+      {"title": "Edit, copy or download with a visible label", "body": "Review the output, remove anything unnecessary and copy it into a clearly marked prototype. If you download a text file, keep “placeholder” in its name or folder. Add a reminder in the issue or design handoff describing where final content still needs to be written."}
+    ],
+    "examples": [
+      {"title": "Check a three-card layout", "scenario": "A product designer wants to compare cards with short, medium and long descriptions.", "input": "Generate a few sentences, then edit each card to different lengths.", "outcome": "A quick way to spot overflow and inconsistent card heights.", "lesson": "Lorem Ipsum has a fairly familiar word shape. For the final layout check, use synthetic copy with realistic words, punctuation and links because actual content wraps differently."},
+      {"title": "Prototype an editorial page", "scenario": "A developer needs enough body text to test a table of contents and sticky reading column.", "input": "Generate several paragraphs and place them in a marked local prototype.", "outcome": "A visual approximation of scroll length and reading rhythm.", "lesson": "Do not use filler to validate an article’s heading hierarchy, keyword relevance or reading comprehension. Those require meaningful content and real editorial review."}
+    ],
+    "choices": [
+      {"title": "Paragraphs", "body": "Choose paragraphs to test body-copy density and vertical rhythm. Paragraphs contain several sentences and are separated by blank lines, which helps test spacing styles."},
+      {"title": "Sentences", "body": "Sentence output works well for cards, quotes and teaser fields. Use a realistic character length too; a few long words can occupy more width than the same number of short filler words."},
+      {"title": "Words", "body": "Word count is useful when a text area or editorial design needs a target length. The generated sequence is placeholder content, not a grammatical or factual draft."}
+    ],
+    "tips": [
+      {"title": "Mark it as placeholder", "body": "Add a visible label and a task to replace the filler before launch."},
+      {"title": "Test realistic extremes", "body": "Include empty, short and long content to discover layout edge cases."},
+      {"title": "Use real content for comprehension", "body": "Filler cannot test meaning, tone, translation quality or user understanding."},
+      {"title": "Remove unused filler", "body": "Delete temporary text from prototypes, screenshots and production data when it is no longer needed."}
+    ],
+    "troubleshooting": [
+      {"problem": "The generated copy does not wrap like the real text.", "solution": "Lorem Ipsum word lengths differ from your final language and copy. Test with realistic sample content, including the longest expected heading and labels."},
+      {"problem": "Placeholder text shipped in a release.", "solution": "Search the project for “Lorem ipsum,” mark the content task in the release checklist and replace the filler with reviewed copy before publication."},
+      {"problem": "The output is much longer than the design needs.", "solution": "Choose a smaller quantity or generate by sentences instead of paragraphs. Use a focused sample that tests the component in question."}
+    ],
+    "privacyNote": "Placeholder text is generated locally and nothing is uploaded. Because the output is generic filler, it is safe to use in prototypes, but avoid combining it with real personal data in files or screenshots shared outside your team.",
+    "faqs": [
+      {"question": "What is Lorem Ipsum used for?", "answer": "It is placeholder text used to check visual layout when final copy is not ready. It does not replace useful, reviewed product content."},
+      {"question": "Can I choose a word count?", "answer": "Yes. Select Words and set the quantity. The generator caps large requests to keep the result manageable."},
+      {"question": "Should I use Lorem Ipsum in production?", "answer": "No. Replace filler with accurate content before launch. Placeholder copy can mislead users and harm accessibility, trust and search quality."},
+      {"question": "Can I edit the generated text?", "answer": "Yes. The output remains editable in the text area, and you can copy or download it for a local prototype."}
+    ],
+    "closing": "Use Lorem Ipsum only to answer a layout question, label it clearly and replace it before the work reaches real users. Meaningful content is part of the product experience, not a final layer of decoration."
+  },
+  {
+    "slug": "how-to-convert-hex-rgb-hsl", "toolSlug": "color-picker", "title": "How to Convert HEX, RGB and HSL Colors", "description": "Pick or enter a color and convert accurately between HEX, RGB and HSL values for web design, documentation and development.", "excerpt": "Understand how common color formats represent the same shade, use a color picker to inspect values and avoid common mistakes with shorthand HEX and contrast.", "family": "color", "topics": ["privacy-first-tools"],
+    "opening": ["Designers and developers often receive the same color in several notations: a HEX value in a style guide, RGB channels from a graphics tool or HSL values in a design system. Converting between them is useful when implementing a spec, but the notation itself does not determine how a color will look on every display or whether text will be readable on it.", "QuicGen’s Color Picker lets you choose a color visually or enter a three- or six-digit HEX code, then see HEX, RGB and HSL values update together. This guide explains the formats, the picker controls and a few checks that prevent conversion errors from becoming interface bugs."],
+    "purpose": "A color value is a precise input to a rendering system, not a guarantee of perception. Display profiles, transparency, surrounding colors and brightness influence how a shade appears. Use the converter to translate values accurately, then inspect the actual component and contrast in the environment where people will see it.",
+    "steps": [
+      {"title": "Choose a color or enter HEX", "body": "Use the browser color picker to select a shade, or enter a three- or six-digit HEX code. The tool expands valid shorthand values and normalizes the result to a six-digit representation. If the input is invalid, correct it before copying any derived value."},
+      {"title": "Read the converted formats", "body": "HEX encodes red, green and blue channels in hexadecimal. RGB writes those channel values as decimal numbers from 0 to 255. HSL describes hue, saturation and lightness, which can be easier to adjust by eye. They are alternate representations of the same opaque sRGB color."},
+      {"title": "Copy the format your destination expects", "body": "Click the HEX, RGB or HSL row to copy its complete value. Check whether the destination expects a # prefix, commas, percentages or a wrapper such as rgb(). Then test the selected color with the real background, text and state where it will appear."}
+    ],
+    "examples": [
+      {"title": "Implement a brand HEX value", "scenario": "A design handoff gives a developer the shorthand color #39F.", "input": "Enter #39F and copy the normalized HEX or RGB result.", "outcome": "The equivalent six-digit color #3399FF, with matching decimal RGB channels.", "lesson": "Shorthand HEX duplicates each nibble, so #39F expands to #3399FF—not #000039. Verify the destination’s syntax and preserve the original source value in the design documentation."},
+      {"title": "Adjust lightness in a theme", "scenario": "A developer wants a slightly lighter version of an existing interface accent.", "input": "Inspect its HSL value and adjust lightness in a design tool, then verify the resulting color.", "outcome": "A related variant that can be tested for hover or surface use.", "lesson": "Changing HSL lightness is not a substitute for measuring contrast. A perceptually brighter color can still fail against a particular text or background combination."}
+    ],
+    "choices": [
+      {"title": "HEX", "body": "HEX uses six hexadecimal digits, usually preceded by #, with two digits for each channel. Three-digit shorthand is accepted when each channel repeats its digit. This tool handles opaque colors; alpha transparency needs a format that explicitly supports it."},
+      {"title": "RGB", "body": "RGB expresses channel intensity from 0 to 255. It is direct to understand, but a destination may require a specific functional notation or percentage syntax. Copy the exact output and use the correct parser."},
+      {"title": "HSL", "body": "HSL separates hue, saturation and lightness. It can make coordinated variations easier to reason about, but equal numeric changes do not always feel perceptually equal across different hues."}
+    ],
+    "tips": [
+      {"title": "Check the alpha channel", "body": "The converter covers opaque sRGB values; use a format with alpha when transparency is part of the specification."},
+      {"title": "Use a single source of truth", "body": "Store accepted values as tokens rather than copying slightly different literals between files."},
+      {"title": "Measure contrast", "body": "Test text and controls against their actual surface, including focus and disabled states."},
+      {"title": "Avoid visual-only comparisons", "body": "Display settings and color profiles can alter perceived appearance even when values match."}
+    ],
+    "troubleshooting": [
+      {"problem": "A HEX entry shows an error.", "solution": "Use a valid three- or six-digit hexadecimal value, with or without a leading #. Remove other symbols and check that every character is 0–9 or A–F."},
+      {"problem": "RGB values appear slightly different after conversion.", "solution": "The tool rounds HSL components for display. Use the exact normalized HEX or full-precision values from your design source when pixel-level matching is required."},
+      {"problem": "The color is not accessible as text.", "solution": "Measure the foreground/background contrast using the actual text size and weight, then choose a darker or lighter pair. Color conversion alone does not evaluate accessibility."}
+    ],
+    "privacyNote": "Color values are converted in your browser and not uploaded to QuicGen. A color can still be proprietary brand information; share palette screenshots or specifications only with the people intended to receive them.",
+    "faqs": [
+      {"question": "How does #39F expand?", "answer": "Three-digit shorthand duplicates each hexadecimal digit, so #39F becomes #3399FF. Each pair represents one RGB channel."},
+      {"question": "Are HEX, RGB and HSL different colors?", "answer": "They are notations for representing the same color in common sRGB workflows. Rounding or color-profile differences can cause small display variations."},
+      {"question": "Does the tool support transparency?", "answer": "The HEX/RGB/HSL converter focuses on opaque values. Use a format such as RGBA or eight-digit HEX when the target requires an alpha channel."},
+      {"question": "Can this tell me whether a color is accessible?", "answer": "No. It converts formats but does not test every foreground/background pairing. Use a contrast checker and test the actual UI state."}
+    ],
+    "closing": "Convert values exactly, keep a consistent token source and test the color in context. Reliable color work combines correct notation with contrast, hierarchy and the rendering environment that users actually experience."
+  },
+  {
+    "slug": "how-to-encode-and-decode-base64", "toolSlug": "base64-encoder-decoder", "title": "How to Encode and Decode Base64 Text", "description": "Use Base64 safely for text transport, understand UTF-8 and padding, and avoid treating an encoding as encryption or access control.", "excerpt": "Convert UTF-8 text to and from Base64 in the browser. Learn what the output means, troubleshoot invalid data and protect secrets with actual encryption rather than encoding.", "family": "developer", "topics": ["privacy-first-tools"],
+    "opening": ["Base64 is a way to represent bytes using a restricted set of printable characters. It is useful when a system needs to carry binary data through a text-oriented format, and it often appears in data URLs, email formats, tokens and developer tooling. It is not a cipher: anyone who receives a Base64 string can decode it without a key.", "QuicGen’s Base64 tool converts UTF-8 text locally and reports errors instead of silently replacing invalid data. This guide explains the encode/decode direction, common padding behavior and the security boundary that matters most: readable encoding is not privacy protection."],
+    "purpose": "Encoding changes representation, not meaning or secrecy. A Base64 value may look opaque, but it can reveal the original text to anyone who knows the format. Use it for compatibility when a protocol requires it; use authenticated encryption and careful key management when information must remain confidential.",
+    "steps": [
+      {"title": "Choose encode or decode", "body": "Select Text to Base64 when you have ordinary text and need its encoded representation. Select Base64 to text when you have an encoded value that should decode to readable UTF-8. The direction matters; encoding an already encoded value produces another layer, not the original content."},
+      {"title": "Enter the exact text", "body": "Paste or type the source in the appropriate field. UTF-8 supports non-English scripts and emoji by first representing text as bytes. Whitespace in Base64 input is ignored for convenience, and URL-safe characters are normalized before decoding."},
+      {"title": "Inspect the output before using it", "body": "Copy the result only after checking that the full value is present and the target protocol expects standard or URL-safe Base64. If decoding fails, verify that the source was not truncated or mixed with quotation marks and that it represents valid UTF-8 text."}
+    ],
+    "examples": [
+      {"title": "Encode a short message", "scenario": "A developer needs to put a UTF-8 sample string into a test fixture.", "input": "Encode “QuicGen keeps your text right here ✨” from text to Base64.", "outcome": "A printable sequence that represents the UTF-8 bytes of the original message.", "lesson": "The output is not encrypted and should not be treated as a secret. Anyone can decode it, so avoid placing credentials or private personal data in public test fixtures."},
+      {"title": "Inspect a decoded payload", "scenario": "A team receives a Base64 value from a system integration and wants to verify its text content.", "input": "Paste the complete string in Base64-to-text mode.", "outcome": "Readable UTF-8 text or a clear error if the bytes are invalid or truncated.", "lesson": "A successful decode confirms representation, not trustworthiness. Validate the meaning, format and source before passing decoded data to a program or command line."}
+    ],
+    "choices": [
+      {"title": "Standard and URL-safe alphabets", "body": "Standard Base64 uses + and /; URL-safe Base64 commonly uses - and _. The tool accepts URL-safe characters and normalizes them for decoding, but the receiving protocol determines which alphabet should be emitted."},
+      {"title": "Padding", "body": "The equals sign can pad a Base64 value to a four-character boundary. Some systems omit padding, while others require it. Preserve or restore it according to the destination’s specification rather than guessing."},
+      {"title": "Text versus arbitrary binary", "body": "This tool decodes UTF-8 text. A valid Base64 string may represent a file or binary structure that is not readable text; the decoder reports that rather than displaying corrupted characters."}
+    ],
+    "tips": [
+      {"title": "Never call Base64 encryption", "body": "Encoding has no secret key and offers no confidentiality or integrity protection."},
+      {"title": "Check the transport format", "body": "The target API may require URL-safe characters, padding or a specific wrapper."},
+      {"title": "Validate decoded content", "body": "Treat decoded text as untrusted input and apply the parser or validation rules required by your application."},
+      {"title": "Keep large data out of casual fields", "body": "Large binary files are better handled by a purpose-built file encoder or transfer workflow."}
+    ],
+    "troubleshooting": [
+      {"problem": "The decoder reports invalid Base64.", "solution": "Check for missing characters, misplaced padding or unrelated punctuation copied with the value. Some systems use a custom alphabet; confirm the source format before retrying."},
+      {"problem": "Decoding succeeds but the text is unreadable.", "solution": "The bytes may represent a binary file or a different character encoding rather than UTF-8 text. Use a file-aware decoder or the format’s documented charset."},
+      {"problem": "The output is larger than the input.", "solution": "Base64 expands binary data by roughly one third because it maps groups of bytes to printable characters. It is a transport representation, not compression."}
+    ],
+    "privacyNote": "Encoding and decoding happen locally in the current browser tab. Even so, Base64 does not protect a secret: do not paste credentials into a public issue, shared document or URL on the assumption that the encoded string is hidden.",
+    "faqs": [
+      {"question": "Is Base64 encryption?", "answer": "No. It is an encoding that anyone can reverse without a key. Use an authenticated encryption design when confidentiality is required."},
+      {"question": "Why does Base64 make data longer?", "answer": "It maps bytes into a printable alphabet, using four characters for each group of up to three input bytes and optional padding."},
+      {"question": "Can it decode images or files?", "answer": "This page is designed for readable UTF-8 text. Binary data may decode successfully as bytes but cannot be shown as ordinary text; use a file-specific workflow."},
+      {"question": "Why do some Base64 values end with equals signs?", "answer": "Padding marks an incomplete final group and brings the encoded length to a multiple of four. Some URL or token formats omit padding by convention."}
+    ],
+    "closing": "Use Base64 when a text-oriented interface requires a printable representation, then validate what comes back out. If you need secrecy, integrity or authenticity, select a security protocol designed for those guarantees rather than relying on an encoding."
+  },
+  {
+    "slug": "how-to-generate-a-sha-256-hash", "toolSlug": "hash-generator", "title": "How to Generate a SHA-256 Hash and Verify Text", "description": "Generate a SHA-256 digest for integrity comparisons, understand one-way hashing and learn why MD5, SHA-1 and fast hashes are not password storage.", "excerpt": "Create a SHA-256 fingerprint from text and compare it carefully. Learn what a matching digest can show, what it cannot prove, and when to use a password-hashing scheme instead.", "family": "developer", "topics": ["privacy-first-tools", "password-security"],
+    "opening": ["A cryptographic hash maps input data to a fixed-length digest. SHA-256 is commonly used as a fingerprint for comparing data, checking downloads or building larger cryptographic protocols. A digest is not the original message and cannot be decrypted, but hashing alone does not prove who created a file or whether a website is trustworthy.", "QuicGen’s Hash Generator calculates MD5, SHA-1 or SHA-256 locally from text and labels the older algorithms clearly. This guide explains how to use a digest for basic integrity checks, how to compare values and why a general-purpose hash should never be used to store user passwords."],
+    "purpose": "A hash is deterministic: the same bytes with the same algorithm produce the same digest. That makes it useful for detecting accidental changes when you already trust the expected hash. If an attacker can replace both a download and the displayed hash, a match alone does not establish authenticity; use a trusted signed release or authenticated channel.",
+    "steps": [
+      {"title": "Choose the algorithm for the job", "body": "Select SHA-256 for a general modern integrity fingerprint. MD5 and SHA-1 are included for compatibility with legacy values, but they have known collision weaknesses and should not be chosen for new security-sensitive applications."},
+      {"title": "Enter the exact input bytes", "body": "Paste or type the text to hash. The page encodes the text as UTF-8 before calculating the digest, so whitespace, line endings and Unicode characters affect the result. A trailing newline is different input from the same text without that newline."},
+      {"title": "Compare the full digest safely", "body": "Copy the hexadecimal output and compare every character with the trusted reference. When possible, use a local command-line tool or software release signature to verify a file; this page hashes text and does not upload or inspect a selected file."}
+    ],
+    "examples": [
+      {"title": "Check a configuration snippet", "scenario": "A developer wants to see whether a text configuration changed between two drafts.", "input": "Hash the exact UTF-8 text with SHA-256, then hash the later version the same way.", "outcome": "Matching digests indicate the same byte sequence was entered; different digests show a difference.", "lesson": "A digest does not explain what changed or establish who authored the text. Keep the original file and use version control for history and review."},
+      {"title": "Verify a software download", "scenario": "A vendor publishes a SHA-256 checksum next to an installer.", "input": "Compare the vendor’s checksum with a digest computed from the exact file using a trusted local file-hashing utility.", "outcome": "A matching checksum supports that the downloaded bytes match the published reference.", "lesson": "This text tool cannot hash a binary file selected from disk. Also confirm the checksum came from a trusted, preferably signed source; an untrusted checksum can be replaced along with the file."}
+    ],
+    "choices": [
+      {"title": "SHA-256", "body": "Use SHA-256 for common integrity fingerprints and compatibility with modern systems. It is a general-purpose hash, not a password-storage algorithm and not a digital signature."},
+      {"title": "MD5 and SHA-1", "body": "These legacy algorithms remain useful when matching older checksums or protocol outputs. Collision weaknesses make them unsuitable for new security-sensitive integrity or authentication designs."},
+      {"title": "Input normalization", "body": "Hash functions operate on bytes, not on an abstract idea of text. Unicode normalization, newline style, spaces and character encoding can all change the digest. Make sure both sides hash the same exact representation."}
+    ],
+    "tips": [
+      {"title": "Use a trusted reference", "body": "A checksum is only as trustworthy as the channel that delivered it."},
+      {"title": "Hash the exact bytes", "body": "Line endings, encoding and trailing whitespace change the output."},
+      {"title": "Do not store passwords with SHA-256", "body": "Password systems need a slow, salted password-hashing algorithm such as Argon2id, scrypt or an appropriately configured bcrypt/PBKDF2 implementation."},
+      {"title": "Use signatures for authenticity", "body": "A signed release can bind data to a trusted publisher in a way a plain checksum cannot."}
+    ],
+    "troubleshooting": [
+      {"problem": "Two visually identical strings produce different hashes.", "solution": "Check for trailing spaces, line breaks, Unicode normalization or different newline characters. Hash functions compare bytes exactly, not visual appearance."},
+      {"problem": "A downloaded file’s checksum does not match.", "solution": "Confirm the file is complete, choose the correct algorithm and hash the exact binary file with a trusted file tool. Re-download from the official source and verify the reference itself."},
+      {"problem": "You want to store a login password.", "solution": "Do not use this generator for password storage. Use a dedicated password-hashing library with per-user salts, suitable work factors, safe upgrades and constant-time verification."}
+    ],
+    "privacyNote": "Text is hashed in the browser and not sent to QuicGen. A hash can still leak information about short or predictable inputs because an observer can guess candidate values and compare their digests. Avoid publishing hashes of sensitive low-entropy data as if they were anonymous.",
+    "faqs": [
+      {"question": "Can SHA-256 be reversed?", "answer": "A secure hash is designed to be one-way, not decrypted. Predictable or short input can still be guessed by hashing candidate values, so a digest is not automatic anonymization."},
+      {"question": "Can I use SHA-256 to store passwords?", "answer": "No. General-purpose hashes are fast and vulnerable to large-scale guessing. Use a password-specific algorithm such as Argon2id, scrypt or a carefully configured alternative."},
+      {"question": "Why does one extra space change the hash?", "answer": "The algorithm processes exact bytes. A space, line ending or different Unicode encoding changes the input sequence and therefore the digest."},
+      {"question": "Does a matching checksum prove a file is authentic?", "answer": "It proves the bytes match the reference value, assuming the digest was computed correctly. Authenticity depends on trusting the source of that reference; a signed release provides stronger publisher verification."}
+    ],
+    "closing": "Use SHA-256 for the narrow job it does well: a deterministic fingerprint of exact data. Pair it with a trusted reference or signature, and choose a purpose-built password or authentication scheme whenever the problem involves user credentials."
+  }
+]

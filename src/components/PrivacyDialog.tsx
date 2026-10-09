@@ -19,6 +19,7 @@ export default function PrivacyDialog({ open, onClose }: { open: boolean; onClos
         const key = localStorage.key(i);
         if (key?.startsWith('quicgen-')) localStorage.removeItem(key);
       }
+      try { sessionStorage.removeItem('quicgen-bookmark-prompt-shown'); } catch { /* Session storage is optional. */ }
       setCleared(true);
       window.setTimeout(() => window.location.reload(), 900);
     } catch {
@@ -32,7 +33,7 @@ export default function PrivacyDialog({ open, onClose }: { open: boolean; onClos
     <h2 id="privacy-dialog-title">Your data stays yours.</h2>
     <p id="privacy-dialog-description" className="dialog-intro">QuicGen tools run in your browser. What you type, generate or convert is never sent to our servers.</p>
     <div className="privacy-facts">
-      <div><span className="fact-icon"><Database size={16}/></span><span><strong>Only saved on this device</strong><small>Theme preference and optional password history use your browser’s local storage.</small></span></div>
+      <div><span className="fact-icon"><Database size={16}/></span><span><strong>Only saved on this device</strong><small>Theme preference, your bookmark-reminder choice and optional password history use this browser’s local storage.</small></span></div>
       <div><span className="fact-icon"><LockKeyhole size={16}/></span><span><strong>No accounts. No analytics.</strong><small>We don’t use tracking scripts or collect the content you work with.</small></span></div>
     </div>
     <div className="dialog-actions"><Button variant="secondary" onClick={onClose}>Done</Button><Button variant="danger" onClick={clearData}><Database size={15}/>{cleared ? 'Cleared — reloading…' : 'Clear all QuicGen data'}</Button></div>

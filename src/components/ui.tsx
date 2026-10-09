@@ -2,8 +2,8 @@ import { useState, type ButtonHTMLAttributes, type InputHTMLAttributes, type Rea
 import { Check, Copy, ShieldCheck } from 'lucide-react';
 import { copyText } from '../lib/utils';
 
-export function Button({ className = '', variant = 'primary', children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'quiet' | 'danger' }) {
-  return <button className={`button button-${variant} ${className}`} {...props}>{children}</button>;
+export function Button({ className = '', variant = 'primary', children, type = 'button', ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'quiet' | 'danger' }) {
+  return <button type={type} className={`button button-${variant} ${className}`} {...props}>{children}</button>;
 }
 
 export function Field({ label, hint, className = '', children }: { label: string; hint?: string; className?: string; children: ReactNode }) {

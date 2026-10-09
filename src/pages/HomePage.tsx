@@ -1,14 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Check, Command, LockKeyhole, Search, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, LockKeyhole, Search, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 import { categories, tools, type ToolCategory } from '../data/tools';
 import { usePageMeta, siteUrl } from '../lib/utils';
 import { SectionHeading } from '../components/ui';
+import ToolSearch from '../components/ToolSearch';
+import { searchTools } from '../lib/search';
 
 export default function HomePage() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<ToolCategory | 'All tools'>('All tools');
-  const searchRef = useRef<HTMLInputElement>(null);
 
   usePageMeta({
     title: 'Free Online Tools That Respect Your Privacy',
@@ -20,28 +21,9 @@ export default function HomePage() {
     ],
   });
 
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault();
-        searchRef.current?.focus();
-      }
-      if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes((event.target as HTMLElement)?.tagName)) {
-        event.preventDefault();
-        searchRef.current?.focus();
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
   const filtered = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return tools.filter((tool) => {
-      const matchesCategory = category === 'All tools' || tool.category === category;
-      const matchesQuery = !normalized || [tool.title, tool.description, tool.category, ...tool.keywords].join(' ').toLowerCase().includes(normalized);
-      return matchesCategory && matchesQuery;
-    });
+    const rankedTools = query.trim() ? searchTools(query) : tools;
+    return rankedTools.filter((tool) => category === 'All tools' || tool.category === category);
   }, [query, category]);
 
   return <main>
@@ -52,11 +34,7 @@ export default function HomePage() {
           <div className="hero-kicker"><span className="kicker-spark"><Sparkles size={13}/></span> Small tools. A little more time.</div>
           <h1>Generate anything.<br/><span>Instantly.</span></h1>
           <p className="hero-description">The useful tools you need, without the busywork. Quick, thoughtfully made, and private from the very first click.</p>
-          <div className="hero-search-wrap">
-            <Search size={19} aria-hidden="true"/>
-            <input ref={searchRef} type="search" className="hero-search" placeholder="What can we help you make?" value={query} onChange={(event) => { setQuery(event.target.value); setCategory('All tools'); }} aria-label="Search all tools" />
-            <kbd className="search-shortcut"><Command size={12}/> K</kbd>
-          </div>
+          <ToolSearch variant="hero" placeholder="What can we help you make?" onQueryChange={(value) => { setQuery(value); setCategory('All tools'); }}/>
           <div className="hero-footnote"><span><Zap size={14}/> Instant results</span><span><LockKeyhole size={14}/> Nothing leaves your device</span><span><Check size={14}/> Always free</span></div>
         </div>
         <div className="hero-art" aria-label="QuicGen tools preview">

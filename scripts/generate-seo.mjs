@@ -11,9 +11,11 @@ function readSiteUrlFromEnvFiles() {
   }
   return '';
 }
-const siteUrl = (process.env.VITE_SITE_URL || readSiteUrlFromEnvFiles() || 'https://quicgen.com').replace(/\/$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || readSiteUrlFromEnvFiles() || 'https://quicgen.nnamdimichael020.workers.dev').replace(/\/$/, '');
 const ogImage = `${siteUrl}/og-image.png`;
 const baseHtml = readFileSync(join(out, 'index.html'), 'utf8');
+const guideEntries = JSON.parse(readFileSync(join(process.cwd(), 'src/data/guides.json'), 'utf8'));
+const topicEntries = JSON.parse(readFileSync(join(process.cwd(), 'src/data/topics.json'), 'utf8'));
 const pages = [
   { path: '/', title: 'Free Online Tools That Respect Your Privacy | QuicGen', description: 'Generate anything, instantly. QuicGen is a collection of fast, beautifully simple online tools—QR codes, passwords, calculators and more—that run in your browser.', type: 'WebSite' },
   { path: '/qr-code-generator', title: 'Free QR Code Generator — Custom, Private & Downloadable | QuicGen', description: 'Create custom QR codes for URLs, Wi-Fi, contacts, email and more. Style and download high-resolution PNG, SVG or PDF—right in your browser.', type: 'WebApplication', category: 'UtilitiesApplication' },
@@ -36,6 +38,10 @@ const pages = [
   { path: '/about', title: 'About QuicGen — Useful Tools, Thoughtfully Made', description: 'Meet QuicGen: a growing collection of thoughtful, free online tools built for speed, simplicity and privacy.', type: 'AboutPage' },
   { path: '/privacy', title: 'Privacy Policy — Your Data Stays Yours | QuicGen', description: 'Read how QuicGen protects your privacy: your tool inputs stay in your browser, with transparent details about local storage and site hosting.', type: 'WebPage' },
   { path: '/help', title: 'Help Center — Guides, FAQs & Privacy | QuicGen', description: 'Learn how to use QuicGen tools, understand what happens to your data, and find answers to common questions.', type: 'FAQPage' },
+  { path: '/blog', title: 'QuicGen Blog & Practical Tool Guides', description: 'Read practical, privacy-first guides for QR codes, strong passwords, calculators, text tools, color formats and browser utilities.', type: 'Blog' },
+  { path: '/topics', title: 'Explore QuicGen Topics & Tool Collections', description: 'Browse focused collections of privacy-first tools and practical guides for QR codes, password security and everyday calculators.', type: 'CollectionPage' },
+  ...guideEntries.map((guide) => ({ path: `/blog/${guide.slug}`, title: `${guide.title} | QuicGen`, description: guide.description, type: 'Article', ogType: 'article', article: guide })),
+  ...topicEntries.map((topic) => ({ path: `/topics/${topic.slug}`, title: `${topic.title} | QuicGen`, description: topic.description, type: 'CollectionPage', topic })),
 ];
 
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -44,9 +50,37 @@ function meta(name, content, property = false) {
 }
 function schemaFor(page) {
   const url = `${siteUrl}${page.path}`;
-  if (page.type === 'WebApplication') return { '@context': 'https://schema.org', '@type': 'WebApplication', name: `QuicGen ${page.title.split(' — ')[0].split(' | ')[0]}`, url, applicationCategory: page.category, operatingSystem: 'Any', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, description: page.description };
+  if (page.type === 'WebApplication') return { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebApplication', name: `QuicGen ${page.title.split(' — ')[0].split(' | ')[0]}`, url, applicationCategory: page.category, operatingSystem: 'Any', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, description: page.description },
+    { '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'Does QuicGen collect what I type?', acceptedAnswer: { '@type': 'Answer', text: 'No. Tool inputs are processed in your browser and are not sent to QuicGen.' } },
+      { '@type': 'Question', name: 'Is this QuicGen tool free to use?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. QuicGen tools are free to use, with no account required.' } },
+      { '@type': 'Question', name: 'Can I use this tool on a phone?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. QuicGen tools are responsive and work in current mobile and desktop browsers.' } },
+    ] },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: `${siteUrl}/#tools` },
+      { '@type': 'ListItem', position: 3, name: page.title.split(' — ')[0].split(' | ')[0], item: url },
+    ] },
+  ] };
   if (page.type === 'WebSite') return { '@context': 'https://schema.org', '@type': 'WebSite', name: 'QuicGen', url: `${siteUrl}/`, description: page.description };
   if (page.type === 'FAQPage') return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: 'Does QuicGen collect what I type?', acceptedAnswer: { '@type': 'Answer', text: 'No. Tool inputs are processed in your browser and are not sent to QuicGen.' } }, { '@type': 'Question', name: 'Is QuicGen free to use?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. QuicGen tools are free to use, with no account required.' } }] };
+  if (page.type === 'Article') {
+    const guide = page.article;
+    return { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'Article', headline: guide.title, description: guide.description, url, mainEntityOfPage: url, datePublished: '2026-10-09', dateModified: '2026-10-09', author: { '@type': 'Organization', name: 'QuicGen' }, publisher: { '@type': 'Organization', name: 'QuicGen', url: siteUrl }, image: ogImage },
+      { '@type': 'HowTo', name: guide.title, description: guide.description, step: guide.steps.map((step, index) => ({ '@type': 'HowToStep', position: index + 1, name: step.title, text: step.body })) },
+      { '@type': 'FAQPage', mainEntity: guide.faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ] };
+  }
+  if (page.type === 'CollectionPage' && page.topic) {
+    const topic = page.topic;
+    const itemList = [...topic.toolSlugs.map((slug) => ({ '@type': 'ListItem', url: `${siteUrl}/${slug}` })), ...topic.guideSlugs.map((slug) => ({ '@type': 'ListItem', url: `${siteUrl}/blog/${slug}` }))];
+    return { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'CollectionPage', name: topic.title, description: topic.description, url, mainEntity: { '@type': 'ItemList', itemListElement: itemList } },
+      { '@type': 'FAQPage', mainEntity: topic.faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
+    ] };
+  }
   return { '@context': 'https://schema.org', '@type': page.type, name: page.title.split(' | ')[0], url };
 }
 function renderPage(page) {
@@ -55,8 +89,10 @@ function renderPage(page) {
   html = html.replace(/<meta name="description"[^>]*\/>/, meta('description', page.description));
   html = html.replace(/<meta property="og:title"[^>]*\/>/, meta('og:title', page.title, true));
   html = html.replace(/<meta property="og:description"[^>]*\/>/, meta('og:description', page.description, true));
-  html = html.replace(/<meta property="og:type"[^>]*\/>/, meta('og:type', page.path === '/' ? 'website' : 'article', true));
+  html = html.replace(/<meta property="og:type"[^>]*\/>/, meta('og:type', page.ogType || (page.type === 'Article' ? 'article' : 'website'), true));
   html = html.replace(/<meta property="og:image"[^>]*\/>/, meta('og:image', ogImage, true));
+  html = html.replace(/<meta name="robots"[^>]*\/>/, meta('robots', page.robots || 'index, follow, max-image-preview:large'));
+  html = html.replace('</head>', `${meta('og:image:alt', 'QuicGen — free privacy-first online tools', true)}\n    ${meta('twitter:image:alt', 'QuicGen — free privacy-first online tools')}\n  </head>`);
   html = html.replace(/<meta name="twitter:title"[^>]*\/>/, meta('twitter:title', page.title));
   html = html.replace(/<meta name="twitter:description"[^>]*\/>/, meta('twitter:description', page.description));
   html = html.replace(/<meta name="twitter:card"[^>]*\/>/, meta('twitter:card', 'summary_large_image'));
@@ -70,8 +106,7 @@ for (const page of pages) {
   mkdirSync(directory, { recursive: true });
   writeFileSync(join(directory, 'index.html'), renderPage(page));
 }
-const notFound = renderPage({ path: '/404', title: 'Page Not Found | QuicGen', description: 'We could not find that page. Return to QuicGen to explore our free, private online tools.', type: 'WebPage' })
-  .replace(/<meta name="robots"[^>]*\/>/, meta('robots', 'noindex, follow'));
+const notFound = renderPage({ path: '/not-found', title: 'Page Not Found | QuicGen', description: 'We could not find that page. Return to QuicGen to explore our free, private online tools.', type: 'WebPage', robots: 'noindex, follow' });
 writeFileSync(join(out, '404.html'), notFound);
 
 const urls = pages.map((page) => `  <url><loc>${escapeHtml(`${siteUrl}${page.path}`)}</loc><changefreq>${page.path === '/' ? 'weekly' : 'monthly'}</changefreq><priority>${page.path === '/' ? '1.0' : page.type === 'WebApplication' ? '0.8' : '0.5'}</priority></url>`).join('\n');

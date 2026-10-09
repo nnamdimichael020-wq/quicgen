@@ -6,25 +6,30 @@ export type PageMeta = {
   path?: string;
   image?: string;
   robots?: string;
+  ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
 export const BRAND = 'QuicGen';
-export const siteUrl = (import.meta.env.VITE_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://quicgen.com')).replace(/\/$/, '');
+// Production defaults to the live Workers origin. Set VITE_SITE_URL once the custom domain is live.
+export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://quicgen.nnamdimichael020.workers.dev').replace(/\/$/, '');
 
-export function usePageMeta({ title, description, path, image = '/og-image.png', robots = 'index, follow', jsonLd }: PageMeta) {
+export function usePageMeta({ title, description, path, image = '/og-image.png', robots = 'index, follow', ogType = 'website', jsonLd }: PageMeta) {
   useEffect(() => {
     const fullTitle = title.includes(BRAND) ? title : `${title} | ${BRAND}`;
     document.title = fullTitle;
     setMeta('name', 'description', description);
     setMeta('name', 'robots', robots);
+    setMeta('property', 'og:type', ogType);
     setMeta('property', 'og:title', fullTitle);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', `${siteUrl}${path ?? window.location.pathname}`);
     setMeta('property', 'og:image', image.startsWith('http') ? image : `${siteUrl}${image}`);
+    setMeta('property', 'og:image:alt', 'QuicGen — free privacy-first online tools');
     setMeta('name', 'twitter:title', fullTitle);
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', image.startsWith('http') ? image : `${siteUrl}${image}`);
+    setMeta('name', 'twitter:image:alt', 'QuicGen — free privacy-first online tools');
     setMeta('name', 'twitter:card', 'summary_large_image');
     let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
@@ -48,7 +53,7 @@ export function usePageMeta({ title, description, path, image = '/og-image.png',
     return () => {
       // Metadata is replaced by the next route; leaving it in place avoids a brief blank title on navigation.
     };
-  }, [title, description, path, image, robots, jsonLd]);
+  }, [title, description, path, image, robots, ogType, jsonLd]);
 }
 
 function setMeta(attribute: 'name' | 'property', key: string, content: string) {
@@ -61,11 +66,30 @@ function setMeta(attribute: 'name' | 'property', key: string, content: string) {
   element.content = content;
 }
 
+let calculationSuccessTimer: number | undefined;
+export function cancelPendingCalculationNotice() {
+  if (typeof window === 'undefined') return;
+  window.clearTimeout(calculationSuccessTimer);
+  calculationSuccessTimer = undefined;
+}
+
+export function notifySuccess(source = 'tool-action') {
+  if (typeof window === 'undefined') return;
+  const dispatch = () => window.dispatchEvent(new CustomEvent('quicgen:success', { detail: { source } }));
+  if (source === 'calculation') {
+    window.clearTimeout(calculationSuccessTimer);
+    calculationSuccessTimer = window.setTimeout(dispatch, 2200);
+    return;
+  }
+  dispatch();
+}
+
 export async function copyText(value: string): Promise<boolean> {
   let area: HTMLTextAreaElement | undefined;
   try {
     if (navigator.clipboard?.writeText && window.isSecureContext) {
       await navigator.clipboard.writeText(value);
+      notifySuccess('copy');
       return true;
     }
     area = document.createElement('textarea');
@@ -75,7 +99,9 @@ export async function copyText(value: string): Promise<boolean> {
     area.style.opacity = '0';
     document.body.appendChild(area);
     area.select();
-    return document.execCommand('copy');
+    const copied = document.execCommand('copy');
+    if (copied) notifySuccess('copy');
+    return copied;
   } catch {
     return false;
   } finally {
@@ -92,6 +118,7 @@ export function downloadBlob(blob: Blob, filename: string) {
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
+  notifySuccess('download');
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
