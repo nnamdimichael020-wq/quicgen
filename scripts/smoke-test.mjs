@@ -11,7 +11,7 @@ const paths = [
   '/random-string-generator', '/random-color-generator', '/dice-roller', '/percentage-calculator',
   '/tip-calculator', '/time-calculator', '/date-calculator', '/word-counter', '/case-converter',
   '/lorem-ipsum-generator', '/color-picker', '/base64-encoder-decoder', '/hash-generator',
-  '/about', '/privacy', '/help',
+  '/about', '/privacy', '/help', '/blog',
 ];
 const titles = new Set();
 const descriptions = new Set();
@@ -42,7 +42,7 @@ for (const route of paths) assert.ok(sitemap.includes(`${siteUrl}${route === '/'
 assert.ok(readFileSync(join(dist, 'robots.txt'), 'utf8').includes(`Sitemap: ${siteUrl}/sitemap.xml`));
 const redirects = readFileSync(join(dist, '_redirects'), 'utf8');
 const redirectLines = redirects.split('\n').filter((line) => line.trim() !== '' && !line.trim().startsWith('#'));
-assert.equal(redirectLines.length, 20, '_redirects has one rewrite per non-home route');
+assert.equal(redirectLines.length, paths.length - 1, '_redirects has one rewrite per non-home route');
 const CLOUDFLARE_REDIRECT_CODES = new Set(['200', '301', '302', '303', '307', '308']);
 for (const line of redirectLines) {
   const parts = line.trim().split(/\s+/);

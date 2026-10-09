@@ -20,7 +20,8 @@ function makePayload(type: ContentType, values: Record<string, string>) {
   switch (type) {
     case 'url': {
       const value = values.content.trim();
-      return value && !/^[a-z][a-z0-9+.-]*:\/\//i.test(value) ? `https://${value}` : value;
+      if (!value) return '';
+      return /^[a-z][a-z0-9+.-]*:/i.test(value) ? value : `https://${value}`;
     }
     case 'wifi': {
       if (!values.ssid) return '';
@@ -63,7 +64,7 @@ function qrOptions(data: string, form: { foreground: string; background: string;
   const foreground = isHexColor(form.foreground) ? form.foreground : '#172554';
   const background = isHexColor(form.background) ? form.background : '#ffffff';
   return {
-    type: 'svg', shape: 'square', width: size, height: size, margin: Math.max(12, Math.round(size * 0.045)), data: data || 'https://quicgen.com',
+    type: 'svg', shape: 'square', width: size, height: size, margin: Math.max(12, Math.round(size * 0.045)), data: data || 'https://quicgen.nnamdimichael020.workers.dev',
     qrOptions: { errorCorrectionLevel: form.correction },
     dotsOptions: form.gradient ? { type: form.dots, gradient: { type: 'linear', rotation: Math.PI / 4, colorStops: [{ offset: 0, color: foreground }, { offset: 1, color: '#8b5cf6' }] } } : { type: form.dots, color: foreground },
     cornersSquareOptions: { type: 'extra-rounded', color: foreground },
@@ -105,7 +106,7 @@ function QRPreview({ data, form, label, frame = 'none', compact = false }: { dat
 export default function QRGenerator() {
   const [mode, setMode] = useState<'single' | 'bulk'>('single');
   const [contentType, setContentType] = useState<ContentType>('url');
-  const [values, setValues] = useState<Record<string, string>>({ content: 'https://quicgen.com', ssid: '', password: '', security: 'WPA', hidden: '', firstName: '', lastName: '', phone: '', email: '', subject: '', body: '' });
+  const [values, setValues] = useState<Record<string, string>>({ content: 'https://quicgen.nnamdimichael020.workers.dev', ssid: '', password: '', security: 'WPA', hidden: '', firstName: '', lastName: '', phone: '', email: '', subject: '', body: '' });
   const [foreground, setForeground] = useState('#172554');
   const [background, setBackground] = useState('#ffffff');
   const [dots, setDots] = useState<DotStyle>('rounded');
@@ -116,7 +117,7 @@ export default function QRGenerator() {
   const [logoBacking, setLogoBacking] = useState('white');
   const [frame, setFrame] = useState('none');
   const [frameLabel, setFrameLabel] = useState('SCAN ME');
-  const [bulkText, setBulkText] = useState('https://example.com\nhttps://quicgen.com');
+  const [bulkText, setBulkText] = useState('https://example.com\nhttps://quicgen.nnamdimichael020.workers.dev');
   const [bulkGenerated, setBulkGenerated] = useState<string[]>([]);
   const [downloadState, setDownloadState] = useState('');
 

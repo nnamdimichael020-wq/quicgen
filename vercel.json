@@ -20,6 +20,7 @@
     { "source": "/hash-generator", "destination": "/hash-generator/index.html" },
     { "source": "/about", "destination": "/about/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
-    { "source": "/help", "destination": "/help/index.html" }
+    { "source": "/help", "destination": "/help/index.html" },
+    { "source": "/blog", "destination": "/blog/index.html" }
   ]
 }

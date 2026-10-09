@@ -11,7 +11,7 @@ function readSiteUrlFromEnvFiles() {
   }
   return '';
 }
-const siteUrl = (process.env.VITE_SITE_URL || readSiteUrlFromEnvFiles() || 'https://quicgen.com').replace(/\/$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || readSiteUrlFromEnvFiles() || 'https://quicgen.nnamdimichael020.workers.dev').replace(/\/$/, '');
 const ogImage = `${siteUrl}/og-image.png`;
 const baseHtml = readFileSync(join(out, 'index.html'), 'utf8');
 const pages = [
@@ -36,6 +36,7 @@ const pages = [
   { path: '/about', title: 'About QuicGen — Useful Tools, Thoughtfully Made', description: 'Meet QuicGen: a growing collection of thoughtful, free online tools built for speed, simplicity and privacy.', type: 'AboutPage' },
   { path: '/privacy', title: 'Privacy Policy — Your Data Stays Yours | QuicGen', description: 'Read how QuicGen protects your privacy: your tool inputs stay in your browser, with transparent details about local storage and site hosting.', type: 'WebPage' },
   { path: '/help', title: 'Help Center — Guides, FAQs & Privacy | QuicGen', description: 'Learn how to use QuicGen tools, understand what happens to your data, and find answers to common questions.', type: 'FAQPage' },
+  { path: '/blog', title: 'QuicGen Blog & Tool Guides', description: 'Practical guides to using QuicGen’s free QR, password, calculator, text and privacy-first tools.', type: 'Blog' },
 ];
 
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');

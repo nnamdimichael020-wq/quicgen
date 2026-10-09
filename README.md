@@ -27,7 +27,7 @@ cp .env.example .env
 # Edit VITE_SITE_URL to the site's exact HTTPS origin, without a trailing slash.
 ```
 
-The SEO build step defaults to `https://quicgen.com`; update `VITE_SITE_URL` if the production domain is different. The same origin is used for canonical tags, social metadata and the generated sitemap.
+The SEO build step defaults to QuicGen’s current live origin, `https://quicgen.nnamdimichael020.workers.dev`. When `quicgen.com` is pointed at production, change `VITE_SITE_URL` in the deployment environment to `https://quicgen.com`; the same origin then flows through canonical tags, Open Graph/Twitter URLs, `robots.txt` and the generated sitemap.
 
 ## What’s included
 

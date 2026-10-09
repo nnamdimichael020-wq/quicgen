@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ToolPage from './pages/ToolPage';
 import { AboutPage, HelpPage, NotFoundPage, PrivacyPage } from './pages/StaticPages';
+import { BlogIndexPage } from './pages/BlogPages';
 
 export default function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage/>}/>
         <Route path="/privacy" element={<PrivacyPage/>}/>
         <Route path="/help" element={<HelpPage/>}/>
+        <Route path="/blog" element={<BlogIndexPage/>}/>
         <Route path="/not-found" element={<NotFoundPage/>}/>
         <Route path="/:slug" element={<ToolPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>

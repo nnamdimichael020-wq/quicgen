@@ -41,7 +41,7 @@ export function TipCalculator() {
 export function TimeCalculator() {
   const [time, setTime] = useState('09:00'); const [hours, setHours] = useState('2'); const [minutes, setMinutes] = useState('30'); const [operation, setOperation] = useState<'add' | 'subtract'>('add'); const [format, setFormat] = useState<'24h' | '12h'>('24h');
   const [hourPart, minutePart] = time.split(':').map(Number);
-  const hasValidTime = Number.isFinite(hourPart) && Number.isFinite(minutePart);
+  const hasValidTime = Boolean(time) && Number.isInteger(hourPart) && Number.isInteger(minutePart) && hourPart >= 0 && hourPart <= 23 && minutePart >= 0 && minutePart <= 59;
   const totalMinutes = (hasValidTime ? hourPart * 60 + minutePart : 0) + (operation === 'add' ? 1 : -1) * (Math.floor(Math.max(0, safeNumber(hours))) * 60 + Math.floor(Math.max(0, safeNumber(minutes))));
   const dayOffset = Math.floor(totalMinutes / 1440);
   const normalized = ((totalMinutes % 1440) + 1440) % 1440;
@@ -85,7 +85,9 @@ export function DateCalculator() {
 function parseDate(value: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
   const [year, month, day] = value.split('-').map(Number);
-  const parsed = new Date(Date.UTC(year, month - 1, day));
+  const parsed = new Date(0);
+  parsed.setUTCHours(0, 0, 0, 0);
+  parsed.setUTCFullYear(year, month - 1, day);
   if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month - 1 || parsed.getUTCDate() !== day) return null;
   return parsed;
 }
