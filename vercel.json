@@ -21,6 +21,9 @@
     { "source": "/about", "destination": "/about/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/help", "destination": "/help/index.html" },
-    { "source": "/blog", "destination": "/blog/index.html" }
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
+    { "source": "/topics", "destination": "/topics/index.html" },
+    { "source": "/topics/:slug", "destination": "/topics/:slug/index.html" }
   ]
 }

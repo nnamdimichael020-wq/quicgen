@@ -66,11 +66,30 @@ function setMeta(attribute: 'name' | 'property', key: string, content: string) {
   element.content = content;
 }
 
+let calculationSuccessTimer: number | undefined;
+export function cancelPendingCalculationNotice() {
+  if (typeof window === 'undefined') return;
+  window.clearTimeout(calculationSuccessTimer);
+  calculationSuccessTimer = undefined;
+}
+
+export function notifySuccess(source = 'tool-action') {
+  if (typeof window === 'undefined') return;
+  const dispatch = () => window.dispatchEvent(new CustomEvent('quicgen:success', { detail: { source } }));
+  if (source === 'calculation') {
+    window.clearTimeout(calculationSuccessTimer);
+    calculationSuccessTimer = window.setTimeout(dispatch, 2200);
+    return;
+  }
+  dispatch();
+}
+
 export async function copyText(value: string): Promise<boolean> {
   let area: HTMLTextAreaElement | undefined;
   try {
     if (navigator.clipboard?.writeText && window.isSecureContext) {
       await navigator.clipboard.writeText(value);
+      notifySuccess('copy');
       return true;
     }
     area = document.createElement('textarea');
@@ -80,7 +99,9 @@ export async function copyText(value: string): Promise<boolean> {
     area.style.opacity = '0';
     document.body.appendChild(area);
     area.select();
-    return document.execCommand('copy');
+    const copied = document.execCommand('copy');
+    if (copied) notifySuccess('copy');
+    return copied;
   } catch {
     return false;
   } finally {
@@ -97,6 +118,7 @@ export function downloadBlob(blob: Blob, filename: string) {
   document.body.appendChild(anchor);
   anchor.click();
   anchor.remove();
+  notifySuccess('download');
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 

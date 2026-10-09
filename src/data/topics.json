@@ -1,0 +1,78 @@
+[
+  {
+    "slug": "qr-codes",
+    "title": "QR Codes: Create, Style and Test Them",
+    "description": "Learn how QR codes work, create one for a useful real-world task, and test contrast, print size, content and download quality before sharing.",
+    "eyebrow": "QUICK-RESPONSE CODES",
+    "intro": ["QR codes turn a camera scan into a shortcut: a person can open a web page, join a Wi-Fi network, save a contact or read a short message without typing. Their usefulness depends less on decoration than on the relationship between the printed code and the action that follows it.", "QuicGen’s QR code tools generate content in your browser. Start with the guide to planning a reliable QR code, then open the generator to create a styled PNG, SVG or PDF. Test the exported file at its actual size before you print or distribute it."],
+    "sections": [
+      {"title": "Choose a destination that earns the scan", "body": "Use one clear action and a landing page that works on a phone. A short, owned redirect is useful for long-lived print because the destination can change without replacing the code. Add a concise call to action near the symbol so people understand why they should scan."},
+      {"title": "Keep visual styling within reliable limits", "body": "A dark foreground on a light background gives scanners a clear signal. Logos, custom dot styles and frames can make a design feel personal, but they also add complexity. Keep logos small, preserve a quiet zone, choose appropriate error correction and test with more than one camera."},
+      {"title": "Plan for the life of the printed code", "body": "Before a campaign goes live, verify the exact URL, check the mobile experience and note who maintains the destination. Re-test printed materials periodically. A QR image can remain readable for years while the link it contains silently expires."}
+    ],
+    "toolSlugs": ["qr-code-generator"],
+    "guideSlugs": ["how-to-create-a-custom-qr-code"],
+    "faqs": [
+      {"question": "Can a QR code include a logo?", "answer": "Yes, with a modest logo, strong contrast and a real scan test. Larger logos can cover too much data and make some cameras fail."},
+      {"question": "Which QR download should I use for print?", "answer": "SVG scales cleanly in a design application; PDF is convenient for a simple print sheet; PNG works well at a fixed, sufficiently high resolution. Test the final artwork at its physical size."},
+      {"question": "Do QR codes expire?", "answer": "The pattern does not expire, but its destination can disappear. Use a link you control and keep it maintained."}
+    ]
+  },
+  {
+    "slug": "password-security",
+    "title": "Password Security: Strong, Unique Accounts",
+    "description": "Build a safer password routine with long unique credentials, a password manager, multi-factor authentication and privacy-first generation.",
+    "eyebrow": "ACCOUNT SECURITY",
+    "intro": ["A strong password is only one part of account security. Uniqueness limits damage when another service is breached; a password manager makes long values practical; multi-factor authentication adds a separate barrier when a password is phished or exposed.", "QuicGen’s password generator creates a random value on your device. The guides below explain length, strength estimates and credential handling, while the hash guide clarifies why a fast general-purpose hash is not an appropriate password-storage method."],
+    "sections": [
+      {"title": "Prioritize uniqueness and length", "body": "Make every account password different and use the longest value the service accepts. Avoid predictable substitutions, familiar phrases and personal facts. A manager can generate and fill credentials without asking you to memorize each one."},
+      {"title": "Store and recover credentials deliberately", "body": "Keep passwords in a reputable manager, protect the manager account with a strong unique credential and a second factor, and review recovery options. Avoid sending credentials through email or leaving them in screenshots, shared notes and public support tickets."},
+      {"title": "Understand password hashing", "body": "Services should store password verifiers using a purpose-built, salted, intentionally slow password-hashing scheme. SHA-256, MD5 and SHA-1 are fast general-purpose hashes and are not suitable substitutes. Users should not try to repair a service’s backend design themselves."}
+    ],
+    "toolSlugs": ["password-generator", "hash-generator"],
+    "guideSlugs": ["how-to-generate-a-strong-password", "how-to-generate-a-sha-256-hash"],
+    "faqs": [
+      {"question": "How should I store a generated password?", "answer": "Save it in a trusted password manager and use a different password for each account. Avoid shared documents, screenshots and email."},
+      {"question": "Does a strength meter tell me if a password was breached?", "answer": "No. QuicGen’s estimate is local and does not perform a breach lookup or assess the account’s sign-in security."},
+      {"question": "Can I use SHA-256 to store passwords?", "answer": "No. Password storage requires a dedicated password-hashing function with a salt and appropriate work factor, implemented by the system that manages accounts."}
+    ]
+  },
+  {
+    "slug": "calculators",
+    "title": "Everyday Calculators for Percentages, Tips, Dates and Time",
+    "description": "Find clear guides and private browser-based calculators for percentage math, bill splitting, time arithmetic and date differences.",
+    "eyebrow": "CLEARER EVERYDAY MATH",
+    "intro": ["Small calculations come up everywhere: checking a discount, sharing a restaurant bill, finding a date interval or planning a schedule across midnight. A useful calculator makes the inputs clear and shows enough context that the result can be checked instead of simply trusted.", "QuicGen’s calculators run in your browser and update as you work. Each guide names the formula or counting convention, walks through practical examples and explains the assumptions that a general-purpose tool cannot infer for you."],
+    "sections": [
+      {"title": "Choose the exact question first", "body": "Percentage-of, percent-of-a-whole and percentage-change are different operations. A date interval may count elapsed days or include both endpoints. A tip can be based on different subtotals. Describe the task in plain language before entering numbers."},
+      {"title": "Check the reference, units and rounding", "body": "The denominator, start value, currency and calendar convention determine how a result should be interpreted. Keep original inputs, label units and use the destination’s rounding policy when the answer affects a payment, report or official deadline."},
+      {"title": "Know when the calendar matters", "body": "The time calculator handles clock arithmetic and day offsets; the date calculator works on calendar dates. Business holidays, daylight-saving transitions and time zones require a schedule that includes the relevant locale and policy."}
+    ],
+    "toolSlugs": ["percentage-calculator", "tip-calculator", "time-calculator", "date-calculator"],
+    "guideSlugs": ["how-to-calculate-percentages", "how-to-split-a-bill-and-calculate-a-tip", "how-to-add-and-subtract-time", "how-to-calculate-date-differences"],
+    "faqs": [
+      {"question": "Are the calculator results saved?", "answer": "No. Inputs are processed in the current browser page and are not stored by QuicGen."},
+      {"question": "Can these calculators replace financial or legal advice?", "answer": "No. They perform general arithmetic. Follow authoritative policies and get qualified advice for decisions that require it."},
+      {"question": "Why do another calculator’s results differ?", "answer": "Tools may use different rounding, endpoint counting, locale or formula conventions. Compare the assumptions as well as the displayed number."}
+    ]
+  },
+  {
+    "slug": "privacy-first-tools",
+    "title": "Privacy-First Online Tools That Work in Your Browser",
+    "description": "Understand how client-side tools process data, what local storage means, and how to choose browser-based utilities with care.",
+    "eyebrow": "PRIVATE BY DESIGN",
+    "intro": ["A privacy-first tool should explain where processing happens, what the browser stores and what still remains outside the site’s control. Client-side processing can prevent tool inputs from being sent to an application server, which is a useful boundary for text, calculations, generated values and visual work.", "QuicGen’s tools run in the browser and do not require an account. This topic collects practical guides across the toolbox and explains the limits of that model: device access, browser extensions, clipboard history, hosting requests and the choices you make when sharing an output."],
+    "sections": [
+      {"title": "What client-side processing means", "body": "The page’s JavaScript performs the calculation or transformation on the device. QuicGen does not receive the content entered into a tool. Your browser still downloads the website files from its host, and the host may process ordinary connection details needed to deliver and protect the site."},
+      {"title": "Local storage should be explicit", "body": "QuicGen uses browser storage for preferences and only for features that clearly disclose it, such as optional password history. Storage stays on the current browser profile and may be visible to other people or software with access to that device. Clearing site data removes it."},
+      {"title": "Privacy does not remove responsibility", "body": "A result can reveal information once you copy, download, print or share it. Clipboard tools, screen recordings, browser extensions and device management are outside the app’s control. Use a trusted device, review what you are about to share and close sensitive pages when finished."}
+    ],
+    "toolSlugs": ["qr-code-generator", "password-generator", "uuid-generator", "base64-encoder-decoder", "hash-generator", "word-counter", "color-picker", "percentage-calculator"],
+    "guideSlugs": ["how-to-create-a-custom-qr-code", "how-to-generate-a-strong-password", "how-to-generate-uuid-v4-ids", "how-to-encode-and-decode-base64", "how-to-generate-a-sha-256-hash", "how-to-count-words-and-characters"],
+    "faqs": [
+      {"question": "Does client-side mean there are no network requests?", "answer": "No. Your browser downloads the app and its assets. The tool inputs are processed locally and are not sent to the QuicGen application server."},
+      {"question": "Does the site store my results?", "answer": "Tool results are not saved by default. A few optional settings use local browser storage and are explained in the privacy policy and the relevant tool."},
+      {"question": "Are browser extensions covered by QuicGen’s privacy model?", "answer": "No. Extensions, device monitoring, clipboard history and other software operate independently and may have their own access to page content."}
+    ]
+  }
+]

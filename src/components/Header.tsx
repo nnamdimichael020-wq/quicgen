@@ -79,6 +79,7 @@ export default function Header() {
           </div>
           <div className="mobile-menu-primary-links" aria-label="Pages">
             <Link to="/blog" onClick={closeMenu}>Blog &amp; guides</Link>
+            <Link to="/topics" onClick={closeMenu}>Browse topics</Link>
             <Link to="/help" onClick={closeMenu}>Help / How it works</Link>
             <Link to="/about" onClick={closeMenu}>About QuicGen</Link>
             <Link to="/privacy" onClick={closeMenu}>Privacy policy</Link>

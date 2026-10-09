@@ -1,0 +1,58 @@
+{
+  "shared": [
+    {
+      "id": "plan-the-task",
+      "title": "Start with a well-defined job",
+      "body": "Before you use {{tool}}, describe the result you need in one sentence and name the person or system that will use it. This makes the inputs easier to check and prevents a tool from answering a nearby but different question. Confirm units, accepted formats, time context and any limits imposed by the destination. If those details are unknown, pause and find the specification instead of guessing. A few seconds spent defining the task often saves a second round of work and makes the final result easier to explain to somebody else."
+    },
+    {
+      "id": "quality-check",
+      "title": "Check the output before you rely on it",
+      "body": "A good quality check compares the result with the original request, not only with what looks plausible. Re-read the input, check that every required field was included, and test the result in the place where it will actually be used. For a value that can be independently calculated, verify one small example by hand. For a file or visual output, inspect the downloaded artifact rather than trusting a screen preview. When a decision affects money, access, health, a legal deadline or another person, use the authoritative process for that domain and keep an appropriate human review in the loop."
+    },
+    {
+      "id": "carry-context",
+      "title": "Keep the context with the result",
+      "body": "A copied value is easier to reuse when its important assumptions travel with it. Record the format, units, date, range or version that produced the value when those details matter. Give exported files a clear name, remove temporary material that is no longer needed, and avoid leaving sensitive results on a shared screen or clipboard. If a result is part of a team workflow, note who owns the next step and how the value should be checked later. This small handoff habit prevents a correct output from being misunderstood after it leaves the tool."
+    },
+    {
+      "id": "client-side-limits",
+      "title": "Understand what local processing does—and does not—mean",
+      "body": "QuicGen processes the content for this guide in your browser rather than sending it to an application server. That reduces unnecessary transmission, but it does not make the device itself private: browser extensions, screen sharing, clipboard history, device backups and people with access to the computer are outside the tool’s control. Use a trusted, updated device for sensitive work, close a page when you are finished and do not paste confidential output into a public issue or shared document by accident. Local processing is a useful boundary, not a substitute for careful handling or professional advice."
+    }
+  ],
+  "families": {
+    "qr": {
+      "title": "Design for the real environment",
+      "body": "A {{tool}} result is experienced outside the editor—in a camera view, on a printed surface or on a phone held in ordinary light. Test the final version at the smallest size and in the place it will be used. Keep the primary action obvious, leave enough space around the content and avoid decorative choices that make the important signal harder to recognize. A clean, reliable result is more valuable than a complicated design that only works in a perfect preview."
+    },
+    "password": {
+      "title": "Make account security a complete routine",
+      "body": "A {{tool}} can help create a stronger credential, but account protection also depends on uniqueness, safe storage and recovery. Save the value in a reputable password manager, turn on a second factor where available, and be alert to phishing pages that imitate the service. Do not reuse the generated credential, share it in a message or keep it in a screenshot. A strength estimate describes a narrow property of the password; it cannot assess the security of the account, device or sign-in flow around it."
+    },
+    "identifiers": {
+      "title": "Design for collision handling and trust boundaries",
+      "body": "An identifier created by a {{tool}} is still input to the system that consumes it. Validate its format, enforce uniqueness where records are stored and keep authorization checks independent from whether an identifier is difficult to guess. For development, decide whether values should be stable between test runs; fixed fixtures are often easier to debug than freshly generated data. Document the version or representation your API expects so a downstream service does not confuse a valid-looking string with a trusted record."
+    },
+    "random": {
+      "title": "Make the selection rule transparent",
+      "body": "Random output is meaningful only when the eligible set and selection rule are clear. Decide whether repeats are allowed, how many results are needed and what happens if a draw must be repeated. For a casual choice, a quick local result is convenient. For a public competition, research study or high-impact decision, publish the method and use oversight or auditable software appropriate to the stakes. Never change the rules after seeing an outcome simply because the result is inconvenient."
+    },
+    "calculator": {
+      "title": "Write down the formula’s assumptions",
+      "body": "A calculator can produce a precise answer from the values it receives, but the chosen denominator, date convention, currency or rounding rule may matter more than the arithmetic. Label the reference value, preserve the original inputs and compare the result with a known example. If a policy, contract, tax rule or payroll process defines a special convention, follow that authoritative convention rather than assuming a general-purpose calculator knows it."
+    },
+    "text": {
+      "title": "Keep the reader and destination in view",
+      "body": "Text utilities are excellent at repetitive transformations and useful counts, but the destination defines whether the output is right. Check platform limits, Unicode behavior, editorial style and the meaning of the final copy. Keep the source when transformations are broad, and review proper names, acronyms, punctuation and line breaks before publishing. A mechanical improvement should make the writing clearer for a person, not simply produce a more uniform-looking string."
+    },
+    "color": {
+      "title": "Test color in the interface, not only in a swatch",
+      "body": "A color value changes meaning when placed beside text, icons, surfaces and other states. Check contrast at the actual font size, include keyboard focus and disabled states, and do not communicate status through color alone. Keep accepted values in named tokens so a palette can be adjusted consistently. Displays and profiles can vary, so verify the design in the environment where it will ship instead of relying only on a single flat preview."
+    },
+    "developer": {
+      "title": "Follow the data format all the way through",
+      "body": "Developer utilities operate on exact representations. Character encoding, whitespace, line endings, padding and separators can change a result even when two strings look similar. Read the receiving protocol, normalize deliberately and test a known vector before using a value in a script or integration. Treat every decoded or copied string as data to validate, and keep cryptographic primitives separate from authentication, encryption and password storage unless the design explicitly provides those guarantees."
+    }
+  }
+}
