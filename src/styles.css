@@ -542,9 +542,6 @@ select.input { cursor: pointer; }
 .tool-topic-link strong, .tool-topic-link small { display: block; }
 .tool-topic-link strong { font-size: 9px; font-weight: 700; }
 .tool-topic-link small { margin-top: 3px; color: var(--muted); font-size: 8px; }
-.tool-related-guides { margin-top: 23px; }
-.tool-related-guides-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 9px; }
-.tool-related-guides-heading .text-link { font-size: 9px; }
 @media (max-width: 850px) {
   .tool-guide-promo { margin-top: 14px; }
 }
@@ -852,4 +849,49 @@ select.input { cursor: pointer; }
 .help-resource-link > svg { color: var(--muted-2); }
 @media (max-width: 640px) {
   .help-resource-grid { grid-template-columns: 1fr; }
+}
+
+/* Tool page content sections (below the interactive tool) */
+.tool-content-column { min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+.tool-about-section > h2 { margin: 9px 0 13px; font-size: 21px; line-height: 1.25; letter-spacing: -.65px; }
+.tool-about-section > p { margin: 0 0 12px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.tool-about-section > p:last-child { margin-bottom: 0; }
+.related-tools-tight { margin-top: 2px; padding-top: 0; border-top: 0; }
+
+/* Reserved ad placement zones — labelled and wired for a future network, but
+   no ad script, iframe or tracking pixel is loaded yet. */
+.ad-slot { display: flex; flex-direction: column; gap: 7px; }
+.ad-slot[data-ad-placement="tool-below"] { margin: 26px 0 22px; }
+.tool-aside > .ad-slot { margin: 0; }
+.ad-slot-label { color: var(--muted-2); font-size: 8px; font-weight: 750; letter-spacing: 1.3px; text-align: center; text-transform: uppercase; }
+.ad-slot-frame { display: grid; place-items: center; min-height: 96px; padding: 16px 22px; border: 1px dashed var(--line-strong); border-radius: 14px; background: var(--surface-muted); }
+.ad-slot-frame > p { max-width: 430px; margin: 0; color: var(--muted-2); font-size: 9px; line-height: 1.65; text-align: center; }
+.ad-slot-rectangle .ad-slot-frame { min-height: 250px; }
+.ad-slot-inline .ad-slot-frame { min-height: 100px; }
+
+/* Static prerendered copy: in the raw HTML for crawlers and no-JS readers.
+   Hidden the moment the app boots (React replaces the whole #root), so the
+   interactive experience is unchanged. */
+.prerendered-page { display: none; }
+html:not(.js-ready) .boot-screen { display: none; }
+html:not(.js-ready) .prerendered-page { display: block; width: min(760px, calc(100% - 40px)); margin: 44px auto 80px; }
+.prerendered-page h1 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 38px); line-height: 1.15; letter-spacing: -1.2px; }
+.prerendered-page h2 { margin: 30px 0 10px; font-size: 20px; letter-spacing: -.5px; }
+.prerendered-page h3 { margin: 18px 0 6px; font-size: 15px; }
+.prerendered-page p, .prerendered-page li { color: var(--muted); font-size: 12px; line-height: 1.75; }
+.prerendered-page p { margin: 8px 0; }
+.prerendered-page ul, .prerendered-page ol { margin: 10px 0; padding-left: 20px; }
+.prerendered-page li { margin: 6px 0; }
+.prerendered-page a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+.prerendered-page-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+@media (max-width: 640px) {
+  .tool-content-column { gap: 28px; }
+  .tool-about-section > h2 { font-size: 18px; }
+  .tool-about-section > p { font-size: 10px; }
+  .ad-slot[data-ad-placement="tool-below"] { margin: 18px 0 16px; }
+  .ad-slot-frame { min-height: 82px; padding: 13px 14px; }
+  .ad-slot-rectangle .ad-slot-frame { min-height: 170px; }
+  .related-tools-tight { margin-top: 0; }
+  html:not(.js-ready) .prerendered-page { margin: 26px auto 50px; }
 }
