@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json && vite build && node scripts/generate-seo.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "npm run typecheck && npm run build && node scripts/smoke-test.mjs"
+    "test": "npm run typecheck && npm run build && node scripts/smoke-test.mjs && node scripts/render-check.mjs"
   },
   "dependencies": {
     "@noble/hashes": "^2.4.0",
