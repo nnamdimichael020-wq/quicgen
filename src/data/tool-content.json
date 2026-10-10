@@ -1,0 +1,342 @@
+{
+  "qr-code-generator": {
+    "intro": "Make a QR code that looks as good as it works. Add your brand colors, a logo and a frame, then download a crisp file that is ready to share or print. Your content stays on this device.",
+    "howTo": [
+      "Choose what your QR code should contain — a link, Wi-Fi network, contact card, email or plain text — and enter the details.",
+      "Pick a dot style and colors with enough contrast to scan easily. Add an optional logo, frame or caption to make it yours.",
+      "Scan the live preview with your phone to confirm the content opens correctly before you share it.",
+      "Download the format that fits your project: PNG for screens, SVG or PDF for print."
+    ],
+    "about": [
+      "A QR code turns information into a pattern that any phone camera can read in a second. This generator builds that pattern from whatever you enter — a link, a Wi-Fi network, a contact card, an email, an event or plain text — and shows the result live as you type.",
+      "Looks matter for a code that goes on a poster, menu or business card, so you can style the dots, pick foreground and background colors, drop in a logo and add a short frame label. The preview updates instantly, and a small contrast warning flags designs that would become hard to scan before you download them.",
+      "When the code is ready, download it as a PNG for screens and documents, an SVG that stays sharp at any size for print and design tools, or a PDF for handing to a printer. Everything is rendered in your browser, so the links and details you encode are never sent to QuicGen."
+    ],
+    "faqs": [
+      { "question": "How large does a printed QR code need to be?", "answer": "A good rule of thumb is one unit of size for every ten units of scanning distance — a code read from about two meters away should be roughly twenty centimeters wide. Always keep the blank margin around the code intact; it helps cameras lock on." },
+      { "question": "Which download format should I choose — PNG, SVG or PDF?", "answer": "Use PNG for websites, slides and social posts; it is quick to share and widely supported. Choose SVG or PDF for print, because both stay crisp at any size and let a print shop scale your code without blurring." },
+      { "question": "Why won’t my QR code scan?", "answer": "Most scan failures come from low contrast, a too-small print size, a cropped quiet zone or a logo that covers too much of the pattern. Try a darker foreground on a lighter background, download again, and test with a second phone before printing a large batch." },
+      { "question": "Can I create a QR code for a Wi-Fi network?", "answer": "Yes. Choose the Wi-Fi content type, enter the network name, password and security type, and guests can scan to join without typing anything. Double-check the password before printing — an outdated password is the most common reason a Wi-Fi code stops working." }
+    ]
+  },
+  "password-generator": {
+    "intro": "Create a unique password with the exact length and character mix you need. QuicGen uses your browser’s secure random generator—passwords are never sent to a server.",
+    "howTo": [
+      "Set a length of at least twelve characters, then choose the character groups to include.",
+      "Optionally exclude look-alike characters or switch to pronounceable mode for a password you may need to read aloud.",
+      "Generate, then check the strength estimate — aim for the green range on important accounts.",
+      "Copy the password straight into the account or password manager, and never reuse it elsewhere."
+    ],
+    "about": [
+      "A strong password is long, random and used in exactly one place. This generator creates passwords to your exact rules — length, uppercase and lowercase letters, numbers, symbols — using your browser’s cryptographic random generator rather than a predictable formula.",
+      "The strength estimate updates as you adjust the settings, so you can see when adding two more characters does more for security than swapping in a punctuation mark. Options like excluding look-alike characters (l, 1, I, O, 0) keep passwords easy to type on other devices, and the pronounceable mode helps when a password has to be read out loud.",
+      "Nothing you generate leaves this device — QuicGen has no server to send it to. That makes this page a good companion to a password manager: create the password here, store it there, and let the manager fill it in later."
+    ],
+    "faqs": [
+      { "question": "How long should my password be?", "answer": "For everyday accounts, aim for at least twelve characters; for email, banking and anything else important, sixteen or more is a comfortable target. Length contributes far more to strength than clever substitutions, so a longer random password is always the simpler upgrade." },
+      { "question": "What makes a generated password strong?", "answer": "Two things: true randomness and uniqueness. Randomness makes the password hard to guess, and using a different password everywhere means one leaked database cannot unlock the rest of your accounts. Both matter more than any particular mix of symbols." },
+      { "question": "Does QuicGen store the passwords I generate?", "answer": "No. Passwords are created with your browser’s secure random generator and shown only in this tab. Nothing is uploaded, logged or saved — close the tab and the result is gone." },
+      { "question": "What does the strength meter actually measure?", "answer": "It estimates how hard the password would be to crack by trying every combination — a brute-force attack — based on its length and the range of characters used. Treat it as a quick guide: if the meter is not green, add length before adding complexity." }
+    ]
+  },
+  "uuid-generator": {
+    "intro": "Generate version 4 UUIDs for test data, records, projects and more. Each identifier is made with the browser’s cryptographically secure random number generator.",
+    "howTo": [
+      "Choose how many UUIDs you need (up to 100 at a time).",
+      "Generate a fresh batch with one click.",
+      "Review the list — every identifier is version 4, built from secure random bits.",
+      "Copy an individual ID, copy the full list or download a text file."
+    ],
+    "about": [
+      "A UUID is a 128-bit identifier meant to be unique across every machine and every moment, without anyone checking a central registry. Version 4 UUIDs — the kind this tool creates — are built entirely from random numbers and look like 550e8400-e29b-41d4-a716-446655440000.",
+      "They are the everyday workhorse for database keys, test fixtures, filenames, request IDs and any place two systems might create records at the same time and need to avoid a collision. Generate a single ID or a batch of up to a hundred, then copy an individual line, copy the whole list or download it as a text file.",
+      "Each UUID here is drawn from your browser’s cryptographic random generator, so the bits are genuinely unpredictable. That also means the IDs are unordered — if you need sortable identifiers, look at time-based formats instead. For everything else, version 4 is the right default."
+    ],
+    "faqs": [
+      { "question": "What is a version 4 UUID?", "answer": "A UUID v4 is a 36-character identifier — thirty-two hex digits and four hyphens — whose 122 random bits come from a secure random source. The “version 4” label simply marks it as the random flavor of the UUID standard, as opposed to time-based versions." },
+      { "question": "How many UUIDs can I generate at once?", "answer": "Up to one hundred per batch, which is plenty for seeding test data or filling a spreadsheet. If you need thousands, generate a few batches and use the copy or download buttons to collect them." },
+      { "question": "Are version 4 UUIDs really unique?", "answer": "The chance of two random v4 UUIDs colliding is around one in 2¹²² — far below any realistic risk. Even across billions of records, accidental duplicates are not something you need to defend against; bugs that reuse IDs are a bigger concern." },
+      { "question": "Can I use a UUID as a password or API secret?", "answer": "Random v4 UUIDs carry solid entropy, but they are formatted predictably and often end up in logs and URLs. For credentials, generate a dedicated secret with the password generator and store it in a secrets manager instead." }
+    ]
+  },
+  "random-number-generator": {
+    "intro": "Get a quick, unbiased selection of numbers for games, giveaways, sampling or test data. Results are generated on your device using cryptographic randomness.",
+    "howTo": [
+      "Enter the inclusive minimum and maximum values for your range.",
+      "Choose how many results to generate and whether repeats are allowed.",
+      "Generate and copy your results or start a fresh draw.",
+      "For raffles and giveaways, decide the rules first and share the visible result with your group."
+    ],
+    "about": [
+      "Whether you are running a raffle, picking a sample, settling who goes first or inventing test data, you need numbers that are genuinely unpredictable. This generator draws them with your browser’s cryptographic random source, not the ordinary pseudo-random function most apps use.",
+      "Set any whole-number minimum and maximum — from 1–6 to a billion — then choose how many results you want. Unique mode never repeats a number inside one draw, which is exactly what a raffle or a name-picking hat needs.",
+      "The range is inclusive at both ends, every number has the same chance, and results appear the moment you click generate. Copy what you get or start a fresh draw; nothing about your range or results leaves this device."
+    ],
+    "faqs": [
+      { "question": "Is this really random?", "answer": "Yes, within the meaning that matters. Numbers come from the same cryptographic random generator browsers use for security keys, and the sampling is unbiased across your whole range — each value has exactly the same probability." },
+      { "question": "What does the unique / no-repeat option do?", "answer": "It guarantees a number appears at most once per draw, like pulling names out of a hat without putting them back. It only works when your range holds at least as many numbers as you are generating." },
+      { "question": "Is the maximum value included in the range?", "answer": "Yes. A range of 1 to 100 can produce 1 or 100 or anything between, with equal odds. Many spreadsheet functions use exclusive ranges, so it is worth knowing this one counts both ends." },
+      { "question": "Can I use this for a fair giveaway or raffle?", "answer": "Yes — the draw is uniform and unpredictable, and unique mode prevents duplicate winners. For transparency, decide the rules (range and number of winners) before generating, and consider sharing a screenshot of the result with participants." }
+    ]
+  },
+  "random-string-generator": {
+    "intro": "Create random strings for test data, temporary labels and development workflows. Choose exactly which character groups to use and generate right in your browser.",
+    "howTo": [
+      "Choose the string length and how many strings you need.",
+      "Select letters, numbers or symbols — or enter a custom character set for a specific alphabet.",
+      "Optionally exclude look-alike characters so the strings stay easy to copy and read.",
+      "Generate and copy the results."
+    ],
+    "about": [
+      "Random strings show up everywhere in development work: sample data, placeholder IDs, coupon codes, temporary labels, test tokens. This tool builds them to your exact spec — length, how many you need, and precisely which characters are allowed.",
+      "Choose built-in groups like uppercase, lowercase, numbers and symbols, or type your own character set when a system demands a specific alphabet. Excluding look-alike characters (0/O, 1/l/I) keeps strings readable when they land on a screen someone has to copy from.",
+      "Generation uses the browser’s secure random source, so the results are unpredictable as well as well-formed. Copy a single string or the whole batch — nothing is sent anywhere, and regenerating simply rolls fresh values."
+    ],
+    "faqs": [
+      { "question": "How random are the strings?", "answer": "Each character is drawn from your chosen set with a cryptographic random generator and unbiased picking, so every allowed character has the same chance and the sequence cannot be predicted from earlier strings." },
+      { "question": "How is this different from the password generator?", "answer": "Both use the same secure randomness. This tool is tuned for exact formats — say, twelve characters of only digits — while the password generator adds strength estimates and guidance for account credentials. For logins, prefer the password generator." },
+      { "question": "Can I allow only specific characters?", "answer": "Yes. Select the custom character set option and type exactly the characters you want — for example only hex digits (0-9A-F) for a color-style code, or only consonants for pronounceable test labels." },
+      { "question": "How long should a test token be?", "answer": "For anything acting like a secret, sixteen or more characters from a full alphabet is a sensible floor. For simple labels and sample data, shorter is fine — match whatever the real system you are modeling will use." }
+    ]
+  },
+  "random-color-generator": {
+    "intro": "Spark a fresh palette for a mockup, moodboard or side project. Generate colors, inspect their HEX, RGB and HSL values, then copy the format you need.",
+    "howTo": [
+      "Choose how many colors to generate.",
+      "Tap generate to create a new palette.",
+      "Click any color value to copy it in HEX, RGB or HSL.",
+      "Paste the value into your design tool or stylesheet, and check contrast before shipping a pairing."
+    ],
+    "about": [
+      "Every design starts with a color decision, and staring at a blank swatch is the slowest part. This generator rolls a fresh set of colors on demand and shows each one as HEX, RGB and HSL, ready to copy into a design tool or a stylesheet.",
+      "Generate a single color for a quick answer or a small palette to spark a moodboard. Click any value to copy it in the format you need — HEX for most design apps, RGB for CSS and canvas code, HSL when you want to tweak lightness by hand.",
+      "There is no algorithm trying to guess your taste; the colors are truly random, which is the point when you want somewhere unexpected to start. Before shipping a pairing, check the contrast between text and background so the result stays readable for everyone."
+    ],
+    "faqs": [
+      { "question": "What is the difference between HEX, RGB and HSL?", "answer": "They are three notations for the same color: HEX is a compact hex code like #3B82F6, RGB splits it into red, green and blue channels, and HSL describes hue, saturation and lightness. Use whichever your tool expects — they all match exactly." },
+      { "question": "How do I use these colors in CSS?", "answer": "Paste the HEX value directly — for example color: #3B82F6 — or use the rgb() / hsl() functions when you also need transparency, such as rgba(59, 130, 246, 0.4) for a soft overlay." },
+      { "question": "Are the colors actually random?", "answer": "Yes. Each color is generated from a secure random source with no palette rules or color-theory filtering applied. If a combination feels unusable, that is the cue to generate again and keep whatever catches your eye." },
+      { "question": "How do I make sure text stays readable on a background color?", "answer": "Compare the lightness of the two colors — strong differences win. For real projects, run the pairing through a contrast checker and aim for at least 4.5:1 for body text; large headings can get away with 3:1." }
+    ]
+  },
+  "dice-roller": {
+    "intro": "Roll up to 20 dice with 4, 6, 8, 10, 12 or 20 sides. Each roll is generated locally, so it’s quick, private and always ready for game night.",
+    "howTo": [
+      "Pick the number of dice and the number of sides (d4 to d20).",
+      "Roll to see every die and the combined total.",
+      "Check the recent rolls on screen if the table needs a quick re-check.",
+      "Roll again whenever you need a new result."
+    ],
+    "about": [
+      "A pocketful of dice you can never lose. Roll one die or up to twenty at a time with 4, 6, 8, 10, 12 or 20 sides — the full set of polyhedral dice used in tabletop games, classrooms and quick decision-making.",
+      "Each roll shows every individual die as well as the combined total, so a group can see exactly what happened. A short history of your recent rolls stays on screen — and only on screen — while you play.",
+      "The randomness comes from your device’s secure generator and is uniform across every face: no weighted dice, no patterns. Whether you are settling a tie, running a game night or teaching probability, the roll is fair and instant."
+    ],
+    "faqs": [
+      { "question": "Which dice can I roll?", "answer": "Anything from a four-sided die to a twenty-sided one — d4, d6, d8, d10, d12 and d20. You can roll up to twenty dice in a single throw and see each result plus the total." },
+      { "question": "Is the dice roller fair?", "answer": "Yes. Each face of every die has exactly the same probability, produced by a cryptographic random generator. There is no memory of previous rolls, so a long streak of sixes is as unlikely — or as possible — as any other outcome." },
+      { "question": "Can I use this for tabletop role-playing games?", "answer": "Absolutely. The common RPG dice are all covered: roll a d20 for checks, handfuls of d6 for damage, or d100-style rolls with two ten-sided dice. Roll again with one click between turns." },
+      { "question": "Does the roller keep my roll history?", "answer": "Your most recent rolls appear on screen so you can double-check them during play, but they are never sent anywhere and clear when you close or refresh the page." }
+    ]
+  },
+  "percentage-calculator": {
+    "intro": "Take the mental arithmetic out of discounts, comparisons and everyday math. Switch between three common percentage questions and see the answer update instantly.",
+    "howTo": [
+      "Choose the percentage calculation that matches your question — percent of, what percent, or percent change.",
+      "Enter the values in the labeled fields.",
+      "Read the live result — no submit button or account required.",
+      "When using percent change, double-check which value is the starting point; the base matters."
+    ],
+    "about": [
+      "Percentages hide in almost every everyday calculation: discounts, tips, grades, tax, growth figures, survey results. This calculator answers the three questions people actually ask — what is X% of a number, what percent one number is of another, and how much did a value change in percent.",
+      "Pick the mode that matches your question, type the numbers, and the answer appears immediately, with no submit button and nothing to sign up for. Working in the open also makes the arithmetic easier to learn: every result reflects a formula you can check yourself.",
+      "The change mode is especially handy for comparing prices, scores or metrics over time — it shows both the raw change and the percentage, up or down. Everything is calculated locally in your browser."
+    ],
+    "faqs": [
+      { "question": "How do I calculate percentage change between two numbers?", "answer": "Subtract the old value from the new one, divide the result by the old value, then multiply by 100. Going from 80 to 100 is a 25% increase, because 20 ÷ 80 = 0.25. The change mode does this for you, including the direction." },
+      { "question": "How do I work out a discount quickly?", "answer": "Find the percentage of the price and subtract it — or skip a step: paying 85% of a price is the same as taking 15% off. The “what is X% of Y” mode handles both in one answer you can trust at the till." },
+      { "question": "Why does a 50% rise then a 50% fall not return to the start?", "answer": "Because each percentage applies to a different base. A value of 100 that rises 50% becomes 150; falling 50% of 150 leaves 75. Percentage change is always relative to the value you started that step with." },
+      { "question": "What is the difference between “X is what percent of Y” and “X% of Y”?", "answer": "One solves for the rate, the other for the amount. “20 is what percent of 80?” answers 25%. “25% of 80” answers 20. They are the same relationship read from opposite ends." }
+    ]
+  },
+  "tip-calculator": {
+    "intro": "A simple way to settle the bill. Choose a tip percentage, add the bill amount and split the total evenly across your table.",
+    "howTo": [
+      "Enter the bill amount before tip.",
+      "Choose a tip percentage — or drag the slider to match the service.",
+      "Set the number of people sharing the bill.",
+      "See the tip, total and amount per person update immediately, and share the per-person figure."
+    ],
+    "about": [
+      "The end of a shared meal should not involve mental arithmetic. Enter the bill, set a tip percentage and the number of people, and this calculator shows the tip, the total and exactly what each person owes.",
+      "Quick presets cover the usual tipping rates, and a slider lets you round up for great service or ease back when the tip is already included. The currency selector keeps the numbers looking right whether you are in New York, London or Lagos.",
+      "When the table wants to settle fairly, the per-person figure is the one to share — no “I think it’s about…” moments. The whole calculation happens in your browser, so no bill details go anywhere."
+    ],
+    "faqs": [
+      { "question": "How much should I tip?", "answer": "It depends on where you are. In the United States, 15–20% is standard for table service; many other countries expect less, or include service already. When in doubt, check local guidance and adjust for the experience you had." },
+      { "question": "Should I tip on the pre-tax amount?", "answer": "Etiquette varies, but tipping on the pre-tax bill is a common recommendation because tax is not part of the service. If the bill does not separate tax, tipping on the total is perfectly acceptable and simpler." },
+      { "question": "How do I split the bill if people ordered different things?", "answer": "This calculator splits evenly, which works well when orders are similar. For unequal orders, have everyone total their own items, then run each subtotal through the calculator separately with one person per split." },
+      { "question": "Does the calculator handle different currencies?", "answer": "Yes. The math is the same in any currency — choose the symbol you want displayed. Amounts are formatted with two decimals, which fits most currencies; round up as needed in cash situations." }
+    ]
+  },
+  "time-calculator": {
+    "intro": "Plan a shift, duration or schedule without mental time math. Add or subtract a duration from any start time, including calculations that cross midnight.",
+    "howTo": [
+      "Choose a start time and set the number of hours and minutes.",
+      "Select whether to add or subtract the duration.",
+      "Read the resulting time and any day change noted beside it.",
+      "Switch between 12-hour and 24-hour display to match how you plan."
+    ],
+    "about": [
+      "Adding a few hours and forty minutes to 11:35 PM is exactly the kind of mental math nobody wants to do twice. This calculator adds or subtracts any hours-and-minutes duration from any start time and shows the result instantly.",
+      "Results that cross midnight tell you about the day change, so a shift running from 10 PM to 6 AM shows up as the next day without any guesswork. Switch between 12-hour and 24-hour clocks to match how you read time.",
+      "It is a wall-clock calculator: it adds durations to clock times in a single day frame, without time zones or daylight-saving shifts. For schedules, shifts, cooking timers and simple planning, that is usually exactly what you need."
+    ],
+    "faqs": [
+      { "question": "How do I add hours and minutes to a time?", "answer": "Choose the start time, enter the hours and minutes to add, and make sure the operation is set to add. The result appears immediately, including a note whenever the sum rolls past midnight into the next day." },
+      { "question": "What happens if the result goes past midnight?", "answer": "The calculator shows the resulting clock time plus a day offset — next day, or previous day when subtracting. That keeps shift planning honest when a 10 PM start plus eight hours lands at 6 AM the following morning." },
+      { "question": "Does it handle time zones or daylight saving?", "answer": "No. The tool works with clock times as written, so it adds durations without zone rules. Crossing time zones is best handled by converting everything to one zone first, then doing the duration math." },
+      { "question": "How do I find the length of a shift?", "answer": "Set the start time as your base and subtract it from the end time — or run it forwards: add the shift length to the start and check that it matches the finish. The day offset confirms overnight shifts count correctly." }
+    ]
+  },
+  "date-calculator": {
+    "intro": "Answer common date questions in seconds. Calculate the gap between two dates, move forward or backward by a number of days, or find someone’s age.",
+    "howTo": [
+      "Pick the date calculation you need: days between dates, add days, or age.",
+      "Choose the relevant date or dates and enter a day count if needed.",
+      "See the result immediately, calculated using calendar dates.",
+      "Use the day count or resulting date in your plan — leap years and month lengths are already handled."
+    ],
+    "about": [
+      "Three date questions come up constantly: how many days are between these two dates, what date is N days from now, and how old is someone exactly. This calculator answers all three with real calendar arithmetic.",
+      "Day counts follow the actual calendar — leap years, short Februaries and long months included — so planning a deadline or checking a contract date does not rely on rough “thirty days per month” estimates. Use the difference mode to see the gap in days, or add and subtract days to project a date forward or back.",
+      "The age mode turns a birth date into a precise age in years and remaining days, which is useful for forms, milestones and benefits where a near-enough answer will not do. Everything runs locally in your browser."
+    ],
+    "faqs": [
+      { "question": "How is the number of days between two dates calculated?", "answer": "The calculator counts calendar days between the start and end dates. Whether the start day itself counts depends on the mode you use — check the labeled result, and add one manually if your process counts both ends." },
+      { "question": "How do I calculate an age accurately?", "answer": "Choose the age mode and enter the birth date and the date to measure at. The result gives full years plus the remaining days, handling leap years and month lengths exactly as the calendar does." },
+      { "question": "Does the calculator account for leap years?", "answer": "Yes. All results come from real date arithmetic, so February 29th, century rules and differing month lengths are already handled — no manual corrections needed." },
+      { "question": "Can I count only working days?", "answer": "This tool counts calendar days, which is what most contracts and deadlines mean. For business-day counts you would also need a list of local holidays — that varies by region and employer." }
+    ]
+  },
+  "word-counter": {
+    "intro": "Get a useful snapshot of your writing as you work. Counts update instantly and your text is processed only in this browser tab.",
+    "howTo": [
+      "Paste or type your text into the editor.",
+      "Review live counts for words, characters, sentences and paragraphs.",
+      "Use the reading-time estimate to check the length at a glance.",
+      "Trim or expand your text until the counts match the limits you are aiming for."
+    ],
+    "about": [
+      "Whether you are writing an essay, a social post, a product description or a meta description, the question is always the same: how long is this, really? Paste your text and this counter shows words, characters (with and without spaces), sentences and paragraphs as you type.",
+      "A live reading-time estimate puts the length in human terms — useful for speeches, presentations, blog posts and anything else with an audience that has to get through it. The estimate assumes an average reading pace of about 220 words per minute.",
+      "Your text is analyzed in this browser tab and nowhere else. There is no upload, no account and no draft saving — refresh the page and it is gone, which makes the tool safe for confidential copy you are not ready to share."
+    ],
+    "faqs": [
+      { "question": "How does the counter decide what a word is?", "answer": "Anything separated by whitespace counts as a word, which matches what most editors and platforms report. Hyphenated terms count as one word, and standalone symbols surrounded by spaces count as words of their own." },
+      { "question": "How is reading time estimated?", "answer": "The word count is divided by an average silent reading speed of roughly 220 words per minute, rounded to the nearest useful step. Dense technical text will take longer; skimmable lists will take less." },
+      { "question": "Is my text uploaded or saved anywhere?", "answer": "No. Counting happens locally in your browser tab, and nothing is stored when you close it. You can paste confidential drafts without worrying about where they end up." },
+      { "question": "Does it count characters with and without spaces?", "answer": "Yes — both figures are shown side by side, because platforms quote different limits. Social networks and search engines often count characters with spaces, so check the right number before you trim." }
+    ]
+  },
+  "case-converter": {
+    "intro": "Clean up headings, sentences or pasted text with a single click. Your original stays editable, and every conversion happens right here in your browser.",
+    "howTo": [
+      "Paste or type the text you want to transform.",
+      "Choose uppercase, lowercase, title, sentence or alternating case.",
+      "Review the converted result in the output box — your original stays editable above.",
+      "Copy the result wherever it needs to go."
+    ],
+    "about": [
+      "Paste text in any shape and switch it between uppercase, lowercase, title case, sentence case and alternating case in one click. It is the fastest fix for caps-lock accidents, ragged headings and data that arrives in the wrong format.",
+      "Title case capitalizes the main words of a heading; sentence case capitalizes just the first word of each sentence — both handy when a style guide is watching. Alternating case is there for when you need to make a point, or just a joke.",
+      "The original text stays in the input box while the converted version appears in the output, so nothing is lost while you experiment. All conversion happens in your browser, including for text you would rather not paste into a website."
+    ],
+    "faqs": [
+      { "question": "What is the difference between title case and sentence case?", "answer": "Title case capitalizes each major word — “The Quick Brown Fox” — and suits headings and titles. Sentence case capitalizes only the first word of each sentence, like ordinary prose, and reads more calmly in body copy." },
+      { "question": "Will converting change punctuation or numbers?", "answer": "No. Only letter casing changes; punctuation, spacing, numbers and symbols stay exactly as you typed them. Accented characters and non-Latin scripts are handled correctly too." },
+      { "question": "How do I fix text typed with caps lock on?", "answer": "Paste it into the converter and choose lowercase — then convert to sentence or title case to restore proper capitalization. The original stays in the input box in case you need it again." },
+      { "question": "Can I convert the result back to the original?", "answer": "The converter works from whatever is in the input box, and the input is untouched by the output. Keep the original there and you can regenerate any case variation whenever you like." }
+    ]
+  },
+  "lorem-ipsum-generator": {
+    "intro": "Create just enough placeholder copy to test a layout, prototype or draft. Choose the unit and amount, then generate or copy the text instantly.",
+    "howTo": [
+      "Choose paragraphs, sentences or words.",
+      "Set the amount of placeholder text to generate.",
+      "Generate and copy the Lorem Ipsum output.",
+      "Paste it into your layout and adjust the amount until it matches your real content’s shape."
+    ],
+    "about": [
+      "Lorem Ipsum has been the printing industry’s placeholder text since the 1500s, and it still earns its keep: it fills a layout with realistic-looking words without pulling the reader’s eye into reading them.",
+      "Generate exactly the shape of copy your project needs — whole paragraphs for a landing page, a sentence or two for a card, or a precise word count for a field with a limit. The classic scrambled-Latin style keeps the focus on your design.",
+      "Filler text is most useful when it matches the real content’s shape, so generate a little extra and trim it to the length your final copy is likely to be. Everything is generated locally — copy the text and paste it into your design tool or codebase."
+    ],
+    "faqs": [
+      { "question": "What is Lorem Ipsum, exactly?", "answer": "It is scrambled text derived from a passage of Cicero’s “De Finibus” from 45 BC. The familiar opening is “Lorem ipsum dolor sit amet…” — Latin words rearranged so the distribution of letters looks like ordinary language." },
+      { "question": "Why not just use real text as placeholder copy?", "answer": "Real words pull attention toward their meaning, and stakeholders start commenting on the writing instead of the design. Lorem Ipsum keeps the shape of text without the distraction — swap in the real copy at the end." },
+      { "question": "How much placeholder text should I generate?", "answer": "Match the length your real content is likely to be — a little longer is safer than shorter. If the final copy will be about 300 words, generate 300–350 so the layout does not collapse when the real text arrives." },
+      { "question": "Is the generated text the same every time?", "answer": "The generator varies where the classic passage starts and continues, so repeated loads do not produce identical blocks. Paragraphs, sentences and words are all available as units." }
+    ]
+  },
+  "color-picker": {
+    "intro": "Choose a color visually or paste a HEX code to explore its values. QuicGen converts between HEX, RGB and HSL in real time—no uploads, no tracking.",
+    "howTo": [
+      "Use the color picker or enter a valid HEX value.",
+      "Review the matching RGB and HSL values.",
+      "Click any code to copy it for your design or development work.",
+      "Paste a value from code or a design tool and read the matching formats instantly."
+    ],
+    "about": [
+      "Pick a color from the spectrum or type a HEX code and this tool shows the matching RGB and HSL values instantly. It is built for the small translation jobs that happen all day: a color in a design file that needs to become code, or a code snippet that needs to become a design token.",
+      "Each value can be copied with one click — HEX for CSS and most design tools, RGB when you are working with canvas or transparency, HSL when you want to nudge lightness or saturation by hand.",
+      "Color codes are converted in your browser, so you can pull brand colors and confidential palettes through the tool without them going anywhere. If you are pairing colors for text, check contrast before you commit."
+    ],
+    "faqs": [
+      { "question": "How do I convert HEX to RGB?", "answer": "A HEX color like #3B82F6 packs three bytes into one string: 3B red, 82 green, F6 blue — written as rgb(59, 130, 246). Enter either code in this tool and the other formats update instantly." },
+      { "question": "What does HSL stand for?", "answer": "Hue, saturation, lightness. Hue is the position on the color wheel (0–360°), saturation is how pure versus gray the color is, and lightness is how close to black or white it sits. Designers like HSL because one number can tune brightness predictably." },
+      { "question": "Why does the same color look different on two screens?", "answer": "Displays differ in calibration, brightness and color profiles, so no tool can guarantee identical appearance everywhere. For brand-critical work, agree on the HEX value as the source of truth and check key screens physically." },
+      { "question": "Can I pick colors with transparency?", "answer": "The picker shows opaque HEX, RGB and HSL values. For a transparent version, add an alpha channel in your code — rgba(59, 130, 246, 0.5) or hsla(217, 90%, 60%, 0.5) — using the same base numbers." }
+    ]
+  },
+  "base64-encoder-decoder": {
+    "intro": "Convert text to and from Base64 without sending it anywhere. The tool supports UTF-8 characters, including emoji and non-Latin scripts.",
+    "howTo": [
+      "Enter text to encode, or Base64 text to decode.",
+      "Choose the direction of conversion.",
+      "Copy the output. Invalid Base64 is flagged instead of silently mangled.",
+      "Decode again after editing to verify the round trip — UTF-8 characters survive intact."
+    ],
+    "about": [
+      "Base64 is a way of writing binary data — images, files, compressed archives — using only ordinary text characters, so it can travel through systems that were designed for words. This tool encodes text into that alphabet and decodes it back to readable UTF-8.",
+      "It is a common sight in data URIs, email attachments, JSON API payloads and configuration files, and a lifesaver when debugging one of them. Full Unicode is supported: emoji, accents and non-Latin scripts survive the round trip intact.",
+      "One thing Base64 is not: encryption. Encoded text is trivially reversible by anyone who has it. Treat it as a different packaging format for data you are already allowed to share — the encoding itself happens entirely in your browser."
+    ],
+    "faqs": [
+      { "question": "Is Base64 encoding secure?", "answer": "No. Anyone can decode Base64 without a key — it is a formatting convention, not a lock. Never use it to protect passwords, tokens or private messages; use real encryption or a password manager for anything sensitive." },
+      { "question": "What is Base64 actually used for?", "answer": "Carrying binary or structured data through text-only channels: embedding images in HTML/CSS as data URIs, attaching files in email (MIME), moving bytes through JSON, and storing blobs in text-based databases." },
+      { "question": "Why does the encoded text end with equals signs?", "answer": "Base64 packs every three bytes into four characters; the “=” padding fills out the last group when the input length is not a multiple of three. It is normal and expected — the decoder handles it automatically." },
+      { "question": "Can it handle emoji and non-Latin scripts?", "answer": "Yes. Input is treated as UTF-8 before encoding, so emoji, accents, CJK characters and the rest round-trip perfectly. If an old tool mangles them, that tool is likely assuming a legacy character set." }
+    ]
+  },
+  "hash-generator": {
+    "intro": "Calculate a message digest from text without uploading the input. SHA-256 is suitable for general integrity checks; MD5 and SHA-1 are included for compatibility, not security.",
+    "howTo": [
+      "Type or paste the text you want to hash.",
+      "Choose MD5, SHA-1 or SHA-256.",
+      "Copy the hexadecimal digest.",
+      "Compare digests character by character when verifying — and use a dedicated password-hashing algorithm for passwords."
+    ],
+    "about": [
+      "A hash function turns any text into a fixed-length fingerprint — a SHA-256 digest is always 64 hex characters, whether the input is “hello” or a whole chapter. Change one letter and the fingerprint changes completely.",
+      "Hashes are how systems check integrity and identity without keeping the original: comparing file checksums, deduplicating content, fingerprinting data for caches. This tool computes MD5, SHA-1 and SHA-256 locally, so the text you hash is never uploaded.",
+      "Choose the algorithm with care. SHA-256 is the modern default; MD5 and SHA-1 are included for checking legacy systems and old checksums only — both are considered broken for security purposes. And for passwords, do not use any of these: dedicated password-hashing functions like Argon2 or bcrypt exist for exactly that job."
+    ],
+    "faqs": [
+      { "question": "Which hash algorithm should I use?", "answer": "SHA-256 for anything new — it is the modern standard for integrity checks and is accepted everywhere. Use MD5 or SHA-1 only to match an existing checksum from an older system that requires them." },
+      { "question": "Can a hash be reversed to get my text back?", "answer": "No. Hashes are one-way by design. In theory someone could guess common inputs and compare hashes, so hashing does not make weak data strong — but recovering an arbitrary input from its digest is not feasible." },
+      { "question": "How do I verify a file checksum?", "answer": "Hash the file’s contents with the same algorithm the publisher used and compare the digests character by character. This tool hashes text input; for large files, the same comparison works with a local hashing utility." },
+      { "question": "Why shouldn’t I hash passwords with SHA-256?", "answer": "Fast hashes like SHA-256 let attackers test billions of guesses per second. Password storage needs slow, salted functions such as Argon2, scrypt or bcrypt — and authentication should stay with your identity provider or password manager." }
+    ]
+  }
+}
