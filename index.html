@@ -20,6 +20,7 @@
     <title>QuicGen — Generate Anything. Instantly.</title>
     <script>
       (() => {
+        document.documentElement.classList.add('js-ready');
         try {
           const saved = localStorage.getItem('quicgen-theme');
           const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
